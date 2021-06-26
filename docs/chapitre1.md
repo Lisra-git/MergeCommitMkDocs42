@@ -152,7 +152,18 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
             ```
 
         ??? danger "Pour aller plus loin"
-            Ce symbole `=` n'a rien à voir avec le égal mathématique. `#!python a = a+2` a un sens en Python mais n'en a aucun en Maths.
+            Ce symbole `=` n'a rien à voir avec le égal mathématique. `#!python a = a + 2` a un sens en Python mais est une proposition logique fausse en Maths.
+
+!!! {{cours()}}
+    En Python, la déclaration et l'initialisation se font en même temps. On appelle cela le **typage dynamique**.
+    
+    Lorsque Python voit `#!python x=2` : il comprend que x est un entier (déclaration) et que cette variable doit être associée à la valeur 2 (initialisation).
+
+    Par la suite, on peut faire `#!python x='Bonjour'` pour associer le mot _Bonjour_ (valeur) à la variable `x`.
+
+    ??? danger "Pour aller plus loin"
+        En Python, ces changements de types (passage d'un entier à un mot) sont permis par une méthode appelée _duck typing_.
+
 
 
 !!! info "Test"
