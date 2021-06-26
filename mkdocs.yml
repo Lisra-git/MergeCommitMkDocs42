@@ -1,17 +1,30 @@
 site_name: "Terminal et REPL dans Mkdocs"
-site_url: https://bouillotvincent.gitlab.io/pyodide-mkdocs
-repo_url: https://gitlab.com/bouillotvincent/pyodide-mkdocs
+site_url: https://ferney-nsi.gitlab.io/premiere
+repo_url: https://gitlab.com/ferney-nsi/premiere
 edit_uri: tree/main/docs/
-site_description: Tutoriel pour un REPL et un Terminal dans MkDocs Material 
+site_description: Cours d'informatique de Vincent BOUILLOT, Lycée International Ferney-Voltaire 
 copyright: |
-  Copyleft &#127279 2021 <a href="https://bouillotvincent.gitlab.io/tests-avec-mkdocs/" target="_blank" rel="noopener">Vincent BOUILLOT</a>
+  Copyleft &#127279 2021 <a href="https://ferney-nsi.gitlab.io/premiere/" target="_blank" rel="noopener">Vincent BOUILLOT</a>
 docs_dir: docs
 
 nav:
-  - "Terminal ▶️ et REPL 🖥 dans MkDocs": index.md
-  - "Guide du Terminal 🐍": install_term.md
-  - "Guide du REPL 🐍" : install_repl.md
-  - "En développement 🧪": todo.md
+  - "Généralités": index.md
+  - "Langage Python" :
+    - "Variables" : chapitre1.md
+    - "Structures de contrôle" : chapitre2.md
+    - "Listes" : chapitre3.md
+  - "Algorithmique" : 
+    - "Premiers algorithmes" : chapitre4.md
+    - "Algorithmes de tri" : chapitre5.md
+    - "Algorithmes avancés" : chapitre6.md
+  - "Architecture machine": 
+    - "Électronique et logique booléenne" : chapitre8.md
+    - "Architecture de Von Neumann" : chapitre9.md
+  - "Projets" :
+    - "Création site web" : projet1.md
+    - "Un jeu dont vous êtes le héros!" : projet2.md 
+    - "BLABLABLA" : projet3.md 
+
 
 
 theme:
@@ -43,6 +56,9 @@ theme:
         - navigation.top
         - toc.integrate
         - header.autohide
+    icon: 
+        logo: material/remote-desktop
+    favicon: images/favicon.png
 
 
 markdown_extensions:
@@ -63,14 +79,20 @@ markdown_extensions:
         custom_checkbox:    false   #   avec cases d'origine
         clickable_checkbox: true    #   et cliquables.
     - pymdownx.tabbed               # Volets glissants.  === "Mon volet"
-    - pymdownx.superfences          # Imbrication de blocs.
+    - pymdownx.superfences:          # Imbrication de blocs.
+        preserve_tabs: true
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:mermaid2.fence_mermaid
     - pymdownx.keys:                # Touches du clavier.  ++ctrl+d++
         separator: "\uff0b"
     - pymdownx.emoji:               # Émojis  :boom:
         emoji_index:     !!python/name:materialx.emoji.twemoji
         emoji_generator: !!python/name:materialx.emoji.to_svg
-
-
+    - pymdownx.tasklist:
+        custom_checkbox: true
+        clickable_checkbox: true
     - pymdownx.arithmatex:
         generic: true
     - toc:
@@ -96,15 +118,19 @@ extra:
           name: L'encyclopédie libre que chacun peut améliorer
 
         - icon: fontawesome/solid/paper-plane
-          link: mailto:vincent.bouillot@ac-lyon.fr
+          link: mailto:prof-bouillot@protonmail.com
           name: Écrire à l'auteur
-    site_url: https://bouillotvincent.gitlab.io/pyodide_mkdocs/
+    site_url: https://www.gitlab.com/bouillotvincent/
 
 
 plugins:
   - search
   - macros
   - enumerate-headings
+  - mermaid2:
+      arguments:
+          theme: |
+            ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
 
 extra_javascript:
   - xtra/javascripts/mathjax-config.js                    # MathJax
@@ -112,8 +138,8 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - xtra/javascripts/interpreter.js
-# - https://unpkg.com/mermaid@8.9.2/dist/mermaid.min.js
-# - javascripts/mermaid.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+  # - javascripts/mermaid.js
 
 extra_css:
   - xtra/stylesheets/pyoditeur.css

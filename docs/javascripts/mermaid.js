@@ -12,13 +12,13 @@ window.mermaidConfig = {
       useMaxWidth: false
     },
     sequence: {
-      useMaxWidth: false,
+      useMaxWidth: false
       // Mermaid handles Firefox a little different.
       // For some reason, it doesn't attach font sizes to the labels in Firefox.
       // If we specify the documented defaults, font sizes are written to the labels in Firefox.
-      noteFontWeight: "14px",
-      actorFontSize: "14px",
-      messageFontSize: "16px"
+      //noteFontWeight: "14px",
+      //actorFontSize: "14px",
+      //messageFontSize: "16px"
     }
   },
 
@@ -64,7 +64,7 @@ window.mermaidConfig = {
  * @param {string} className is the name of the class to target.
  * @return {void}
  */
-export default className => {
+ export default className => {
 
   // Custom element to encapsulate Mermaid content.
   class MermaidDiv extends HTMLElement {

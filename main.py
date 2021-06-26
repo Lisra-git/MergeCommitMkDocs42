@@ -42,11 +42,12 @@ def define_env(env):
 
     env.variables['compteur_exo'] = 0
     @env.macro
-    def exercice(prem = 1):
+    def exercice(var = True, prem = 1):
         if prem == 0 : env.variables['compteur_exo'] = 0
         env.variables['compteur_exo'] += 1
-        return f"tip \"Exercice { env.variables['compteur_exo']}\""
-
+        root = f"Exercice { env.variables['compteur_exo']}"
+        return f"""tip \"{root}\"""" if var else '\"'+root+'\"'
+        
     @env.macro
     def cours():
         return f'done "Cours"'

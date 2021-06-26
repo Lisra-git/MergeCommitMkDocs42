@@ -1,8 +1,8 @@
-# Terminal et REPL dans Mkdocs
+# Spécialité NSI en Première
 
 ## Introduction
 
-Afin d'écrire un cours interactif utilisant Mkdocs, le besoin s'est fait sentir de pouvoir écrire directement des scripts en ligne :
+Le but de ce site web est de vous proposer un cours interactif : vous pouvez programmer directement en Python en ligne sans avoir besoin d'installer un , d'accepter des cookies, 
 
 - dans le navigateur
 - sans iframe
