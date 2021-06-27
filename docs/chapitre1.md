@@ -1,4 +1,4 @@
-# Programmation avec Python
+# Fondamentaux en Python
 
 ## Éditeur, console, terminal ?
 
@@ -62,14 +62,12 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
     
     La console **évalue** des expressions Python puis affiche le résultat de l'évaluation. `#!python print` sera utile dans les programmes plus complexes.
 
-
-
 ## Notion de variable
 
 Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en activité débranchée.
 
 !!! info inline end "En mémoire"
-    ```mermaid
+    ```mermaid 
     flowchart TD
     subgraph "Avant"
         I[annee] --> A[2010]
@@ -157,9 +155,9 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 !!! {{cours()}}
     En Python, la déclaration et l'initialisation se font en même temps. On appelle cela le **typage dynamique**.
     
-    Lorsque Python voit `#!python x=2` : il comprend que x est un entier (déclaration) et que cette variable doit être associée à la valeur 2 (initialisation).
+    Lorsque Python voit `#!python x = 2` : il comprend que x est un entier (déclaration) et que cette variable doit être associée à la valeur 2 (initialisation).
 
-    Par la suite, on peut faire `#!python x='Bonjour'` pour associer le mot _Bonjour_ (valeur) à la variable `x`.
+    Par la suite, on peut faire `#!python x = 'Bonjour'` pour associer le mot _Bonjour_ (valeur) à la variable `x`.
 
     ??? danger "Pour aller plus loin"
         En Python, ces changements de types (passage d'un entier à un mot) sont permis par une méthode appelée _duck typing_.

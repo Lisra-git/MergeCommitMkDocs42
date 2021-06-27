@@ -58,7 +58,7 @@ theme:
         - header.autohide
     icon: 
         logo: material/remote-desktop
-    favicon: images/favicon.png
+    favicon: assets/images/favicon.png
 
 
 markdown_extensions:
@@ -129,8 +129,8 @@ plugins:
   - enumerate-headings
   - mermaid2:
       arguments:
-          theme: |
-            ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
+          theme: 'dark'
+            # ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
 
 extra_javascript:
   - xtra/javascripts/mathjax-config.js                    # MathJax
