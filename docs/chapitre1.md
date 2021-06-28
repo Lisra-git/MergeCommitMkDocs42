@@ -1,4 +1,4 @@
-# Fondamentaux en Python
+# Variables
 
 ## Éditeur, console, terminal ?
 
@@ -44,13 +44,22 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
 
     === {{exercice(False)}}
 
-        Dans la console, affichez la phrase "Ceci est mon deuxième programme Python !".
+        Dans la console, affichez la phrase "Bonjour le monde !". 
+
+        ??? help "Aide" 
+        
+            Avez-vous bien utilisé des guillemets comme dans l'exercice précédent ?
 
     === {{exercice(False)}}
 
         Dans la console ci-dessous, réalisez la soustraction de 956 et de 649.
 
         Utilisez l'instruction `#!python print` pour afficher à nouveau le résultat de cette opération.
+
+        ??? help "Aide" 
+        
+            Pas de guillemets ici. Voyez-vous quelle est la différence fondamentale entre la soustraction et les phrase des exercices 1 et 2 ?
+
 
     {{terminal()}}
 
@@ -160,18 +169,83 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
     Par la suite, on peut faire `#!python x = 'Bonjour'` pour associer le mot _Bonjour_ (valeur) à la variable `x`.
 
     ??? danger "Pour aller plus loin"
-        En Python, ces changements de types (passage d'un entier à un mot) sont permis par une méthode appelée _duck typing_.
+        En Python, ces changements de types (passage d'un entier à un mot) se font via le _duck typing_. 
+
+        Pour faire simple, le _duck typing_ permet de faire cela : 
+
+        ![cochon-duck-typing](images/c1/duck_typing.jpg "Duck-typing, très pratique avec assez peu de risques.")
 
 
+!!! tip "Créer des variables"
 
-!!! info "Test"
+    === {{exercice(False)}}
 
-    Pour cet exercice sur Python,
-    on ne regarde que **si l'identifiant est valide**,
-    il pourrait être mal choisi.
+        - [ ] Dans le terminal ci-dessous, créez une variable entière nommée `m` représentant la valeur 7. 
+        - [ ] Affichez ensuite cette variable avec le mot-clé Python vu dans la section précédente.
+
+    === {{exercice(False)}}
+
+        - [ ] Dans le terminal ci-dessous, créez une variable réelle nommée `v_init` représentant la valeur 12.7 . 
+        - [ ] Affichez ensuite cette variable avec le mot-clé Python vu dans la section précédente.
+
+    === {{exercice(False)}}
+
+        - [ ]  Dans le terminal ci-dessous, créez une variable de type mot nommée `3l3ment` représentant la valeur "Débuter en Python" . 
+        - [ ]  Affichez ensuite cette variable avec le mot-clé Python vu dans la section précédente.
+
+        ??? help "Aide"
+
+            Une erreur apparait. Il est interdit de commencer des noms de variables avec des chiffres ou des caractères. Renommez-là !
+
+    === {{exercice(False)}}
+
+        - [ ] Dans le terminal ci-dessous, créez deux variables entières nommées p et q représentant les valeurs 77 et 5. 
+        
+        - [ ] Affichez d'abord p, puis q avec le mot-clé Python vu dans la section précédente.
+        
+        - [ ] Comment feriez-vous pour afficher p et q simultanément ?
+
+        !!! help "Astuce"
+
+            En Python, on peut déclarer et initialiser deux variables (ou plus) simultanément. Pour créer `a` et `b`, on ferait : `#!python a, b = 4, 5` .
+
+    === {{exercice(False)}}
+
+        - [ ] Dans le terminal ci-dessous, créez trois variables nommées `n_passager`, `v_moyenne_avion` et `nom_compagnie` représentant les valeurs 237, 977.3, "Air France". 
+        - [ ] Affichez simultanément les trois valeurs avec le mot-clé Python vue précédemment.
+  
+    {{terminal()}}
+
+## Nommage
+
+Dans les exercices précédents, vous avez du remarquer que les variables :
+
+- ne peuvent pas porter n'importe quel nom ;
+- pointent vers différents types de données.
+
+!!! {{cours()}}
+
+    En Python, le nom d'une variable doit être choisi parmi les lettres de l'alphabet (minuscule et majuscule étant considérées comme différentes), les chiffres et le symbole `_`. 
+
+    Les espaces ne sont pas autorisés : on utilisera donc l'underscore `_` pour les variables dont le nom est long.
+
+    Le nom d'une variable doit être choisi de façon à être facilement compréhensible par un humain (ni trop court, ni trop détaillé).
+
+    {{REPL('c1/nom_var')}}
+
+    ??? danger "Pour aller plus loin"
+
+        Cette convention de nommage s'appelle le _snake case_ et est préconisé pour Python. 
+        
+        On écrira donc `#!python nombre_opérations_par_seconde` plutôt que `#!python NombreOpérationParSeconde`.
+
+
+!!! tip "Vrai/Faux sur le nommage des variables "
+
+    Identifiez les noms de variables valides.
 
     === "Cocher les identifiants valides"
-        - [ ] `as`
+        - [ ] `pas`
         - [ ] `Roi`
         - [ ] `2ame`
         - [ ] `v413t`
@@ -187,21 +261,54 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
         - [ ] `_`
 
     === "Solution"
-        - [x] `as` ; c'est un mot réservé.
-        - ✅ `Roi`
-        - ❌ `2ame` ; interdit de commencer par un chiffre.
-        - ✅ `v413t`
-        - ✅ `dix`
-        - ❌ `n'œuf` ; interdit d'utiliser `'`
-        - ✅ `huit`
-        - ✅ `Sète`
-        - ✅ `carte_six`
-        - ✅ `_5`
-        - ✅ `_`
-        - ❌ `%4` ; interdit d'utiliser `%`
-        - ❌ `quatre-moins-un` ; interdit d'utiliser `-`
-        - ❌ `2!` ; interdit d'utiliser `!`
-        - ✅ `_`
+        - [x] `pas`
+        - [x] `Roi` ; non conforme au _snake case_ mais valide.
+        - [ ] `2ame` ; interdit de commencer par un chiffre.
+        - [x] `v413t`
+        - [x] `dix`
+        - [ ] `n'œuf` ; interdit d'utiliser `'`
+        - [x] `huit`
+        - [x] `Sète` ; non conforme au _snake case_ mais valide.
+        - [x] `carte_six` ; très bon choix !
+        - [x] `_5` ; très mal choisi mais valide.
+        - [ ] `%4` ; interdit d'utiliser `%`
+        - [ ] `quatre-moins-un` ; interdit d'utiliser `-`
+        - [ ] `2!` ; interdit d'utiliser `!`
+        - [x] `_`
+
+!!! tip "Choisir des noms de variables"
+
+    === {{exercice(False)}}
+
+        - [ ] Dans le terminal ci-dessous, créez une variable entière représentant le nombre de briques de lait stocké dans un entrepot. On l'initialisera à `#!python 10000` briques.
+        - [ ] Créez à présent une variable une variable réelle représentant le volume total de toutes ces briques de lait. Pour l'initialiser, on considérera qu'une brique contient `#!python 0.75` L de lait.
+
+        ??? help "Solution"
+
+            - [x] `#!python nombre_briques` ou `#!python n_briques` ou `#!python n_briques_lait` ou `#!python n_briques_entrepot` sont des noms convenables. `#!python nombrebriques` ou `#!python nBriquesLait` ou `#!python nombre_de_briques_de_lait_dans_entrepot` ne respectent pas le _snake case_ ou sont trop longs.
+            - [x] `#!python volume_total_briques` ou `#!python vol_tot_briques` sont convenables.
+
+    === {{exercice(False)}}
+
+        - [ ] Dans le terminal ci-dessous, créez deux variables entières représentant les coordonnées d'un point A du plan. On initialisera ces variables à `#!python -4` et `#!python 2`.
+        - [ ] Créez à présent deux variables représentant les coordonnées d'un vecteur $\vec{u}$ du plan. On initialisera ces variables à `#!python 2` et `#!python -1`.
+
+        ??? help "Solution"
+
+            - [x] `#!python x` et `#!python y` sont appropriés s'il n'y a qu'un seul point. `#!python x_A` et `#!python y_A` sont également convenable. 
+            - [x] `#!python vec_x` et `#!python vec_y` sont appropriés s'il n'y a qu'un seul vecteur. `#!python vec_u_x` et `#!python vec_u_y` sont également convenables. Par contre, `#!python vecX`, `#!python VEC_Y` ou `#!python abscisse_vecteur_u` sont à éviter.
+
+    === {{exercice(False)}}
+
+        Dans le terminal ci-dessous, créez une variable de type tableau représentant l'ensemble des températures du lac Léman relevées sur 4 jours. On initialisera un tableau grâce à `#!python [17.7, 18.1, 18.2, 18.8]`.
+
+        ??? help "Solution"
+
+            `#!python temp_lac` ou `#!python temp_lac_léman` sont appropriés. `#!python temp` pourrait être correct mais reste assez vague et `#!python température_lac_léman_4jours` est trop long. 
+
+    {{terminal()}}
+
+## Types de variables
 
 
 Dans l'éditeur de EduPython, saisissez le code suivant :

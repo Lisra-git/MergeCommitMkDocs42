@@ -58,7 +58,7 @@ theme:
         - header.autohide
     icon: 
         logo: material/remote-desktop
-    favicon: assets/images/favicon.png
+    # favicon: assets/images/favicon.png
 
 
 markdown_extensions:
