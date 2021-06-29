@@ -35,6 +35,8 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
 
 !!! tip "Premiers pas"
 
+    Si votre console contient trop d'éléments, tapez `#!bash clear` pour tout effacer. L'historique sera conservé.
+
     === {{exercice(False, 0)}}
 
         Créons tout de suite notre premier programme[^id]. 
