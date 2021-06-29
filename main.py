@@ -53,6 +53,19 @@ def define_env(env):
     def cours():
         return f'done "Cours"'
 
+    @env.macro
+    def ext():
+        return f'danger "Pour aller plus loin"'
+
+    @env.macro
+    def tit(ch = "", text = ""):
+        # Tasklist In Table
+        checked = 'checked=""' if ch == 'x' else ''
+        return f"""<ul class="task-list"><li class="task-list-item">\
+            <label class="task-list-control"><input type="checkbox" {checked}>\
+            <span class="task-list-indicator"></span>\
+            </label>{text}</li></ul>"""
+
     env.variables['term_counter'] = 0
     env.variables['REPL_counter'] = 0
 

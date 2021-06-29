@@ -49,3 +49,6 @@ function readFile (evt, id_editor) {
     }
     reader.readAsText(file)
 };
+
+// turn off copy paste of code... A bit aggressive but necessary
+$(".highlight").bind('copy paste',function(e) { e.preventDefault(); return false; });

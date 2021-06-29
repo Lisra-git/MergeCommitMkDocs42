@@ -2,21 +2,11 @@
 
 ## Introduction
 
-Le but de ce site web est de vous proposer un cours interactif : vous pouvez programmer directement en Python en ligne sans avoir besoin d'installer un , d'accepter des cookies, 
+Le but de ce site web est de vous proposer un cours interactif : vous pourrez programmer en Python en ligne sans avoir besoin d'installer un éditeur.
 
-- dans le navigateur
-- sans iframe
-- sans cookie
-- sans inscription
+Comme toute langue, la programmation s'apprend avant tout en écrivant et en s'entrainant. Ainsi, le copier/coller des commandes Python de ce cours a été désactivé. Pour les tester, vous allez devoir les écrire !
 
-!!! info "Solution"
-    La solution existe et s'appelle [Pyodide](https://pyodide.org/en/stable/ "Pyodide, Python with the scientific stack, compiled to WebAssembly").
-    
-    Pyodide utilise WebAssembly pour faire le lien entre Python et Javascript et proposer un environnement permettant de manipuler le DOM avec Python, ou de manipuler Python avec Javascript.
-
-??? warning "Un hic"
-    La documentation quasi-absente ou réservée aux initiés du projet Pyodide...
-
+Ce site respecte votre vie privé : aucun cookie n'est demandé ; aucune inscription n'est requise.
 
 ## Prise en main
 
