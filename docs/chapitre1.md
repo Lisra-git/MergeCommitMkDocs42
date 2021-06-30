@@ -91,10 +91,10 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
     annee = 2010      # Ligne 1
     envol = annee     # Ligne 2
     annee = annee + 1 # Ligne 3
-    # Ligne 1 : la variable nommée annee, est associée à une valeur (ici 2010)    
-    # Ligne 2 : la variable nommée envol contient la même adresse que la variable nommée annee. 
+    # Ligne 1 : la variable nommée "annee", est associée à une valeur (ici 2010)    
+    # Ligne 2 : la variable nommée "envol" contient la même adresse que la variable nommée "annee". 
     #           Elle référence donc la même valeur (ici 2010).
-    # Ligne 3 : On ajoute 1 à la valeur précédemment référencée par la variable nommée annee.
+    # Ligne 3 : On ajoute 1 à la valeur précédemment référencée par la variable nommée "annee".
     #           Une nouvelle zone mémoire est réservée. "annee" contient une nouvelle adresse, 
     #           associée à la valeur 2011.
     ```
@@ -102,7 +102,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
     ```mermaid 
     flowchart TD
 
-    subgraph Après . . . . _ ______________
+    subgraph Après la ligne 3 . . . . _ ______________
     direction LR
     p[envol]-->A21
     q[annee]-.->|X|A21
