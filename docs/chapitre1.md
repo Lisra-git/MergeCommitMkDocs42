@@ -14,7 +14,7 @@ Pour programmer, il existe deux grands types d'outils :
     === "Une console"
 
         - [ ] Calculez la somme de 134 et de 5677 dans la console. Pour valider, appuyez sur ++enter++. 
-        - [ ] Faites également leur multiplication à l'aide du symbole `*`.
+        - [ ] Faites également leur multiplication à l'aide de l'opérateur `*`.
 
         {{terminal()}}
 
@@ -29,7 +29,7 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
 
 1. ce site web ;
 2. Thonny ;
-3. Vscodium.
+3. VSCodium.
 
 ## Hello World !
 
@@ -69,11 +69,11 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
 
 !!! warning "Important"
 
-    Vous devez obtenir le même affichage que vous fassiez `#!python 45*4` ou `#!python print(45*4)`. 
+    Vous obtenez le même affichage que vous fassiez `#!python 45*4` ou `#!python print(45*4)`. 
 
-    On aurait pu aussi taper "Hello World !" sans `#!python print`.
+    On aurait pu aussi taper "Hello World !" sans `#!python print`. Cela fonctionne car la console **évalue** des expressions Python **puis affiche** le résultat de l'évaluation. 
     
-    La console **évalue** des expressions Python puis affiche le résultat de l'évaluation. `#!python print` sera utile pour débugger les programmes plus complexes.
+    `#!python print` sera principalement utilisée pour **^^afficher^^ la valeur référencée par une variable** dans des programmes complexes.
 
 ## Notion de variable
 
@@ -81,37 +81,82 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
 !!! {{cours()}}
 
-    !!! info inline end "En mémoire"
-        ```mermaid 
-        flowchart TD
-        subgraph "Avant"
-            I[annee] --> A[2010]
-            J[envol] --> A[2010]
-        end
-        ```
+    Une variable **représente** une zone de stockage dans la mémoire de l'ordinateur. Elle permet donc à l'humain d'accéder à des valeurs numériques, du texte ou des tableaux de nombres stockés dans l'ordinateur à une adresse précise. 
+    
+    Une variable contient une **référence** (une sorte d'adresse) vers un objet contenant une valeur. Un humain accède à ces valeurs grâce à un **nom de variable**.
 
-        ```mermaid
-        flowchart TD
-        subgraph "Après"
-            annee --> C[2011]
-            annee -.-> |X|A[2010]
-            envol --> A[2010]
-        end
-        ```
-
-    Une variable _représente_ une zone de stockage dans la mémoire de l'ordinateur. Elle permet de stocker une valeur numérique, du texte, un tableau de nombres etc. 
-
-    Un humain accède à ces valeurs grâce à un **nom de variable**.
-
-    L'instruction `#!python =` permet de _relier_ un nom de variable avec sa valeur. Ce lien ne fonctionne que dans un sens : de la droite vers la gauche ou ← .
+    L'instruction `#!python x = 2` permet de _relier_ un nom de variable `#!python x` avec une valeur `#!python 2`. Le nom de variable `#!python x` contient donc l'adresse de la valeur entière `#!python 2`. Ce lien `#!python =` ne fonctionne que dans un sens : de la droite vers la gauche ou ← .
 
     ```python
-    # annee ← 2010 : permet de relier la variable (nommée annee) à une valeur (ici 2010)    
+    # annee référence la valeur 2010 : 
+    # la variable (nommée annee) est associée à une valeur (ici 2010)    
     annee = 2010
-    # envol ← 2010 : permet de relier la variable (nommée envol) à une valeur (ici 2010)
+    # envol référence aussi la valeur 2010 :
+    # la variable (nommée envol) est associée à la valeur référencée par annee (ici 2010)
     envol = annee  
-    # annee ← annee + 1 : permet d'ajouter 1 à la variable nommée annee : sa valeur devient 2011
+    # annee ← annee + 1 : permet d'ajouter 1 à la valeur précédemment référencée 
+    # par la variable nommée annee : sa valeur devient 2011
     annee = annee + 1
+    ```
+
+    ```mermaid 
+    flowchart TD
+
+    subgraph Après . . . . _ ______________
+    direction LR
+    p[envol]-->A21
+    q[annee]-.->|X|A21
+    q[annee]-->A41
+    subgraph t[Variables]
+    style t fill:#29f,stroke:#333,stroke-width:2px
+    direction LR
+        q[annee]
+        p[envol]
+    end
+    subgraph id2[Mémoire]
+    style id2 fill:#29f,stroke:#333,stroke-width:2px
+    subgraph pml[Adresses]
+        direction RL
+        A21[ #56]
+        A41[ #691]
+        A51[ ...]
+    end
+
+    subgraph iop[Valeurs]
+        B111[2010]
+        B11[2011]
+    end
+    A21---B111
+    A41---B11
+    end
+    end
+
+    subgraph Avant . . . . . _ ______________
+    direction LR
+    envol-->A2
+    annee-->A2
+    subgraph Variables
+    style Variables fill:#29f,stroke:#333,stroke-width:2px
+    direction LR
+        annee
+        envol
+    end
+    subgraph id[Mémoire]
+    style id fill:#29f,stroke:#333,stroke-width:2px
+    subgraph Adresses
+        direction RL
+        A2[#56]
+        A3[...]
+        A4[#691]
+        A5[...]
+    end
+
+    subgraph Valeur
+        B[2010]
+    end
+    A2---B
+    end
+    end
     ```
 
 !!! warning "Vocabulaire"
@@ -167,15 +212,15 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
 !!! {{cours()}}
     En Python, la déclaration et l'initialisation se font en même temps. On appelle cela le **typage dynamique**.
-    
-    Lorsque Python voit `#!python x = 2` : il comprend que x est un entier (déclaration) et que cette variable doit être associée à la valeur 2 (initialisation).
 
-    Par la suite, on peut faire `#!python x = 'Bonjour'` pour associer le mot _Bonjour_ (valeur) à la variable `x`.
+    Lorsque Python voit `#!python x = 2` : il _comprend_ qu'un entier _arrive_ et réserve l'espace en mémoire pour stocker cet entier (déclaration); il comprend que la variable nommée `#!python x` référence la valeur 2 (initialisation).
 
     ??? danger "Pour aller plus loin"
-        En Python, ces changements de types (passage d'un entier à un mot) se font via le _duck typing_. 
+        En Python, le typage dynamique permet la modification du type référencé par la variable `x`. Par exemple, `#!python x = 'Bonjour'` permet de référencer le mot `#!python Bonjour` plutôt que l'entier `#!python 2`.
 
-        Pour faire simple, le _duck typing_ permet de faire cela : 
+        En Python, ces changements de types (passage d'un mot à un entier) se font via le _duck typing_. 
+
+        Pour faire simple, le _duck typing_ permet de faire cela :
 
         ![cochon-duck-typing](images/c1/duck_typing.jpg "Duck-typing, très pratique avec assez peu de risques.")
 
@@ -184,18 +229,18 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
     === {{exercice(False)}}
 
-        - [ ] Dans le terminal ci-dessous, créez une variable entière nommée `m` représentant la valeur 7. 
-        - [ ] Affichez ensuite cette variable avec le mot-clé Python vu dans la section précédente.
+        - [ ] Dans la console ci-dessous, créez une variable entière nommée `m` représentant la valeur 7. 
+        - [ ] Affichez ensuite la valeur référencée par cette variable.
 
     === {{exercice(False)}}
 
-        - [ ] Dans le terminal ci-dessous, créez une variable réelle nommée `v_init` représentant la valeur 12.7 . 
-        - [ ] Affichez ensuite cette variable avec le mot-clé Python vu dans la section précédente.
+        - [ ] Dans la console ci-dessous, créez une variable réelle nommée `vitesse_initiale` représentant la valeur 12.7 . 
+        - [ ] Affichez ensuite la valeur référencée par cette variable .
 
     === {{exercice(False)}}
 
-        - [ ]  Dans le terminal ci-dessous, créez une variable de type mot nommée `3l3ment` représentant la valeur "Débuter en Python" . 
-        - [ ]  Affichez ensuite cette variable avec le mot-clé Python vu dans la section précédente.
+        - [ ]  Dans la console ci-dessous, créez une variable de type mot nommée `3l3ment` représentant la valeur "Débuter en Python" . 
+        - [ ]  Affichez ensuite cette variable dans la console.
 
         ??? help "Aide"
 
@@ -203,9 +248,9 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
     === {{exercice(False)}}
 
-        - [ ] Dans le terminal ci-dessous, créez deux variables entières nommées p et q représentant les valeurs 77 et 5. 
+        - [ ] Dans la console ci-dessous, créez deux variables entières nommées p et q représentant les valeurs 77 et 5. 
         
-        - [ ] Affichez d'abord p, puis q avec le mot-clé Python vu dans la section précédente.
+        - [ ] Affichez d'abord p, puis q dans la console.
         
         - [ ] Comment feriez-vous pour afficher p et q simultanément ?
 
@@ -215,8 +260,8 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
     === {{exercice(False)}}
 
-        - [ ] Dans le terminal ci-dessous, créez trois variables nommées `n_passager`, `v_moyenne_avion` et `nom_compagnie` représentant les valeurs 237, 977.3, "Air France". 
-        - [ ] Affichez simultanément les trois valeurs avec le mot-clé Python vue précédemment.
+        - [ ] Dans la console ci-dessous, créez trois variables nommées `nb_passager`, `vitesse_moyenne_avion` et `nom_compagnie` représentant les valeurs 237, 977.3, "Air France". 
+        - [ ] Affichez simultanément les trois valeurs dans la console ci-dessous.
   
     {{terminal()}}
 
@@ -231,7 +276,7 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
     En Python, le nom d'une variable doit être choisi parmi les lettres de l'alphabet (minuscule et majuscule étant considérées comme différentes), les chiffres et le symbole `_`. 
 
-    Les espaces ne sont pas autorisés : on utilisera donc l'underscore `_` pour les variables dont le nom est long.
+    Les espaces ne sont pas autorisées : on utilisera donc le tiret bas `_` (appelé aussi _underscore_) pour les variables dont le nom est long.
 
     Le nom d'une variable doit être choisi de façon à être facilement compréhensible par un humain (ni trop court, ni trop détaillé).
 
@@ -239,7 +284,7 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
     ??? danger "Pour aller plus loin"
 
-        Cette convention de nommage s'appelle le _snake case_ et est préconisé pour Python. 
+        Cette convention de nommage s'appelle le _snake case_ et est préconisée pour Python. 
         
         On écrira donc `#!python nombre_opérations_par_seconde` plutôt que `#!python NombreOpérationParSeconde`.
 
@@ -284,40 +329,40 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
     === {{exercice(False)}}
 
-        - [ ] Dans le terminal ci-dessous, créez une variable entière représentant le nombre de briques de lait stocké dans un entrepot. On l'initialisera à `#!python 10000` briques.
-        - [ ] Créez à présent une variable une variable réelle représentant le volume total de toutes ces briques de lait. Pour l'initialiser, on considérera qu'une brique contient `#!python 0.75` L de lait.
+        - [ ] Dans la console ci-dessous, créez une variable entière représentant le nombre de briques de lait stockées dans un entrepot. On l'initialisera à `#!python 10000` briques.
+        - [ ] Créez à présent une variable réelle représentant le volume total de toutes ces briques de lait. Pour l'initialiser, on considérera qu'une brique contient `#!python 0.75` L de lait.
 
         ??? help "Solution"
 
-            - [x] `#!python nombre_briques`, `#!python n_briques`, `#!python n_briques_lait` ou `#!python n_briques_entrepot` sont des noms convenables. 
+            - [x] `#!python nb_briques_lait` est le meilleur nom. `#!python nombre_briques`, `#!python nb_briques`, ou `#!python n_briques_lait` sont des noms corrects. 
             - [ ] `#!python nombrebriques`, `#!python nBriquesLait` ou `#!python nombre_de_briques_de_lait_dans_entrepot` ne respectent pas le _snake case_ ou sont trop longs.
-            - [x] `#!python volume_total_briques` ou `#!python vol_tot_briques` sont convenables.
+            - [x] `#!python volume_total_lait` est le meilleur nom. `#!python volume_total_briques` ou `#!python vol_tot_briques` sont corrects.
 
     === {{exercice(False)}}
 
-        - [ ] Dans le terminal ci-dessous, créez deux variables entières représentant les coordonnées d'un point A du plan. On initialisera ces variables à `#!python -4` et `#!python 2`.
+        - [ ] Dans la console ci-dessous, créez deux variables entières représentant les coordonnées d'un point A du plan. On initialisera ces variables à `#!python -4` et `#!python 2`.
         - [ ] Créez à présent deux variables représentant les coordonnées d'un vecteur $\vec{u}$ du plan. On initialisera ces variables à `#!python 2` et `#!python -1`.
 
         ??? help "Solution"
 
-            - [x] `#!python x` et `#!python y` sont appropriés s'il n'y a qu'un seul point. `#!python x_A` et `#!python y_A` sont également convenable. 
+            - [x] `#!python x` et `#!python y` sont appropriés s'il n'y a qu'un seul point. `#!python x_A` et `#!python y_A` sont également convenables.
             - [x] `#!python vec_x` et `#!python vec_y` sont appropriés s'il n'y a qu'un seul vecteur. `#!python vec_u_x` et `#!python vec_u_y` sont également convenables. Par contre, `#!python vecX`, `#!python VEC_Y` ou `#!python abscisse_vecteur_u` sont à éviter.
 
     === {{exercice(False)}}
 
-        Dans le terminal ci-dessous, créez une variable de type tableau représentant l'ensemble des températures du lac Léman relevées sur 4 jours. On initialisera un tableau grâce à `#!python [17.7, 18.1, 18.2, 18.8]`.
+        Dans la console ci-dessous, créez une variable de type tableau représentant l'ensemble des températures du lac Léman relevées sur 4 jours. On initialisera notre variable grâce au tableau Python `#!python [17.7, 18.1, 18.2, 18.8]`.
 
         ??? help "Solution"
 
-            `#!python temp_lac` ou `#!python temp_lac_léman` sont appropriés. `#!python temp` pourrait être correct mais reste assez vague et `#!python température_lac_léman_4jours` est trop long. 
+            `#!python temp_lac` ou `#!python temp_lac_léman` sont appropriés. `#!python temp` pourrait être correct mais est trop vague et `#!python température_lac_léman_4jours` est trop long. 
 
     {{terminal()}}
 
 ## Types de variables
 
-Dans le début du cours, vous avez remarqué que les variables que l'on manipule ne représentent pas toujours la même valeur.
+Depuis le début du cours, vous avez du remarquer que les variables que l'on manipule ne représentent pas toujours le même objet (des entiers, des mots, des nombres à virgules).
 
-Dans un langage de programmation, les variables sont **typées** : ce sont des entiers, des _réels_, des tableaux etc. Ce type est défini au moment de la déclaration.
+Dans un langage de programmation, les objets référencés par les variables sont **typées** : ce sont des entiers, des _réels_, des tableaux etc. Ce type est défini au moment de la déclaration.
 
 !!! {{cours()}}
 
@@ -325,7 +370,7 @@ Dans un langage de programmation, les variables sont **typées** : ce sont des e
 
     - les entiers (relatifs) : type `#!python int` ;
     - les flottants (approximation des nombres réels par des décimaux) : type `#!python float`;
-    - les chaines de caractères (mots) : type `#!python str` ;
+    - les chaines de caractères (mots ou texte) : type `#!python str` ;
     - les booléens (`#!python True` ou `#!python False`) : type `#!python bool`.  
     Les booléens sont des variables n'ayant que deux valeurs possibles : Vrai ou Faux.
 
@@ -362,8 +407,8 @@ Dans un langage de programmation, les variables sont **typées** : ce sont des e
         |:---------|:-------|:-------|:-----|:------|:------|
         | `#!python p = 8` | {{tit('x')}} | {{tit('')}} | {{tit('')}} | {{tit('')}} ||
         | `#!python nom = "Von Neumann"` | {{tit('')}} | {{tit('')}} | {{tit('x')}} | {{tit('')}} ||
-        | `#!python e = 2.7172` | {{tit('')}} | {{tit('x')}} | {{tit('')}} | {{tit('')}} |La virgule des flottants est un point.|
-        | `#!python p = 8.0` | {{tit('')}} | {{tit('x')}} | {{tit('')}} | {{tit('')}} |La virgule des flottants est un point.|
+        | `#!python e = 2.7172` | {{tit('')}} | {{tit('x')}} | {{tit('')}} | {{tit('')}} |Le séparateur décimal est un point.|
+        | `#!python p = 8.0` | {{tit('')}} | {{tit('x')}} | {{tit('')}} | {{tit('')}} |Le séparateur décimal est un point.|
         | `#!python huit = "8"` | {{tit('')}} | {{tit('')}} | {{tit('x')}} | {{tit('')}} |Les guillemets indiquent un `#!python str`.|
         | `#!python r = 0` | {{tit('x')}} | {{tit('')}} | {{tit('')}} | {{tit('')}} |`#!python 0` est un entier.|
         | `#!python r = -120000` | {{tit('x')}} | {{tit('')}} | {{tit('')}} | {{tit('')}} |`r` est un entier négatif donc relatif.|
@@ -372,11 +417,11 @@ Dans un langage de programmation, les variables sont **typées** : ce sont des e
         | `#!python mort = "False"` | {{tit('')}} | {{tit('')}} | {{tit('x')}} | {{tit('')}} ||
 
     ??? {{ext()}} 
-        Pour connaitre le type d'une variable, on utilise l'instruction `#!python type(......)`. Par exemple, `#!python type(6100)` renvoie `#!python <class 'int'>`.
+        Pour connaitre le type référencée par une variable, on utilise l'instruction `#!python type(......)`. Par exemple, `#!python type(6100)` renvoie `#!python <class 'int'>`.
 
         {{terminal()}}
 
-On peut changer le type d'une variable[^idp] :
+On peut convertir un objet d'un certain type en un autre type. Par exemple, on peut convertir une valeur référencée par une variable[^idp] :
 
 [^idp]: Ce changement de type est appelé transtypage ou _casting_ .
 
@@ -384,9 +429,102 @@ On peut changer le type d'une variable[^idp] :
 - en flottant en utilisant `#!python float(variable)` ;
 - en chaine de caractères en utilisant `#!python str(variable)`.
 
+```python
+x = 1
+y = float(x)  # y référence maintenant un str
+x = y
+```
+
+```mermaid
+flowchart TD
+subgraph Ligne 3  . . . ..____________________ 
+    direction LR
+    p2[x]-.->|X|A3
+    p2[x]-->A4
+    q2[y]-->A4
+    subgraph t2[Variables]
+    style t2 fill:#29f,stroke:#333,stroke-width:2px
+    direction LR
+        p2[x]
+        q2[y]
+    end
+    subgraph id2[Mémoire]
+    style id2 fill:#29f,stroke:#333,stroke-width:2px
+    subgraph pml2[Adresses]
+        direction RL
+        A3[ #89]
+        A4[ #719]
+    end
+
+    subgraph iop2[Valeur]
+        B3[1]
+        B4[1.0]
+    end
+    A3---B3
+    A4---B4
+    end
+    end
+
+subgraph Ligne 2 . .. . . . . . ..________________ 
+    direction LR
+    p1[x]-->A1
+    q1[y]-->A2
+    subgraph t1[Variables]
+    style t1 fill:#29f,stroke:#333,stroke-width:2px
+    direction LR
+        p1[x]
+        q1[y]
+    end
+    subgraph id1[Mémoire]
+    style id1 fill:#29f,stroke:#333,stroke-width:2px
+    subgraph pml1[Adresses]
+        direction RL
+        A1[ #89]
+        A2[ #719]
+    end
+
+    subgraph iop1[Valeur]
+        B1[1]
+        B2[1.0]
+    end
+    A1---B1
+    A2---B2
+    end
+    end
+
+subgraph Ligne 1 . .. . . . . . ...____________ 
+    direction LR
+    p[x]-->A
+    subgraph t[Variables]
+    style t fill:#29f,stroke:#333,stroke-width:2px
+    direction LR
+        p[x]
+    end
+    subgraph id[Mémoire]
+    style id fill:#29f,stroke:#333,stroke-width:2px
+    subgraph pml[Adresses]
+        direction RL
+        A[ #89]
+    end
+
+    subgraph iop[Valeur]
+        B[1]
+    end
+    A---B
+    end
+    end
+```
+
+!!! {{exercice()}}
+    Sur une feuille de papier, dessiner les deux schémas correspondant aux deux étapes :
+    ```python
+    x = 3.1415
+    x = str(x)
+    ```
+
 !!! info "À quoi ça sert ?"
 
-    Le transtypage sera particulièrement important lorsque nous lirons des fichiers externes. Toutes leurs données seront en effet considérées comme du texte que nous devrons convertir, au besoin, en données numériques.
+    Le transtypage sera particulièrement important lorsque nous lirons des fichiers externes en mode texte. Toutes leurs données seront en effet considérées comme du texte que nous devrons convertir, au besoin, en données numériques.
 
 ## Opérations simples
 
@@ -397,7 +535,7 @@ On peut changer le type d'une variable[^idp] :
     
     - les quatre opérations mathématiques de base sont obtenues avec `#!python +, -, *, /` ;
     - les puissances sont obtenues avec `#!python **`;
-    - les priorités opératoires sont gérées à l'aide des parenthèses `#!python ()`. **Les crochets ou accolades sont interdits !**
+    - les priorités opératoires usuelles sont respectées, l'utilisation des parenthèses `#!python ()` est possible. **Les crochets ou accolades sont interdits !**
 
     Les flottants sont _plus généraux_ que les entiers. Ainsi, si on additionne un `#!python int` avec un `#!python float`, nous obtiendrons un `#!python float`. La division donne toujours un `#!python float`.
 
@@ -407,52 +545,52 @@ On peut changer le type d'une variable[^idp] :
 
     === {{exercice(False)}}
 
-        On pose $x = 2$. 
+        On pose $n = 2$. 
         
-        - [ ] Multipliez x par lui-même 5 fois.
-        - [ ] Multipliez x par lui-même 10 fois.
-        - [ ] Multipliez x par lui-même 67 fois.
+        - [ ] Multiplier $n$ par lui-même 5 fois.
+        - [ ] Multiplier $n$ par lui-même 10 fois.
+        - [ ] Multiplier $n$ par lui-même 67 fois.
 
         ??? help "Solution"
             ```python
-            >>> x = 2
-            >>> x*x*x*x*x
+            >>> n = 2
+            >>> n*n*n*n*n  # n**5
             32
-            >>> x**10
+            >>> n**10
             1024
-            >>> x**67
+            >>> n**67
             147573952589676412928
             ```
 
     === {{exercice(False)}}
 
-        - [ ] On pose $x = 12.5$. Réalisez le programme de calcul suivant :
+        - [ ] On pose $x = 12.5$. Réaliser le programme de calcul suivant :
 
-        - multipliez $x$ par 4
-        - ajoutez 10
-        - divisez par 6
+        - multiplier $x$ par 4
+        - ajouter 10 au résultat
+        - diviser le résultat par 6
         
         - [ ] Faites ce calcul en une ligne en utilisant des parenthèses.
 
         ??? help "Solution"
             ```python
             >>> x = 12.5
-            >>> x*4
+            >>> 4 * x
             50
-            >>> 50+10
+            >>> 50 + 10
             60
             >>> 60 / 6
             10.0
             ``` 
-            En une ligne : `#!python (x*4 + 10) / 6`. 
+            En une ligne : `#!python (4 * x + 10) / 6`. 
 
     === {{exercice(False)}}
 
-        - [ ] On pose $x = 3$. On va modifier la valeur référencée par la variable $x$. Réalisez le programme de calcul suivant :
+        - [ ] On pose $p = 3$. On va modifier la valeur référencée par la variable $x$. Réaliser le programme de calcul suivant :
 
-        - $x \leftarrow x+3$ (la nouvelle valeur de $x$ est égale à l'ancienne valeur de $x$ augmentée de 3)
-        - $x \leftarrow x \times 3$ (la nouvelle valeur de $x$ est égale à l'ancienne valeur de $x$ multipliée par 3) 
-        - $x \leftarrow \dfrac{x}{1.5}$ (la nouvelle valeur de $x$ est égale à l'ancienne valeur de $x$ divisée par 1.5)
+        - $p \leftarrow p+3$ (la nouvelle valeur de $p$ est égale à l'ancienne valeur de $p$ augmentée de 3)
+        - $p \leftarrow p \times 3$ (la nouvelle valeur de $p$ est égale à l'ancienne valeur de $p$ multipliée par 3) 
+        - $p \leftarrow \dfrac{p}{1.5}$ (la nouvelle valeur de $p$ est égale à l'ancienne valeur de $p$ divisée par 1.5)
 
         - [ ] Faites ce calcul en une ligne grâce aux parenthèses.
 
@@ -460,12 +598,12 @@ On peut changer le type d'une variable[^idp] :
             Vous devez trouver `#!python 12.0`.
 
     === {{exercice(False)}}
-        Dans la variable `#!python durée`, on donne une durée en heure. Par exemple, `#!python durée = 2900`.
+        Dans la variable `#!python durée_heure`, on donne une durée en heure. Par exemple, `#!python durée_heure = 2900`.
 
-        Écrire une suite d'opérations permettant de convertir cette durée en jour et en semaine. On stockera ces durées dans les variables `#!python durée_jour` et `#!python durée_semaine`.
+        Écrire les opérations permettant de convertir cette durée en jour et en semaine. On stockera ces durées dans les variables **flottantes** `#!python durée_jour` et `#!python durée_semaine`.
 
         ??? help "Solution"
-            Vous devez trouver `#!python durée_jour = durée / 24` et `#!python durée_semaine = durée / 24 / 7`.
+            Vous devez trouver `#!python durée_jour = durée_heure / 24` et `#!python durée_semaine = durée_heure / 24 / 7`.
 
     === {{exercice(False)}}
 
@@ -473,7 +611,10 @@ On peut changer le type d'une variable[^idp] :
         
         On va calculer le quotient $q$ et le reste $r$ de la division euclidienne de $a$ par $b$. 
         
-        On rappelle que le quotient est la partie entière (avant la virgule) de $\dfrac{a}{b}$ et que $a = b\times q+r$. Par exemple, $8/3 \approx 2.66666$ donc le quotient vaut 2.
+        On rappelle que le quotient est la partie entière (avant la virgule) de $\dfrac{a}{b}$ et que $a = b\times q+r$. 
+        
+        !!! example "Exemple" 
+            $8/3 \approx 2.66666$ donc le quotient de la division euclidienne de $8$ par $3$ vaut 2.
 
         - Calculez $q \leftarrow \dfrac{a}{b}$
         - Convertissez $q$ en entier avec `#!python int(...)`.
@@ -595,7 +736,7 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
         File "<console>", line 1, in <module>
         TypeError: unsupported operand type(s) for +: 'int' and 'str'
         ```
-        Python nous avertit que l'opérande `#!python +` ne permet être appliqué entre un `#!python int` et un `#!python str`, ce qui est logique : on n'ajoute que des mots entre eux.
+        Python nous avertit que l'opérateur `#!python +` ne peut être appliqué entre deux opérandes de type `#!python int` et de type `#!python str`, ce qui est logique : on n'ajoute que des nombres entre eux ou que des mots entre eux. Pas de mélange !
 
     === "Exemple 2"
         ```python
@@ -620,7 +761,7 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
 
     === "Question"
 
-        Essayez de prédire le résultat de chacune des instructions suivantes, puis vérifiez-le dans le terminal :
+        Essayez de prédire le résultat de chacune des instructions suivantes, puis vérifiez-le dans la console :
 
         | Expression | Résultat 1 | Résultat 2 | Résultat 3 | Résultat 4 |
         |:---------|:-------|:-------|:-----|------|
@@ -637,7 +778,7 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
 
     === "Solution"
 
-        Utilisez le cours et le terminal pour comprendre la correction ci-dessous.
+        Utilisez le cours et la console pour comprendre la correction ci-dessous.
 
         | Expression | Résultat 1 | Résultat 2 | Résultat 3 | Résultat 4 |
         |:---------|:-------|:-------|:-----|------|
@@ -665,5 +806,5 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
     - [ ] ce qu'est une variable (nom, valeur)
     - [ ] comment nommer une variable correctement (snake_case)
     - [ ] qu'une variable est _typée_ (`#!python int, float, bool, str`)
-    - [ ] qu'on ne peut pas effectuer n'importe quelle opération sur n'importe quelle type de variable
+    - [ ] qu'on ne peut pas effectuer n'importe quelle opération sur n'importe quel type de variable
     - [ ] à comprendre _(un peu)_ les messages d'erreur

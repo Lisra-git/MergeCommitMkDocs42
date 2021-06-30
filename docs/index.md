@@ -6,7 +6,7 @@ Le but de ce site web est de vous proposer un cours interactif : vous pourrez pr
 
 Comme toute langue, la programmation s'apprend avant tout en écrivant et en s'entrainant. Ainsi, le copier/coller des commandes Python de ce cours a été désactivé. Pour les tester, vous allez devoir les écrire !
 
-Ce site respecte votre vie privé : aucun cookie n'est demandé ; aucune inscription n'est requise.
+Ce site respecte votre vie privée : aucun cookie n'est demandé ; aucune inscription n'est requise.
 
 ## Prise en main
 
