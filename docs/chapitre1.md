@@ -244,7 +244,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
         ??? help "Aide"
 
-            Une erreur apparait. Il est interdit de commencer des noms de variables avec des chiffres ou des caractères. Renommez-là !
+            Une erreur apparait. Il est interdit de commencer des noms de variables avec des chiffres. Renommez-là !
 
     === {{exercice(False)}}
 
@@ -421,18 +421,18 @@ Dans un langage de programmation, les objets référencés par les variables son
 
         {{terminal()}}
 
-On peut convertir un objet d'un certain type en un autre type. Par exemple, on peut convertir une valeur référencée par une variable[^idp] :
+On peut convertir un objet d'un certain type en un autre type. Par exemple, on peut convertir une valeur référencée par une variable[^idp]:
 
-[^idp]: Ce changement de type est appelé transtypage ou _casting_ .
+[^idp]: Ce changement de type est appelé transtypage ou _casting_.
 
 - en entier en utilisant `#!python int(variable)` ;
 - en flottant en utilisant `#!python float(variable)` ;
 - en chaine de caractères en utilisant `#!python str(variable)`.
 
 ```python
-x = 1
-y = float(x)  # y référence maintenant un str
-x = y
+x = 1         # Ligne 1
+y = float(x)  # Ligne 2 : y référence maintenant un str
+x = y         # Ligne 3 
 ```
 
 ```mermaid
@@ -765,16 +765,16 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
 
         | Expression | Résultat 1 | Résultat 2 | Résultat 3 | Résultat 4 |
         |:---------|:-------|:-------|:-----|------|
-        | `#!python (1 + 3) * 4` | {{tit('', '```#!python 16```')}} | {{tit('', '```#!python 16.0```')}} | {{tit('','```#!python 13```')}} | {{tit('', '```#!python unsupported operand type(s) for +: \'int\' and \'int\'```')}}  |
+        | `#!python (1 + 3) * 4` | {{tit('', '```#!python 16```')}} | {{tit('', '```#!python 16.0```')}} | {{tit('','```#!python 13```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for +: \'int\' and \'int\'```')}}  |
         | `#!python 5 / 2` | {{tit('', '```#!python 2```')}} | {{tit('', '```#!python 2.5```')}} | {{tit('','```#!python 1```')}} | {{tit('', '```#!python 2.0```')}}  |        
-        | `#!python "Six" + 3` | {{tit('', '```#!python "Six3"```')}} | {{tit('', '```#!python 63```')}} | {{tit('','```#!python 9```')}} | {{tit('', '```#!python unsupported operand type(s) for +: \'str\' and \'int\'```')}}  |
-        | `#!python 'adf' + 'bce'` | {{tit('', '```#!python "abcdef"```')}} | {{tit('', '```#!python \'adfbce\'```')}} | {{tit('','```#!python "adfbce"```')}} | {{tit('', '```#!python unsupported operand type(s) for +: \'str\' and \'str\'```')}}  |
-        | `#!python ("La" + "Li") * 3` | {{tit('', '```#!python "LaLiLiLi"```')}} | {{tit('', '```#!python "LaLiLaLiLaLi"```')}} | {{tit('','```#!python "LaLi"*3```')}} | {{tit('', '```#!python cannot multiply sequence by non-int of type \'float\'```')}}  |        
+        | `#!python "Six" + 3` | {{tit('', '```#!python "Six3"```')}} | {{tit('', '```#!python 63```')}} | {{tit('','```#!python 9```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for +: \'str\' and \'int\'```')}}  |
+        | `#!python 'adf' + 'bce'` | {{tit('', '```#!python "abcdef"```')}} | {{tit('', '```#!python \'adfbce\'```')}} | {{tit('','```#!python "adfbce"```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for +: \'str\' and \'str\'```')}}  |
+        | `#!python ("La" + "Li") * 3` | {{tit('', '```#!python "LaLiLiLi"```')}} | {{tit('', '```#!python "LaLiLaLiLaLi"```')}} | {{tit('','```#!python "LaLi"*3```')}} | {{tit('', '```#!python cannot multiply sequence by``` <br> ```#!python non-int of type \'float\'```')}}  |        
         | `#!python 70 / 7 + 1` | {{tit('', '```#!python 11.0```')}} | {{tit('', '```#!python 11```')}} | {{tit('','```#!python 8.75```')}} | {{tit('', '```#!python 10 + 1```')}}  |        
-        | `#!python "(1 + 3)" * 2` | {{tit('', '```#!python "44"```')}} | {{tit('', '```#!python 8```')}} | {{tit('','```#!python "(1+3)(1+3)"```')}} | {{tit('', '```#!python unsupported operand type(s) for *: \'str\' and \'int\'```')}}  |
-        | `#!python "Ba" * 4 / 2` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python "Ba2"```')}} | {{tit('','```#!python "BaBaBa"```')}} | {{tit('', '```#!python unsupported operand type(s) for /: \'str\' and \'int\'```')}}  |
-        | `#!python "Ba" * (4 / 2)` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python BaBa```')}} | {{tit('','```#!python "BaBaBaBa"```')}} | {{tit('', '```#!python cannott multiply sequence by non-int of type \'float\'```')}}  |
-        | `#!python 89 % 2` | {{tit('', '```#!python 1```')}} | {{tit('', '```#!python True```')}} | {{tit('','```#!python 44```')}} | {{tit('', '```#!python 44.0```')}}  |
+        | `#!python "(1 + 3)" * 2` | {{tit('', '```#!python "44"```')}} | {{tit('', '```#!python 8```')}} | {{tit('','```#!python "(1+3)(1+3)"```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for *: \'str\' and \'int\'```')}}  |
+        | `#!python "Ba" * 4 / 2` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python "Ba2"```')}} | {{tit('','```#!python "BaBaBa"```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for /: \'str\' and \'int\'```')}}  |
+        | `#!python "Ba" * (4 / 2)` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python BaBa```')}} | {{tit('','```#!python "BaBaBaBa"```')}} | {{tit('', '```#!python cannott multiply sequence by``` <br> ```#!python non-int of type \'float\'```')}}  |
+        | `#!python 89 % 2` | {{tit('', '```#!python 1```')}} | {{tit('', '```#!python True```')}} | {{tit('','```#!python 44```')}} | {{tit('', '```#!python 1.0```')}}  |
 
     === "Solution"
 
@@ -782,15 +782,15 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
 
         | Expression | Résultat 1 | Résultat 2 | Résultat 3 | Résultat 4 |
         |:---------|:-------|:-------|:-----|------|
-        | `#!python (1 + 3) * 4` | {{tit('x', '```#!python 16```')}} | {{tit('', '```#!python 16.0```')}} | {{tit('','```#!python 13```')}} | {{tit('', '```#!python unsupported operand type(s) for +: \'int\' and \'int\'```')}}  |
+        | `#!python (1 + 3) * 4` | {{tit('x', '```#!python 16```')}} | {{tit('', '```#!python 16.0```')}} | {{tit('','```#!python 13```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for +: \'int\' and \'int\'```')}}  |
         | `#!python 5 / 2` | {{tit('', '```#!python 2```')}} | {{tit('x', '```#!python 2.5```')}} | {{tit('','```#!python 1```')}} | {{tit('', '```#!python 2.0```')}}  |        
-        | `#!python "Six" + 3` | {{tit('', '```#!python "Six3"```')}} | {{tit('', '```#!python 63```')}} | {{tit('','```#!python 9```')}} | {{tit('x', '```#!python unsupported operand type(s) for +: \'str\' and \'int\'```')}}  |
-        | `#!python 'adf' + 'bce'` | {{tit('', '```#!python "abcdef"```')}} | {{tit('x', '```#!python \'adfbce\'```')}} | {{tit('x','```#!python "adfbce"```')}} | {{tit('', '```#!python unsupported operand type(s) for +: \'str\' and \'str\'```')}}  |
-        | `#!python ("La" + "Li") * 3` | {{tit('', '```#!python "LaLiLiLi"```')}} | {{tit('x', '```#!python "LaLiLaLiLaLi"```')}} | {{tit('x','```#!python "LaLi"*3```')}} | {{tit('', '```#!python cannot multiply sequence by non-int of type \'float\'```')}}  |        
+        | `#!python "Six" + 3` | {{tit('', '```#!python "Six3"```')}} | {{tit('', '```#!python 63```')}} | {{tit('','```#!python 9```')}} | {{tit('x', '```#!python unsupported operand type(s)``` <br> ```#!python for +: \'str\' and \'int\'```')}}  |
+        | `#!python 'adf' + 'bce'` | {{tit('', '```#!python "abcdef"```')}} | {{tit('x', '```#!python \'adfbce\'```')}} | {{tit('x','```#!python "adfbce"```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for +: \'str\' and \'str\'```')}}  |
+        | `#!python ("La" + "Li") * 3` | {{tit('', '```#!python "LaLiLiLi"```')}} | {{tit('x', '```#!python "LaLiLaLiLaLi"```')}} | {{tit('x','```#!python "LaLi"*3```')}} | {{tit('', '```#!python cannot multiply sequence by``` <br> ```#!python non-int of type \'float\'```')}}  |        
         | `#!python 70 / 7 + 1` | {{tit('x', '```#!python 11.0```')}} | {{tit('', '```#!python 11```')}} | {{tit('','```#!python 8.75```')}} | {{tit('', '```#!python 10 + 1```')}}  |        
-        | `#!python "(1 + 3)" * 2` | {{tit('', '```#!python "44"```')}} | {{tit('', '```#!python 8```')}} | {{tit('x','```#!python "(1+3)(1+3)"```')}} | {{tit('', '```#!python unsupported operand type(s) for *: \'str\' and \'int\'```')}}  |
-        | `#!python "Ba" * 4 / 2` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python "Ba2"```')}} | {{tit('','```#!python "BaBaBa"```')}} | {{tit('x', '```#!python unsupported operand type(s) for /: \'str\' and \'int\'```')}}  |
-        | `#!python "Ba" * (4 / 2)` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python BaBa```')}} | {{tit('','```#!python "BaBaBaBa"```')}} | {{tit('x', '```#!python cannott multiply sequence by non-int of type \'float\'```')}}  |
+        | `#!python "(1 + 3)" * 2` | {{tit('', '```#!python "44"```')}} | {{tit('', '```#!python 8```')}} | {{tit('x','```#!python "(1+3)(1+3)"```')}} | {{tit('', '```#!python unsupported operand type(s)``` <br> ```#!python for *: \'str\' and \'int\'```')}}  |
+        | `#!python "Ba" * 4 / 2` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python "Ba2"```')}} | {{tit('','```#!python "BaBaBa"```')}} | {{tit('x', '```#!python unsupported operand type(s)``` <br> ```#!python for /: \'str\' and \'int\'```')}}  |
+        | `#!python "Ba" * (4 / 2)` | {{tit('', '```#!python "BaBa"```')}} | {{tit('', '```#!python BaBa```')}} | {{tit('','```#!python "BaBaBaBa"```')}} | {{tit('x', '```#!python cannot multiply sequence by``` <br> ```#!python non-int of type \'float\'```')}}  |
         | `#!python 89 % 2` | {{tit('x', '```#!python 1```')}} | {{tit('', '```#!python True```')}} | {{tit('','```#!python 44```')}} | {{tit('', '```#!python 1.0```')}}  |
 
 
