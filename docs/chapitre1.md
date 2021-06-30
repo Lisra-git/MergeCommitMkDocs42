@@ -63,7 +63,7 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
         
             On ne peut pas soustraire un affichage avec `#!python print`.
             
-            Pas de guillemets ici. Voyez-vous quelle est la différence fondamentale entre la soustraction et les phrase des exercices 1 et 2 ?
+            Pas de guillemets ici. Voyez-vous quelle est la différence fondamentale entre la soustraction et les phrases des exercices 1 et 2 ?
 
     {{terminal()}}
 
