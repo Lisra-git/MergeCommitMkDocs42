@@ -71,7 +71,7 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
 
     Vous obtenez le même affichage que vous fassiez `#!python 45*4` ou `#!python print(45*4)`. 
 
-    On aurait pu aussi taper "Hello World !" sans `#!python print`. Cela fonctionne car la console **évalue** des expressions Python **puis affiche** le résultat de l'évaluation. 
+    On aurait pu aussi taper `#!console >>> "Hello World !"` sans `#!python print`. Cela fonctionne car la console **évalue** des expressions Python **puis affiche** le résultat de l'évaluation. 
     
     `#!python print` sera principalement utilisée pour **^^afficher^^ la valeur référencée par une variable** dans des programmes complexes.
 
@@ -88,15 +88,15 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
     L'instruction `#!python x = 2` permet de _relier_ un nom de variable `#!python x` avec une valeur `#!python 2`. Le nom de variable `#!python x` contient donc l'adresse de la valeur entière `#!python 2`. Ce lien `#!python =` ne fonctionne que dans un sens : de la droite vers la gauche ou ← .
 
     ```python
-    # annee référence la valeur 2010 : 
-    # la variable (nommée annee) est associée à une valeur (ici 2010)    
-    annee = 2010
-    # envol référence aussi la valeur 2010 :
-    # la variable (nommée envol) est associée à la valeur référencée par annee (ici 2010)
-    envol = annee  
-    # annee ← annee + 1 : permet d'ajouter 1 à la valeur précédemment référencée 
-    # par la variable nommée annee : sa valeur devient 2011
-    annee = annee + 1
+    annee = 2010      # Ligne 1
+    envol = annee     # Ligne 2
+    annee = annee + 1 # Ligne 3
+    # Ligne 1 : la variable nommée annee, est associée à une valeur (ici 2010)    
+    # Ligne 2 : la variable nommée envol contient la même adresse que la variable nommée annee. 
+    #           Elle référence donc la même valeur (ici 2010).
+    # Ligne 3 : On ajoute 1 à la valeur précédemment référencée par la variable nommée annee.
+    #           Une nouvelle zone mémoire est réservée. "annee" contient une nouvelle adresse, 
+    #           associée à la valeur 2011.
     ```
 
     ```mermaid 
