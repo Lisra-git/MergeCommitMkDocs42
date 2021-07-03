@@ -22,7 +22,7 @@ Pour programmer, il existe deux grands types d'outils :
 
         Lancez le script à l'aide de la flèche.
 
-        {{REPLv('c1/ex1')}}
+        {{IDEv('c1/ex1')}}
     
 
 Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de code de plus en plus perfectionnés :
@@ -280,7 +280,7 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
     Le nom d'une variable doit être choisi de façon à être facilement compréhensible par un humain (ni trop court, ni trop détaillé).
 
-    {{REPL('c1/nom_var')}}
+    {{IDE('c1/nom_var')}}
 
     ??? danger "Pour aller plus loin"
 
@@ -539,7 +539,7 @@ subgraph Ligne 1 . .. . . . . . ...____________
 
     Les flottants sont _plus généraux_ que les entiers. Ainsi, si on additionne un `#!python int` avec un `#!python float`, nous obtiendrons un `#!python float`. La division donne toujours un `#!python float`.
 
-    {{REPLv('c1/op_num')}}
+    {{IDEv('c1/op_num')}}
 
 !!! tip "Opérations"
 
@@ -685,7 +685,7 @@ On peut se répéter en **multipliant** nos propos.
     - l'addition de mots s'obtient avec `#!python +` ;
     - la répétition de mots s'obtient avec `#!python *` ;
 
-    {{REPLv('c1/op_str')}}
+    {{IDEv('c1/op_str')}}
 
 !!! tip inline end "Paroles"
     ```
@@ -715,13 +715,13 @@ On peut se répéter en **multipliant** nos propos.
     === "Question"
         En utilisant le moins de lignes possibles, reproduisez les paroles de cette célèbre chanson.
 
-        {{REPL('c1/chanson_str')}}
+        {{IDE('c1/chanson_str')}}
 
     === "Solution"
 
         Une solution possible : 
 
-        {{REPL('c1/corr_chanson_str')}}
+        {{IDE('c1/corr_chanson_str')}}
 
 ### Opérations interdites
 
