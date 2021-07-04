@@ -15,6 +15,8 @@ On utilise la notation anglo-saxonne avec . pour la virgule, et e pour
 Dans votre programme, à partir de la variable ageJoueur et des
 opérations de transtypage, créez les variables suivantes :
 
+Il y a 3 minuttes
+
 ageJoueurEntier, ageJoueurReel, ageJoueurBool, ageJoueurList,
 ageJoueurTuple
 
