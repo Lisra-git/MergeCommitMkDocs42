@@ -57,7 +57,8 @@ theme:
         - toc.integrate
         - header.autohide
     icon: 
-        logo: material/remote-desktop
+        # logo: material/remote-desktop
+        logo : fontawesome/solid/laptop-code
     # favicon: assets/images/favicon.png
 
 
