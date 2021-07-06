@@ -162,7 +162,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 !!! warning "Vocabulaire"
 
     === "Déclaration"
-        Une déclaration est la création d'une variable d'un certain type. 
+        Une déclaration indique l'existence d'une entité informatique possédant certaines caractéristiques.
 
         !!! example "Exemple"
 
