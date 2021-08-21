@@ -8,22 +8,32 @@ copyright: |
 docs_dir: docs
 
 nav:
-  - "Généralités": index.md
+  - "Bienvenue": index.md
   - "Langage Python" :
-    - "Variables" : chapitre1.md
-    - "Structures de contrôle" : chapitre2.md
-    - "Listes" : chapitre3.md
+    - "Variables" : python1.md
+    - "Conditionnelles" : python2.md
+    - "Boucles" : python3.md
+    - "Fonctions" : python4.md
+    - "Listes" : python5.md
+    - "Modularité" : python6.md
+    - "Dictionnaires" : python7.md
   - "Algorithmique" : 
-    - "Premiers algorithmes" : chapitre4.md
-    - "Algorithmes de tri" : chapitre5.md
-    - "Algorithmes avancés" : chapitre6.md
+    - "Premiers algorithmes" : algorithmes1.md
+    - "Algorithmes de tri" : algorithmes2.md
+    - "Algorithmes avancés" : algorithmes3.md
+  - "Représentation des données" :
+    - "" : repr1.md
+    - "" : repr2.md
   - "Architecture machine": 
-    - "Électronique et logique booléenne" : chapitre8.md
-    - "Architecture de Von Neumann" : chapitre9.md
+    - "Électronique et logique booléenne" : architecture1.md
+    - "Architecture de Von Neumann" : architecture2.md
   - "Projets" :
     - "Création site web" : projet1.md
     - "Un jeu dont vous êtes le héros!" : projet2.md 
-    - "BLABLABLA" : projet3.md 
+    - "Morpion" : projet3.md 
+    - "Un jeu de plateau" : projet4.md 
+    - "Création d'une rue" : projet5.md 
+    - "Créez votre Bitcoin" : projet6.md
 
 
 

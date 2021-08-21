@@ -1,4 +1,12 @@
-# Variables
+# Fonctions
+
+## Principe
+
+En progammation, un principe important est le **principe DRY**. Cet acronyme signifie **D**on't **R**epeat **Y**ourself.
+
+
+## Terminal, console et éditeur de code
+
 
 pointsDeMana = 6.5 et persoVivant = True
 

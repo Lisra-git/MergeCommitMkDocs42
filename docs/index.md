@@ -4,7 +4,9 @@
 
 Le but de ce site web est de vous proposer un cours interactif : vous pourrez programmer en Python en ligne sans avoir besoin d'installer un éditeur.
 
-Comme toute langue, la programmation s'apprend avant tout en écrivant et en s'entrainant. Ainsi, le copier/coller des commandes Python de ce cours a été désactivé. Pour les tester, vous allez devoir les écrire !
+Comme toute langue, la programmation s'apprend avant tout en lisant, en écrivant, en répétant et en s'entrainant. Ainsi, le copier/coller des commandes Python de ce cours a été désactivé. Pour les tester, vous allez devoir les écrire !
+
+De nombreux exercices corrigés vous sont également proposés : faites-les tous, préparez les questions que nous traiterons en cours et vous réussirez les interrogations de début de cours.
 
 Ce site respecte votre vie privée : aucun cookie n'est demandé ; aucune inscription n'est requise.
 

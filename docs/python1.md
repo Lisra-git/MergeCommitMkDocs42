@@ -1,6 +1,6 @@
 # Variables
 
-## Éditeur, console, terminal ?
+## Terminal, console et éditeur de code
 
 Un terminal est une invite de commandes permettant à l'homme et à la machine de communiquer de manière interactive.
 
@@ -22,7 +22,7 @@ Pour programmer, il existe deux grands types d'outils :
 
         Lancez le script à l'aide de la flèche.
 
-        {{IDEv('c1/ex1')}}
+        {{IDEv('python1/ex1')}}
     
 
 Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de code de plus en plus perfectionnés :
@@ -222,7 +222,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
         Pour faire simple, le _duck typing_ permet de faire cela :
 
-        ![cochon-duck-typing](images/c1/duck_typing.jpg "Duck-typing, très pratique avec assez peu de risques.")
+        ![cochon-duck-typing](images/python1/duck_typing.jpg "Duck-typing, très pratique avec assez peu de risques.")
 
 
 !!! tip "Créer des variables"
@@ -280,7 +280,7 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
     Le nom d'une variable doit être choisi de façon à être facilement compréhensible par un humain (ni trop court, ni trop détaillé).
 
-    {{IDE('c1/nom_var')}}
+    {{IDE('python1/nom_var')}}
 
     ??? danger "Pour aller plus loin"
 
@@ -291,9 +291,9 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
 !!! tip "Vrai/Faux sur le nommage des variables "
 
-    Identifiez les noms de variables valides.
+    Cocher les identifiants valides.
 
-    === "Cocher les identifiants valides"
+    === "Question"
         - [ ] `pas`
         - [ ] `Roi`
         - [ ] `2ame`
@@ -539,7 +539,7 @@ subgraph Ligne 1 . .. . . . . . ...____________
 
     Les flottants sont _plus généraux_ que les entiers. Ainsi, si on additionne un `#!python int` avec un `#!python float`, nous obtiendrons un `#!python float`. La division donne toujours un `#!python float`.
 
-    {{IDEv('c1/op_num')}}
+    {{IDEv('python1/op_num')}}
 
 !!! tip "Opérations"
 
@@ -586,7 +586,7 @@ subgraph Ligne 1 . .. . . . . . ...____________
 
     === {{exercice(False)}}
 
-        - [ ] On pose $p = 3$. On va modifier la valeur référencée par la variable $x$. Réaliser le programme de calcul suivant :
+        - [ ] On pose $p = 3$. On va modifier la valeur référencée par la variable $p$. Réaliser le programme de calcul suivant :
 
         - $p \leftarrow p+3$ (la nouvelle valeur de $p$ est égale à l'ancienne valeur de $p$ augmentée de 3)
         - $p \leftarrow p \times 3$ (la nouvelle valeur de $p$ est égale à l'ancienne valeur de $p$ multipliée par 3) 
@@ -685,7 +685,7 @@ On peut se répéter en **multipliant** nos propos.
     - l'addition de mots s'obtient avec `#!python +` ;
     - la répétition de mots s'obtient avec `#!python *` ;
 
-    {{IDEv('c1/op_str')}}
+    {{IDEv('python1/op_str')}}
 
 !!! tip inline end "Paroles"
     ```
@@ -715,13 +715,13 @@ On peut se répéter en **multipliant** nos propos.
     === "Question"
         En utilisant le moins de lignes possibles, reproduisez les paroles de cette célèbre chanson.
 
-        {{IDE('c1/chanson_str')}}
+        {{IDE('python1/chanson_str')}}
 
     === "Solution"
 
         Une solution possible : 
 
-        {{IDE('c1/corr_chanson_str')}}
+        {{IDE('python1/corr_chanson_str')}}
 
 ### Opérations interdites
 
