@@ -170,3 +170,9 @@ textarea:focus {
   color: rgba(87,147,240);
   font-size : 0.8em
 }
+
+.if>rect {
+  /*fill: rgba(87,147,240) !important;*/
+  stroke: #ff3838 !important;
+  stroke-width: 1.5px !important;
+}

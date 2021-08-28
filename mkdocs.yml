@@ -14,19 +14,19 @@ nav:
     - "Conditionnelles" : python2.md
     - "Boucles" : python3.md
     - "Fonctions" : python4.md
-    - "Listes" : python5.md
+    - "Tableaux" : python5.md
     - "Modularité" : python6.md
     - "Dictionnaires" : python7.md
-  - "Algorithmique" : 
-    - "Premiers algorithmes" : algorithmes1.md
-    - "Algorithmes de tri" : algorithmes2.md
-    - "Algorithmes avancés" : algorithmes3.md
-  - "Représentation des données" :
-    - "" : repr1.md
-    - "" : repr2.md
-  - "Architecture machine": 
-    - "Électronique et logique booléenne" : architecture1.md
-    - "Architecture de Von Neumann" : architecture2.md
+  # - "Algorithmique" : 
+  #   - "Premiers algorithmes" : algorithmes1.md
+  #   - "Algorithmes de tri" : algorithmes2.md
+  #   - "Algorithmes avancés" : algorithmes3.md
+  # - "Représentation des données" :
+  #   - "" : repr1.md
+  #   - "" : repr2.md
+  # - "Architecture machine": 
+  #   - "Électronique et logique booléenne" : architecture1.md
+  #   - "Architecture de Von Neumann" : architecture2.md
   - "Projets" :
     - "Création site web" : projet1.md
     - "Un jeu dont vous êtes le héros!" : projet2.md 
@@ -34,8 +34,7 @@ nav:
     - "Un jeu de plateau" : projet4.md 
     - "Création d'une rue" : projet5.md 
     - "Créez votre Bitcoin" : projet6.md
-
-
+    - "pi, nombre univers ?" : projet7.md
 
 theme:
     name: material
@@ -151,6 +150,7 @@ extra_javascript:
   - xtra/javascripts/interpreter.js
   - https://unpkg.com/mermaid/dist/mermaid.min.js
   # - javascripts/mermaid.js
+  # - javascripts/loader.js
 
 extra_css:
   - xtra/stylesheets/pyoditeur.css

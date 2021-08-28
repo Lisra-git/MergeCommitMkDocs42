@@ -378,9 +378,9 @@ Dans un langage de programmation, les objets référencés par les variables son
     
         Nous aurons rapidement besoin d'autres types permettant de décrire des ensembles de données :
 
-        - les n-uplets : type `#!python tuple`.
+        - les n-uplets : type `#!python tuple`;
         - les tableaux : type `#!python list`;
-        - les dictionnaires : type `#!python dict`;
+        - les dictionnaires : type `#!python dict`.
 
 !!! {{exercice()}}
 
@@ -672,7 +672,7 @@ En informatique, on calcule régulièrement des quotients et des restes. Plutôt
 
     {{terminal()}}
 
-### Opérations sur les chaines de caractères
+### Opérations sur les chaines de caractères (mots)
 
 Dans un langage humain, le processus d'écriture consiste en l'**ajout** de mots les uns à la suite des autres.
 

@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Le but de ce site web est de vous proposer un cours interactif : vous pourrez programmer en Python en ligne sans avoir besoin d'installer un éditeur.
+Le but de ce site web est de vous proposer un cours interactif **à travailler à la maison** : vous pourrez programmer en Python en ligne sans avoir besoin d'installer un éditeur.
+
+Je vous conseille d'utiliser le navigateur **Firefox**, **Chrome** ou **Chromium** afin de bénéficier de la meilleure expérience utilisateur.
 
 Comme toute langue, la programmation s'apprend avant tout en lisant, en écrivant, en répétant et en s'entrainant. Ainsi, le copier/coller des commandes Python de ce cours a été désactivé. Pour les tester, vous allez devoir les écrire !
 
