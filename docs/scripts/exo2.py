@@ -5,4 +5,4 @@ def sommation(T: list) -> int:
     return a
 
 def somme(L: list) -> None or int:
-    return None if len(L)==0 else sum(L)
+    return sum(L)

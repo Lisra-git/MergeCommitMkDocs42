@@ -100,6 +100,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
     ```
 
     ```mermaid 
+    %%{init:{'theme': 'dark' }}%%
     flowchart TD
 
     subgraph Après la ligne 3 . . . . _ ______________
@@ -421,6 +422,45 @@ Dans un langage de programmation, les objets référencés par les variables son
 
         {{terminal()}}
 
+!!! {{cours()}}
+
+    - Les entiers `#!python int` se remarquent par l'absence de virgules. Pour les grands nombres, il est possible de séparer les différents chiffres avec un tiret bas : `#!python 123_456_789` correspond au nombre $123456789$.
+    - Les flottants `#!python float` sont écrits avec un **point** en guise de virgule : `#!python 3.1415` est le nombre égal à $3,1415$.
+    - Les chaines de caractères `#!python str` peuvent être écrites de trois manières :
+
+        1. guillemets simples ou doubles : `#!python 'une chaine'` ou `#!python "de caractères"`
+        2. guillemets doubles si présence d'un guillemet simple dans la chaine de caractères : `#!python "l'oiseau"`
+        3. trois guillemets doubles si présence de guillemets simples et doubles dans la chaine de caractères : `#!python """L'oiseau dit : "tu ne m'auras pas"."""`
+
+!!! tip "Manipuler des types simples"
+
+    === {{exercice(False)}}
+
+        - [ ] Dans le terminal ci-dessous, initialiser les variables `#!python a, b, c, d, e, f` à 100; -8; 9,99; 8 290 753 123; Vrai; "Bonjour".
+        - [ ] Vérifier vos réponses en affichant la variable et son type dans le terminal.
+
+        Exemple : 
+        ```python 
+        z = 99
+        z, type(z)
+        ```
+
+    === {{exercice(False)}}
+
+        Voici une discussion entre élèves :
+  
+            - Bonjour. Que fais-tu?
+            - Salut, j'apprends Python. 
+            - Pas facile ! Mais Guido a dit : "Ca va être tellement utile".
+        
+        Dans le terminal ci-dessous, initialiser les variables `#!python phrase_1, phrase_2, phrase_3` à ces trois phrases.
+
+        ??? help "Aide"
+
+            Relisez le cours sur les trois méthodes permettant d'initialiser des chaines de caractères.
+
+    {{terminal()}}
+
 On peut convertir un objet d'un certain type en un autre type. Par exemple, on peut convertir une valeur référencée par une variable[^idp]:
 
 [^idp]: Ce changement de type est appelé transtypage ou _casting_.
@@ -436,6 +476,7 @@ x = y         # Ligne 3
 ```
 
 ```mermaid
+%%{init:{'theme': 'dark' }}%%
 flowchart TD
 subgraph Ligne 3  . . . ..____________________ 
     direction LR

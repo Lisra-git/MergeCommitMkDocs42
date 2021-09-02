@@ -8,143 +8,56 @@ Je vous conseille d'utiliser le navigateur **Firefox**, **Chrome** ou **Chromium
 
 Comme toute langue, la programmation s'apprend avant tout en lisant, en écrivant, en répétant et en s'entrainant. Ainsi, le copier/coller des commandes Python de ce cours a été désactivé. Pour les tester, vous allez devoir les écrire !
 
-De nombreux exercices corrigés vous sont également proposés : faites-les tous, préparez les questions que nous traiterons en cours et vous réussirez les interrogations de début de cours.
+De nombreux exercices **corrigés** vous sont également proposés : faites-les tous, préparez les questions que nous traiterons en cours et vous réussirez les interrogations de début de cours.
 
 Ce site respecte votre vie privée : aucun cookie n'est demandé ; aucune inscription n'est requise.
 
-## Prise en main
+## Fonctionnement des exercices
 
-Je vous propose ici des commandes Markdown permettant de créer un terminal ainsi qu'un IDE grâce au **plugin macro**.
+Trois grands types d'exercices sont proposés.
 
-### Syntaxe Markdown
+!!! example "Papier/Crayon"
 
-Vite vite ! Le résultat, histoire d'appâter le chaland.
+    Pas de problème. Prenez une feuille et un crayon. Ne trichez pas en regardant la correction trop vite.
 
-!!! summary "La syntaxe"
+!!! example "Prédire/comprendre"
 
-    === "Terminal"
-        ```markdown
-        {% raw %}
-        {{ terminal() }}
-        {% endraw %}
-        ```
-        Cette commande crée un terminal vide. L'auto-complétion avec ++tab++ et le rappel de l'historique (avec ++ctrl+"R"++ ) sont possibles.
+    Comme ci-dessous, vous disposez d'un programme dans un éditeur. Vous devez comprendre le programme et prédire ce qui va se passer. Vous pouvez tester en appuyant sur la flèche pointant à droite.
 
-        {{ terminal () }}
+    {{IDE('intro')}}
 
-    === "IDE vide"
-        ```markdown
-        {% raw %}
-        {{ IDE() }}
-        {% endraw %}
-        ```
-        Cette commande crée un IDE (~ Thonny) vide. La flèche permet de lancer le code tapé dans la zone de saisie (avec les numéros de ligne). La zone de saisie se redimensionne automatiquement et autorise l'auto-complétion de type snippet avec ++tab++.
+!!! example "Programmer"
 
-        {{IDE()}}
+    Vous devez compléter ou écrire un programme dans un éditeur. 
 
-    === "IDE vertical"
-        ```markdown
-        {% raw %}
-        {{ IDEv() }}
-        {% endraw %}
-        ```
-        Cette commande crée un IDE vide, avec division verticale. L'engrenage permet de lancer le code tapé dans la zone de saisie (avec les numéros de ligne). La zone de saisie se redimensionne automatiquement et autorise l'auto-complétion de type snippet avec ++tab++.
+    - Vous pouvez tester en appuyant sur la flèche pointant à droite ▶️. 
+    - Vous pouvez tenter de valider votre programme pour savoir si celui-ci est correct en cliquant sur le gendarme 🛂. Votre programme est alors soumis à de nombreux tests. 
+    - Au bout de 5 validations ratées, la solution apparait.
 
-        {{IDEv()}}
+    {{IDE('exo2')}}
 
-    === "IDE avec code"
-        ```markdown
-        {% raw %}
-        {{ IDE('foo/bar/nom_de_fichier') }}
-        {% endraw %}
-        ```
-        Cette commande charge le fichier `nom_de_fichier.py` dans un IDE. Le fichier doit être dans `docs/scripts/foo/bar/`. Ne pas oublier les guillemets.
+## FAQ
 
-        {{IDE('demo/demo1')}}
+Voici quelques questions que ous pourriez vous poser :
 
-    === "IDE vertical avec code"
-        ```markdown
-        {% raw %}
-        {{ IDEv('foo/bar/nom_de_fichier') }}
-        {% endraw %}
-        ```
-        Cette commande charge le fichier `nom_de_fichier` dans un IDE avec division verticale. Le fichier doit être dans `docs/scripts/foo/bar/`.       
+!!! help "Rien ne s'enregistre et lorsque je recharge la page internet, tout s'efface !"
 
-        {{IDEv('demo/demo1')}}
- 
+    C'est normal. Il n'y a pas de cookie ou de sessions. Vos données ne sont donc pas enregistrées.
 
-??? warning "Détails techniques"
+    Vous pouvez toutefois télécharger vos programmes lorsque ceux-ci sont importants.
 
-    Tous les IDE et les terminaux partagent le même namespace. On peut donc accéder à n'importe quelle fonction créée dans n'importe quel IDE ou terminal. 
-    
-    **C'est un comportement voulu qui a des avantages et des inconvénients.**
+!!! help "C'est normal que je n'arrive pas à faire un copier/coller de certains codes du cours ?"
 
-!!! done "Amélioration notable"
+    Oui. J'ai bloqué cette fonctionnalité. La programmation s'apprend en programmant.
 
-    ~~Pour que les IDE fonctionnent, il faut absolument indiquer `{% raw %} {{ IDE('nom_de_fichier', -1) }} {% endraw %}` sur le dernier IDE de la page.~~
+!!! help "Il faut vraiment TOUT savoir ce qu'il y a sur votre site ?"
 
-    Une solution plus élégante modifiant le template Jinja2 `my_theme_customizations/main.html` est maintenant utilisée. Plus besoin d'indiquer le dernier IDE !
+    Non. Avec le  contrôle de cours, je m'assure que vous avez travaillé le cours avant de venir. Sinon, vous perdez votre temps et celui de vos camarades.
 
+!!! help "Un contrôle de cours par semaine, ça sert à rien et ça fait perdre du temps."
 
-### Exemples
+    Non. Avec un contrôle de cours, je m'assure que vous avez travaillé le cours avant de venir. Sinon, vous perdez votre temps et celui de vos camarades.
 
-L'exemple ci-dessous, obtenu avec `#!markdown {% raw %} {{ IDEv('exo2') }} {% endraw %}`. N'hésitez pas à modifier le code pour calculer la moyenne, l'écart-type, afficher cela dans le terminal etc.
+!!! help "C'est sympa de pouvoir coder directement sur une page web. Qui est responsable de cela ?"
 
-{{IDEv('exo2')}}
-
-L'exemple ci-dessous a été obtenu avec `#!markdown {% raw %} {{ IDE('algo_glouton') }} {% endraw %}`.
-
-{{IDE('algo_glouton')}}
-
-
-## Installation
-
-L'installation demande
-
-- de modifier :
-  
-    - le fichier YML `mkdocs.yml` ;
-    - le fichier de macro `main.py` ;
-
-- d'ajouter :
-
-    - un dossier `#!bash my_theme_customizations/` à la racine du projet Mkdocs ;
-    - un template HTML `#!bash my_theme_customizations/main.html` ;
-    - un fichier CSS `#!bash docs/xtra/stylesheets/pyoditeur.css` ;
-    - deux fichiers Javascript `#!bash docs/xtra/javascripts/interpreter.js` et `#!bash my_theme_customizations/js/repl.js` ;
-
-### Fichier YML `mkdocs.yml`
-
-Ajoutez les lignes surlignées dans votre fichier mkdocs.yml .
-
-```yaml hl_lines="7 16 19"
-    --8<--- "docs/scripts/mkdocs.yml"
-```
-
-### Fichier macro Python `main.py`
-
-À votre fichier `main.py`, ajoutez les lignes du fichier [`main.py`](https://gitlab.com/bouillotvincent/pyodide-mkdocs/-/raw/main/docs/scripts/main.py "main.py sur Gitlab").
-
-
-### Création du dossier `custom_dir`
-
-**N'oubliez pas de créer le dossier `#!bash my_theme_customizations/` à la racine du projet Mkdocs**.
-
-Dans ce dossier, ajoutez le template Jinja `#!bash main.html` :
-
-```jinja
-    --8<--- "my_theme_customizations/main.html"
-```
-
-### Fichier CSS `pyoditeur.css`
-
-Afin de coller au thème du site, recopiez et ajoutez le fichier [`pyoditeur.css`](https://gitlab.com/bouillotvincent/pyodide-mkdocs/-/raw/main/docs/xtra/stylesheets/pyoditeur.css "Pyoditeur CSS sur Gitlab") au dossier `docs/xtra/stylesheets/`.
-
-### Fichiers javascripts `interpreter.js` et `repl.js`
-
-Deux fichiers Javascript [`interpreter.js`](https://gitlab.com/bouillotvincent/pyodide-mkdocs/-/raw/main/docs/xtra/javascripts/interpreter.js "interpreter JS sur Gitlab ") et [`repl.js`](https://gitlab.com/bouillotvincent/pyodide-mkdocs/-/raw/main/my_theme_customizations/js/repl.js "repl JS sur Gitlab ") sont nécessaires :
-
-- `interpreter.js` doit être placé dans le dossier : `docs/xtra/javascripts/` ;
-- `repl.js` doit être placé dans le dossier : `my_theme_customizations/js/repl.js`.
-
-**Et c'est tout !**
+    C'est moi qui ait développé tout le moteur. Cela fonctionne grâce à une technologie de 2017 appelé WebAssembly. Celle-ci permet de coupler Javascript et Python. Et d'autres développements arrivent...

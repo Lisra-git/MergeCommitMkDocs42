@@ -118,10 +118,10 @@ On distingue :
 
             Ce programme ne comporte pas de boucle mais une conditionnelle. Chaque instruction est exécutée une seule fois : on remarque d'ailleurs que la seconde mesure de température ne sert à rien !
 
-## Boucles conditionnelles
+## Boucles conditionnelles _while_
 
 La méthode 
 
-## Boucles inconditionnelles
+## Boucles inconditionnelles _for_
 
 A venir

@@ -276,28 +276,32 @@ async function executeTestAsync(id_editor, mode) {
             global_failed = 0
             success_smb = ['🔥','✨','🌠','✅','🥇','🎖']
             fail_smb = ['🌩','🙈','🙉','⛑','🌋','💣']
-            if type(numerous_benchmark[0]) not in [list, tuple]:  # just one function has to be evaluated
-                type_bench = 'multiple' 
-                numerous_benchmark = (numerous_benchmark, )
+            try :
+                if type(numerous_benchmark[0]) not in [list, tuple]:  # just one function has to be evaluated
+                    type_bench = 'multiple' 
+                    numerous_benchmark = (numerous_benchmark, )
 
-            for benchmark in numerous_benchmark:
-                failed = 0
-                print(f">>> Test de la fonction ** {benchmark[0].split('(')[0].upper()} **")
-                
-                for k, test in enumerate(benchmark, 1):
-                    if eval(test):
-                        print(f'Test {k} réussi :  {test} ')
-                    else:
-                        print(f'Test {k} échoué :  {test} ')
-                        failed += 1
+                for benchmark in numerous_benchmark:
+                    failed = 0
+                    print(f">>> Test de la fonction ** {benchmark[0].split('(')[0].upper()} **")
+                    
+                    for k, test in enumerate(benchmark, 1):
+                        if eval(test):
+                            print(f'Test {k} réussi :  {test} ')
+                        else:
+                            print(f'Test {k} échoué :  {test} ')
+                            failed += 1
 
-                if not failed :
-                    print(f"Bravo vous avez réussi tous les tests {choice(success_smb)}")
-                else :
-                    if failed == 1 : msg = f"{failed} test a échoué. "
-                    else : msg = f"{failed} tests ont échoué. "
-                    print(msg + f"Reprenez votre code {choice(fail_smb)}")
-                    global_failed += 1
+                    if not failed :
+                        print(f"Bravo vous avez réussi tous les tests {choice(success_smb)}")
+                    else :
+                        if failed == 1 : msg = f"{failed} test a échoué. "
+                        else : msg = f"{failed} tests ont échoué. "
+                        print(msg + f"Reprenez votre code {choice(fail_smb)}")
+                        global_failed += 1
+            except :
+                print(f"🙇🏻 pas de fichier de test... Si vous êtes sur de vous, continuez à cliquer sur le gendarme.")
+                global_failed += 1
             return global_failed
         `);
 
@@ -312,7 +316,7 @@ async function executeTestAsync(id_editor, mode) {
         } else {
             dict[id_editor] = 1 + (id_editor in dict ? dict[id_editor] : 0)
         }
-        elementCompteur.textContent = Math.max(0,nAttempts-dict[id_editor])+"/5"
+        elementCompteur.textContent = Math.max(0, nAttempts-dict[id_editor])+"/5"
 
         if (dict[id_editor] === nAttempts) {
         let correctionExists = $('#corr_content_editor_'+id_editor).text()  // Extracting url from the div before Ace layer
