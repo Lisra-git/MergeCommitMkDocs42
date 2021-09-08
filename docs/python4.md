@@ -8,25 +8,29 @@
 
     ```python
     temp_fahrenheit = 60
-    temp_fahrenheit - 32 * (5/8)
+    temp_celsius = temp_fahrenheit - 32 * (5/8)
     ```
+
+    - [ ] Dans le terminal ci-dessous, tester ce programme pour convertir 60 degrés Fahrenheit en degrés Celsius. Afficher la valeur référencée par la variable `#!python temp_celsius`.
+    - [ ] On souhaite maintenant convertir 90 et 120 degrés Fahrenheit en degrés Celsius. Ajouter les lignes correspondantes.
 
     {{terminal()}}
 
-    Dans le terminal ci-dessous, on souhaite maintenant convertir 90 et 120 degrés Fahrenheit en degrés Celsius. Écrire les lignes correspondantes.
-
     ??? help "Solution"
-
-        On remarque qu'il y a beaucoup de répétitions dans le code. Cela ne va pas être pratique à modifier si on a fait une erreur dans la formule.
 
         ```python
         temp_fahrenheit = 60
-        temp_fahrenheit - 32 * (5/8)
+        temp_celsius = temp_fahrenheit - 32 * (5/8)
+        print(temps_celsius)
         temp_fahrenheit = 90
-        temp_fahrenheit - 32 * (5/8)
+        temp_celsius = temp_fahrenheit - 32 * (5/8)
+        print(temps_celsius)
         temp_fahrenheit = 120
-        temp_fahrenheit - 32 * (5/8)
+        temp_celsius = temp_fahrenheit - 32 * (5/8)
+        print(temps_celsius)
         ```
+        
+        On remarque qu'il y a beaucoup de répétitions dans le code. Cela ne va pas être pratique à modifier si on a fait une erreur dans la formule.
 
 
 Le **principe DRY** est encore ici à l'oeuvre : la structure _fonction_ permet de simplifier un programme en évitant les répétitions inutiles et complexes à débogger.

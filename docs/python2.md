@@ -292,12 +292,16 @@ On peut imaginer qu'un programme est une suite finie de choix, permettant de s'a
         |$]6,2; +\infty[$ |2,2€/kg|
         
 
-        - [ ] Dans l'éditeur ci-dessous, téléverser le programme de l'exercice précédent grâce à l'aide de l'icône ++arrow-up++.
-        - [ ] Modifier votre programme afin qu'il calcule et affiche le prix d'envoi d'un colis, selon la valeur du nombre réel positif `#!python poids_colis` :
+        - [ ] Dans l'éditeur ci-dessous, téléverser le programme de l'exercice précédent grâce à l'aide de l'icône ++arrow-up++ ;
+        - [ ] Modifier votre programme afin qu'il calcule et affiche le prix d'envoi d'un colis, selon la valeur du nombre réel positif `#!python poids_colis` ;
         - [ ] Tester votre programme en modifiant la valeur de `#!python poids_colis`.
 
         ??? help "Aide"
             On rappelle le programme corrigé de l'exercice précédent.
+
+            ```python
+            --8<--- "docs/scripts/python2/corr_exo10.py"
+            ```
             
 
         {{IDE('python2/exo11')}}
@@ -305,7 +309,7 @@ On peut imaginer qu'un programme est une suite finie de choix, permettant de s'a
 
 La clause sinon (`#!python else`) n'est pas obligatoire. Si elle n'est pas précisée, le _bloc code C_ n'est pas défini et on passe directement à la _suite du code_ (voir exercice 2).
 
-Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la syntaxe devient très lourde. Pour faciliter l'écriture et le maintien des programmes, de nombreux langages font appel à une troisième instruction `#!python elif` permettant de créer un nouveau branchement.
+Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la syntaxe devient très lourde. Pour faciliter l'écriture et le maintien des programmes, de nombreux langages font appel à des instructions alternative. En Python, il s'agit de `#!python elif` qui permet de créer un nouveau branchement.
 
 !!! {{cours()}}
 
@@ -370,6 +374,11 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
     Les conditions sont donc effectuées les unes après les autres et le `#!python else` final n'est effectué que si toutes les autres conditions ne sont pas vérifiées.
 
 !!! tip "Les conditionnelles imbriquées"
+    === {{exercice(False)}}
+        On vous donne le programme de l'exercice 9. En utilisant l'instruction `#!python elif`, modifier ce programme afin de le rendre plus lisible.
+
+        {{IDE('python2/exo12')}}
+
     === {{exercice(False)}}
         Dans l'éditeur ci-dessous, écrire un programme qui, selon la valeur d'un nombre réel $n$ :
 

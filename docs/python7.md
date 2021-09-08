@@ -1,68 +1,12 @@
-# Tableaux et tuples
+# Dictionnaires
 
 ## Principe
 
-De nos jours, l'informatique a pour but de collecter et de manipuler des données. Ces données, en nombre très important, doivent pouvoir être organisées dans des structures composites, faciles d'utilisation.
+De nos jours, l'informatique a pour but de collecter et de manipuler des données. Ces données, en nombre très important, doivent pouvoir être organisées dans des structures composites.
 
-???+ example "Exemple"
+!!! example "Exemple"
 
-    !!! tip inline end "Température"
-        |Mois|Temp.|
-        |--|--|
-        |Jan.|27|
-        |Fév.|28|
-        |Mars|29|
-        |Avril|27|
-        |Mai|27|
-        |Juin|25|
-        |Juil.|24|
-        |Août|25|
-        |Sept.|25|
-        |Oct.|26|
-        |Nov.|26|
-        |Déc.|28|
-
-    On mesure la température chaque mois de 2020 dans une île du Pacifique et on l'organise dans un tableau.
-
-    On souhaite ensuite utiliser ces données en Python.
-
-    Une première solution est de créer 12 variables pour les 12 mois de l'année :
-    ```python
-    temp_01 = 27
-    temp_02 = 28
-    temp_03 = 29
-    temp_04 = 27
-    temp_05 = 27
-    temp_06 = 25
-    temp_07 = 24
-    temp_08 = 25
-    temp_09 = 25
-    temp_10 = 26
-    temp_11 = 26
-    temp_12 = 28    
-    ```
-
-    Cette méthode ne respecte absolument pas le principe **DRY**. 
-    
-    Et que va-t-il se passer si on souhaite maintenant comparer l'année 2020 avec :
-    
-    ??? tip "l'année 2019 ?"
-
-        On renomme nos variables `#!python temp_01_2020` et `#!python temp_01_2019`. Cela nous fait 24 variables à gérer.
-
-    ??? tip "les années 2019 et 2018 ?" 
-
-        On renomme nos variables `#!python temp_01_2020`, `#!python temp_01_2019` et `#!python temp_01_2018`. Cela nous fait 36 variables à gérer.
-
-    ??? tip "les 50 dernières années ?"
-
-        On part à la pêche. Ça devient ingérable.
-
-Plutôt que d'envisager chacune de ces données comme représentée par une unique variable, nous allons considérer le tableau complet comme une variable[^th].
-
-[^th]: Souvenez-vous : lorsque le principe DRY n'est plus respecté, il faut souvent créer ou faire appel à de nouvelles structures.
-
-    
+    On mesure la température chaque mois de 2020 dans une île du Pacifique.
 
 ## Terminal, console et éditeur de code
 
