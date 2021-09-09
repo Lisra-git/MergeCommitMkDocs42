@@ -122,6 +122,25 @@ On distingue :
 
 La méthode 
 
+!!! {{ext()}}
+    Dans les langages permettant la sortie anticipée de boucle (avec `#!python break`, `#!python return` ou `#!c goto`), les boucles conditionnelles peuvent être vues comme peu utiles. 
+        
+    Ce n'est pas le cas des langages fonctionnels dont nous parlerons en Terminale : prenez donc l'habitude d'utiliser ces boucles conditionnelles pour ne pas dépendre du langage Python en particulier.
+
 ## Boucles inconditionnelles _for_
 
 A venir
+
+Introduire la syntaxe len, range
+
+Donner de nombreux détails sur les chaines de caractères avec des exos associés
+
+!!! danger "Résumé"
+
+    Dans ce chapitre, j'ai appris : 
+    
+    - [ ] blabla
+    - [ ] blabla
+    - [ ] blabla
+    - [ ] blabla
+    - [ ] blabla

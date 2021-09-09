@@ -172,3 +172,11 @@ def define_env(env):
         div_edit += f"""<span id="content_editor_{tc}" class="hide">{content}</span>"""
         div_edit += f"""<span id="corr_content_editor_{tc}" class="hide">{corr_content}</span>"""
         return div_edit
+    
+    @env.macro
+    def mult_col(*text):
+        cmd = """<table style="border-color:transparent;background-color:transparent"><tr>"""
+        for column in text:
+            cmd += f"""<td><b style="font-size:1.2em">{column}</td>"""
+        cmd += f"""</tr></table>"""
+        return cmd

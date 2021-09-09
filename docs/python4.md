@@ -11,8 +11,8 @@
     temp_celsius = temp_fahrenheit - 32 * (5/8)
     ```
 
-    - [ ] Dans le terminal ci-dessous, tester ce programme pour convertir 60 degrés Fahrenheit en degrés Celsius. Afficher la valeur référencée par la variable `#!python temp_celsius`.
-    - [ ] On souhaite maintenant convertir 90 et 120 degrés Fahrenheit en degrés Celsius. Ajouter les lignes correspondantes.
+    - [ ] Dans le terminal ci-dessous, tester ce programme pour convertir 60 degrés Fahrenheit en degrés Celsius. Afficher la valeur référencée par la variable `#!python temp_celsius`.
+    - [ ] On souhaite maintenant convertir 90 et 120 degrés Fahrenheit en degrés Celsius. Ajouter les lignes correspondantes.
 
     {{terminal()}}
 
@@ -35,7 +35,7 @@
 
 Le **principe DRY** est encore ici à l'oeuvre : la structure _fonction_ permet de simplifier un programme en évitant les répétitions inutiles et complexes à débogger.
 
-Remarquons que cette structure permet de rendre le code plus _abstrait_.
+Remarquons que cette structure rend également le code plus _abstrait_.
 
 !!! tip "Exo à réutiliser"
 
