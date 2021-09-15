@@ -236,7 +236,7 @@ On peut imaginer qu'un programme est une suite finie de choix, permettant de s'a
             if nombre_points == 20
                 niveau = niveau + 1
             ```
-        - [ ] Proposition 4 : attention à la tabulation.
+        - [ ] Proposition 4 : attention à la tabulation qui est obligatoire.
             ```python 
             if nombre_points == 20: 
             niveau = niveau + 1
@@ -516,7 +516,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
             |Programme 2|---|---|---|
 
         - [ ] Dessiner les graphes de contrôle de ces programmes.
-        - [ ] En utilisant ces graphes, écrire dans le tableau ci-contre les résultats du programme 1 et du programme 2 si :
+        - [ ] En utilisant ces graphes, recopier et compléter le tableau ci-contre, présentant les résultats du programme 1 et du programme 2 si :
           - `#!python a = 130`; 
           - `#!python a = 45`;
           - `#!python a = 15`. 
@@ -619,9 +619,27 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
 
     === "Énoncé"
 
-    - [ ] 
+        - [ ] `#!python 8 == 7`
+        - [ ] `#!python 7 != 12`
+        - [ ] `#!python "abc" < "abe"`
+        - [ ] `#!python "abc" <= "abcd"`
+        - [ ] `#!python 65 = 65`
+        - [ ] `#!python -12 < 9.0`
+        - [ ] `#!python 12 <= "nsi"`
+        - [ ] `#!python 4 + 8 > 12`
+        - [ ] `#!python "abc"*3 >= "abcabcabc"`
 
     === "Solution"
+
+        - [ ] `#!python 8 == 7` : l'expression est clairement fausse `#!python False`.
+        - [x] `#!python 7 != 12`
+        - [x] `#!python "abc" < "abe"` : "c" est avant  "e" dans l'alphabet donc l'expression est `#!python True`.
+        - [x] `#!python "abc" <= "abcd"` : la deuxième expression est plus longue que la première donc "inférieure"
+        - [ ] `#!python 65 = 65` : ce n'est pas un booléen ! Un égal simple est une affectation.
+        - [x] `#!python -12 < 9.0`
+        - [ ] `#!python 12 <= "nsi"` : cette expression renvoie : `#!python TypeError: '<=' not supported between instances of 'int' and 'str'`.
+        - [ ] `#!python 4 + 8 > 12` : 12 est égal à 12.
+        - [x] `#!python "abc"*3 >= "abcabcabc" : `!#python "abc"*3` répète trois fois la phrase `#!python "abc"` donc `!#python "abcabcabc"`.
 
 !!! {{cours()}}
     Il est tout à fait possible d'affecter une valeur booléenne à une variable.
@@ -642,7 +660,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
     Prenons l'exemple d'un site de rencontres. 
 
     - Si l'utilisateur est un homme et s'il a plus de 18 ans, alors il doit payer.
-    - Si l'utilisateur est une femme et s'il a plus de 18 ans, alors il ne paie pas.
+    - Si l'utilisatrice est une femme et si elle a plus de 18 ans, alors elle ne paie pas.
     - Sinon, l'inscription n'est pas autorisée.
 
     Voici le programme correspondant :
@@ -661,18 +679,80 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
             inscription_non_autorisée = True
     ```
 
-    Ce serait bien de pouvoir connecter l'utilisateur est homme **et** il a plus de 18 ans !
+    Ce serait bien de pouvoir connecter les deux expressions booléennes : l'utilisateur est homme **et** il a plus de 18 ans !
 
 Le chapitre 3 sur la logique booléenne a introduit trois opérateurs logiques :
 
 - le _non_ : $\bar A$
-- le _et_ : $A \times B$
+- le _et_ : $A \cdot B$
 - le _ou_ : $A + B$.
 
 Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines conditions.
 
 !!! {{cours()}}
-    PARESSE des opérateurs booléens
+    
+    Soit deux expressions booléennes `#!python c1` et `#!python c2`.
+    
+    En accord avec la logique booléenne, en Python, il est possible d'utiliser les opérateurs booléens suivant :
+
+    |Opérateur|Nom|Effet|Exemple|
+    |-------|-------|-------|---|
+    |`#!python and`|conjonction| `#!python c1 and c2` est `#!python True` si `#!python c1` et `#!python c2` sont simultanément `#!python True`.|`#!python 4 <= 8 and 8 <= 12` est `#!python True`|
+    |`#!python or`|union| `#!python c1 or c2` est `#!python True` si au moins une condition est `#!python True`.| `#!python 4 <= 8 or 7 == 12` est `#!python True`|
+    |`#!python not`|négation| `#!python not c1` est `#!python True` si `#!python c1` est False.| `#!python not (1 + 1 == 3)` est `#!python True` car <br> `#!python 1 + 1 == 3` est `#!python False`. |
+    
+    !!! danger "Priorité opératoire"
+
+        Les règles de priorité sont les mêmes qu'en logique boolénne. La **négation** est prioritaire sur la **conjonction** qui est prioritaire sur l'**union**.
+
+        ??? example "Exemple"
+
+            `#!python a or b and not c and d` est équivalent à `#!python a or (b and (not c) and d)` car la négation est prioritaire sur la conjonction.
+
+            Privilégiez les expressions booléennes simples et l'utilisation de parenthèses !
+
+    ??? {{ext()}} 
+    
+        En Python, l'évaluation des expressions booléennes est dite paresseuse. 
+        
+        Dans une expression avec deux expressions booléennes telle que `#!python c1 and c2`, Python va d'abord évaluer `#!python c1`. 
+        
+        Si cette expression est `#!python False`, Python s'arrête et évalue `#!python c1 and c2` à `#!python False`. En effet, `#!python c1 and c2` est vraie si les deux expressions sont simultanément `#!python True`.
+
+        C'est un comportement intéressant dans la gestion de cas limites, susceptibles de générer des erreurs.
+
+        !!! example "Exemple"
+
+            Testez ces expressions ou programme dans le terminal ci-dessous :
+            `#!python 8 == 3 and 1 / 0 == 2`
+            ```python
+            a = 0
+            if a == 0 or (1 / a > 1e6):
+                print("Underflow")
+            ```
+
+            {{terminal()}}
+
+
+!!! example "Retour sur l'exemple introductif"
+
+    Dans l'éditeur ci-dessous, on rappelle le programme proposé pour le site de rencontre.
+
+    - [ ] Un affichage a été ajouté. Expliquer à quoi sert la ligne 16.
+    - [ ] Tester ce programme avec pour valeurs initiales `#!python genre, age = "homme", 14` et `#!python genre, age = "homme", 34`.
+    - [ ] Simplifier ce programme à l'aide des opérateurs booléens (négation, conjonction, union).
+
+    {{IDE('python2/site_rencontre')}}
+
+    ??? help "Rappel"
+        Pour voir la correction, appuyez sur l'icone gendarme cinq fois de suite.
+
+
+!!! tip "Exercices autour des booléens"
+
+    === {{exercice(False)}}
+
+    === {{exercice(False)}}
 
 !!! {{cours()}}
 
@@ -692,12 +772,49 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
         - les **inégalités contre nature** tel `#!python 12 > 5 < 7` qui est `#!python True`.
         - les **longues expressions** tel `#!python 6 != 12 < 5 != 7 == 7` qui est `#!python False` car `#!python 12 < 5`est `#!python False`.
 
+
+## Bonnes pratiques
+
+!!! {{cours()}}
+
+    Si, dans une instruction conditionnelle, vous faites appel à une variable booléenne `#!python var_bool`, il est important de ne pas écrire `#!python if var_bool == True:`.
+
+    En effet, `#!python var_bool` est **déjà** un booléen dont la valeur est soit `#!python True` ; soit `#!python False`.
+
+    === "Version correcte"
+
+        ```python
+        souquez_les_artibuses = (nombre_artibuses > 42)
+        if souquez_les_artibuses: 
+            # si souquez_les_artibuses est True, à l'attaque
+            print("À l'attaque")
+        else:
+            print("Demi-tour")
+        ```
+
+    === "Version lourde"
+
+        ```python
+        souquez_les_artibuses = (nombre_artibuses > 42)
+        if souquez_les_artibuses == True: 
+            # si souquez_les_artibuses, qui vaut déjà True, est égal à True, à l'attaque
+            print("À l'attaque")
+        else:
+            print("Demi-tour")
+        ```
+
+!!! tip "Exercices récapitulatifs"
+
+    === {{exercice(False)}}
+
+    === {{exercice(False)}}
+
 ## Résumé
 
-!!! danger "Résumé"
+!!! conclu "Résumé"
 
     Dans ce chapitre, j'ai appris : 
     
     - [ ] ce qu'était un branchement conditionnel ;
     - [ ] la syntaxe des branchements conditionnels en Python ;
-    - [ ] l'utilisation de la logique booléenne en Python ;
+    - [ ] l'importance de la logique booléenne et la manière de l'utiliser en Python ;

@@ -217,7 +217,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
     Lorsque Python voit `#!python x = 2` : il _comprend_ qu'un entier _arrive_ et réserve l'espace en mémoire pour stocker cet entier (déclaration); il comprend que la variable nommée `#!python x` référence la valeur 2 (initialisation).
 
     ??? danger "Pour aller plus loin"
-        En Python, le typage dynamique permet la modification du type référencé par la variable `x`. Par exemple, `#!python x = 'Bonjour'` permet de référencer le mot `#!python Bonjour` plutôt que l'entier `#!python 2`.
+        En Python, le typage dynamique permet la modification du type référencé par la variable `x`. Par exemple, `#!python x = 'Bonjour'` permet de référencer le mot `#!python 'Bonjour'` plutôt que l'entier `#!python 2`.
 
         En Python, ces changements de types (passage d'un mot à un entier) se font via le _duck typing_. 
 
@@ -840,7 +840,7 @@ Certaines opérations sont interdites. L'interpréteur Python va alors vous aver
 
 ## Résumé
 
-!!! danger "Résumé"
+!!! conclu "Résumé"
 
     Dans ce chapitre, j'ai appris : 
     

@@ -19,6 +19,8 @@ nav:
     - "Dictionnaires" : python7.md
   - "Hack" :
     - "Clavier" : hack1.md
+    - "Constantes" : pi.md
+    - "Bac à sable" : sandbox.md
   # - "Algorithmique" : 
   #   - "Premiers algorithmes" : algorithmes1.md
   #   - "Algorithmes de tri" : algorithmes2.md

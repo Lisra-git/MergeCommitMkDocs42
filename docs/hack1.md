@@ -27,13 +27,13 @@ Cela peut sembler bête mais utiliser un clavier s'apprend...
 
     Quelques règles essentielles : 
     
-    - dans de nombreux cas, ++shift++ permet de faire l'inverse d'un raccourci déjà existant (onglet à gauche au lieu d'onglet à droit) ;
+    - dans de nombreux cas, ++shift++ permet de faire l'inverse d'un raccourci déjà existant (onglet à gauche au lieu d'onglet à droite par exemple) ;
     - limitez l'usage de la souris au maximum ;
     - utilisez les flèches ++arrow-up++ ++arrow-down++ ++arrow-right++ ++arrow-left++ pour vous déplacer à un endroit proche du caret | sur un document.
 
 ## Navigateur et système d'exploitation
 
-Voici le tableau des raccourcis classé par importance et difficulté d'utilisation.
+Voici le tableau des raccourcis classé par difficulté d'utilisation. En fonction du système d'exploitation, ceux-ci peuvent ne pas fonctionner comme attendu...
 
 |Raccourci|Action|Mnémotechnique|Difficulté|
 |----|---------|---------|---------|
