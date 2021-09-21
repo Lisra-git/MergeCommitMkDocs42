@@ -512,14 +512,14 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
         !!! hint inline end "Tableau"
             || a = 130|a=45|a=15|
             |----|---|---|---|
-            |Programme 1|---|---|---|
-            |Programme 2|---|---|---|
+            |Programme 1||||
+            |Programme 2||||
 
         - [ ] Dessiner les graphes de contrôle de ces programmes.
         - [ ] En utilisant ces graphes, recopier et compléter le tableau ci-contre, présentant les résultats du programme 1 et du programme 2 si :
-          - `#!python a = 130`; 
-          - `#!python a = 45`;
-          - `#!python a = 15`. 
+            - `#!python a = 130`; 
+            - `#!python a = 45`;
+            - `#!python a = 15`. 
         - [ ] Vérifiez votre réponse en écrivant les programmes dans l'éditeur ci-dessous :
 
         {{IDE('')}}
@@ -539,25 +539,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
 
 
 
-<!-- !!! {{exercice()}}
-    L'utilisation d'une grille est la méthode la plus répandue pour faire des simulations numériques de phénomènes physiques. Dans cette méthode, le plan est divisée en cellules carrées dans lesquelles évoluent des _particules_ de matière. Ces particules peuvent se déplacer dans n'importe quel sens.
 
-    Le plan simulé ne pouvant pas être infini, il est courant d'imposer des conditions au bord du _carré_ de simulation comme dans le schéma ci-dessous.
-
-    ```python
-    if x >= 10:
-        x = x - 10
-    elif y >= 10:
-        y = y - 10
-    elif z>= 10:
-        z = z - 10
-    if x < 0:
-        x = x + 10
-    elif y < 0:
-        y = y + 10
-    elif z < 0:
-        z = z + 10
-    ``` -->
 
 ## Booléens
 
@@ -607,7 +589,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
 
             L'affirmation `#!python oiseau < oisif` est-elle vraie ou fausse? 
     
-            En effet : la première lettre `!#python o` est la même pour chaque chaîne de caractères. De même pour la deuxième et la troisième lettre. On compare la quatrième lettre : `!#python e < i`.
+            En effet : la première lettre `#!python o` est la même pour chaque chaîne de caractères. De même pour la deuxième et la troisième lettre. On compare la quatrième lettre : `#!python e < i`.
             
             On conclue que la question `#!python oiseau < oisif` est `#!python True`. 
 
@@ -639,7 +621,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
         - [x] `#!python -12 < 9.0`
         - [ ] `#!python 12 <= "nsi"` : cette expression renvoie : `#!python TypeError: '<=' not supported between instances of 'int' and 'str'`.
         - [ ] `#!python 4 + 8 > 12` : 12 est égal à 12.
-        - [x] `#!python "abc"*3 >= "abcabcabc" : `!#python "abc"*3` répète trois fois la phrase `#!python "abc"` donc `!#python "abcabcabc"`.
+        - [x] `#!python "abc"*3 >= "abcabcabc" : `#!python "abc"*3` répète trois fois la phrase `#!python "abc"` donc `#!python "abcabcabc"`.
 
 !!! {{cours()}}
     Il est tout à fait possible d'affecter une valeur booléenne à une variable.
@@ -724,7 +706,11 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
         !!! example "Exemple"
 
             Testez ces expressions ou programme dans le terminal ci-dessous :
+
+            `#!python 1 / 0 == 2`
+
             `#!python 8 == 3 and 1 / 0 == 2`
+            
             ```python
             a = 0
             if a == 0 or (1 / a > 1e6):
@@ -740,7 +726,7 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
 
     - [ ] Un affichage a été ajouté. Expliquer à quoi sert la ligne 16.
     - [ ] Tester ce programme avec pour valeurs initiales `#!python genre, age = "homme", 14` et `#!python genre, age = "homme", 34`.
-    - [ ] Simplifier ce programme à l'aide des opérateurs booléens (négation, conjonction, union).
+    - [ ] Simplifier ce programme à l'aide des opérateurs booléens (négation `#!python not`, conjonction `#!python and`, union `#!python or`).
 
     {{IDE('python2/site_rencontre')}}
 
@@ -752,7 +738,129 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
 
     === {{exercice(False)}}
 
+        Soit a et b deux variables booléennes.
+
+        Écrire la table de vérité (voir Chapitre 2 du cours) correspondant au booléen ci-dessous.
+        ```python
+        var_booléenne = not a and b
+        ```
+
+        ??? help "Solution"
+
+            | $a$ | $b$ | $\overline a$ | $\bar a \cdot b$ |
+            |:---:|:---:|:---:|:---:|
+            |0|0|1|0|
+            |0|1|1|1|
+            |1|0|0|0|
+            |1|1|0|0|
+            
     === {{exercice(False)}}
+
+        L'opérateur "Union exclusive" $\oplus$ peut être écrit comme une combinaison d'autres opérateurs booléens. 
+        Pour deux variables booléennes $a$ et $b$, on écrit $a \oplus b = \overline a \cdot b + a \cdot \overline b$.
+
+        Compléter le programme permettant d'afficher la valeur booléenne de $a \oplus b$.
+
+        {{IDEv('python2/exo17')}}
+
+    === {{exercice(False)}}
+
+        Soit a, b et c trois variables booléennes.
+
+        En testant dans l'éditeur ci-dessous pour différentes valeurs de a, b et c, dire si ces deux programmes sont équivalents.
+
+        <table style="border-color:transparent;background-color:transparent">
+        <tr>
+            <td><b style="font-size:1.2em">
+            Programme 1
+            </td>
+            <td><b style="font-size:1.2em">
+            Programme 2
+            </td>
+        </tr>
+        <tr>
+            <td><b style="font-size:1.2em">
+            ```python
+            if (not a and b) and c:
+                return True
+            else:
+                return False
+            ```
+            </td>
+            <td><b style="font-size:1.2em">
+            ```python
+            if (not a and b):
+                return True
+            elif c:
+                return True
+            else:
+                return False
+            ```
+            </td>
+        </tr>
+        </table>
+
+        {{IDEv()}}
+
+        ??? help "Solution"
+
+            Dans ce corrigé, on prend pour convention : 1 = True ; 0 = False.
+
+            Dans le programme 1, le seul ensemble de valeurs renvoyant `#!python True` est $(a=0, b=1, c=1)$.
+
+            Dans le programme 2, il y a plusieurs ensembles de valeurs qui renvoyant `#!python True`. Par exemple $(a=0, b=1, c=1)$ ou $(a=0, b=1, c=0)$ ou $(a=0, b=1, c=1)$. 
+
+            Les programmes ne sont donc pas équivalents.
+
+    === {{exercice(False)}}
+
+        Soit a, b et c trois variables booléennes.
+
+        En testant dans l'éditeur ci-dessous pour différentes valeurs de a, b et c, dire si ces deux programmes sont équivalents.
+
+        <table style="border-color:transparent;background-color:transparent">
+        <tr>
+            <td><b style="font-size:1.2em">
+            Programme 1
+            </td>
+            <td><b style="font-size:1.2em">
+            Programme 2
+            </td>
+        </tr>
+        <tr>
+            <td><b style="font-size:1.2em">
+            ```python
+            if (not a and b) or c:
+                return True
+            else:
+                return False
+            ```
+            </td>
+            <td><b style="font-size:1.2em">
+            ```python
+            if (not a and b):
+                return True
+            elif c:
+                return True
+            else:
+                return False
+            ```
+            </td>
+        </tr>
+        </table>
+
+        {{IDEv()}}
+
+        ??? help "Solution"
+
+            Dans ce corrigé, on prend pour convention : 1 = True ; 0 = False.
+
+            Dans le programme 1, dès que $c=1$, le programme renvoie `#!python True`. Il reste donc à ajouter $(a=0, b=1, c=0)$.
+
+            Dans le programme 2, le premier branchement ne concerne pas c. Il renvoie donc `#!python True` si $(a=0, b=1, c=0)$ ou $(a=0, b=1, c=1)$. Sinon, on arrive au second branchement testant c : si $c=1$, on renvoie `#!python True`. Cela correspond à $(a=0, b=0, c=1)$ ou $(a=1, b=0, c=1)$ ou $(a=1, b=1, c=1)$.
+
+            En résumé, les valeurs renvoyant `#!python True` dans le programme 2 correspondent à celles du programme 1 : les programmes sont équivalents... Mais que c'est désagréable à analyser !
+
 
 !!! {{cours()}}
 
@@ -807,7 +915,48 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
 
     === {{exercice(False)}}
 
+        L'utilisation d'une grille est la méthode la plus répandue pour faire des simulations numériques de phénomènes physiques. 
+        Dans cette méthode, le plan est divisée en cellules carrées dans lesquelles évoluent des _particules_ de matière. 
+        Ces particules peuvent se déplacer dans n'importe quel sens et sont repérées par leurs coordonnées $(x, y)$.
+
+        Le plan simulé ne pouvant pas être infini, il est courant d'imposer des [conditions périodiques](https://fr.wikipedia.org/wiki/Condition_périodique_aux_limites){target="blank"} au bord du _carré_ de simulation. 
+        Ainsi, si l'abscisse et l'ordonnée d'une particule dépasse la taille du carré, on leur retranche (ou on leur ajoute) le côté du carré.
+
+        On se place ici dans un carré de côté 10.
+
+        - [ ] Expliquer ce qui ne convient pas avec le programme ci-dessous.
+        - [ ] Proposez une simple modification.
+        - [ ] Quel opérateur permettrait d'éviter l'utilisation des conditionnelles ?
+  
+        ```python
+        if x >= 10:
+            x = x - 10
+        elif y >= 10:
+            y = y - 10
+        if x < 0:
+            x = x + 10
+        elif y < 0:
+            y = y + 10
+        ```
+
+        ??? help "Solution"
+
+            - [x] Dans ce programme, si x et y sont simultanément supérieurs à 10, seul x est ramené entre 0 et 10.
+            - [x] Il faut simplement changer tous les `#!python elif` en `#!python if`.
+            - [x] Une astuce consiste à utiliser l'opérateur modulo `#!python %`. Par exemple `#!python x = 11.1 % 10` est égal à `#!python 1.1`.
+
     === {{exercice(False)}}
+
+        Le programme proposé ci-dessous génère aléatoirement deux entiers, compris entre 1 et 6. 
+        Si la somme de ces nombres est supérieure ou égale à 10, alors vous devez payer une taxe spéciale (36 pièces). 
+        Sinon, vous payez deux fois la somme des nombres. 
+        Si vous êtes chanceux et que la somme est strictement inférieure à 4, vous n'avez rien à payer. 
+        
+        Votre programme devra afficher selon le cas le texte _Taxe spéciale !_, _Taxe régulière_, ou _Pas de taxe_ suivi de
+        la somme à payer (sans indiquer l'unité).
+
+
+        {{IDE('python2/exo21')}}
 
 ## Résumé
 
@@ -818,3 +967,4 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
     - [ ] ce qu'était un branchement conditionnel ;
     - [ ] la syntaxe des branchements conditionnels en Python ;
     - [ ] l'importance de la logique booléenne et la manière de l'utiliser en Python ;
+    - [ ] les bonnes pratiques avec les branchements conditionnels.
