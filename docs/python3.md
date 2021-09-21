@@ -2,7 +2,7 @@
 
 ## Principe
 
-En progammation, un principe important est le **principe DRY**. Cet acronyme signifie **D**on't **R**epeat **Y**ourself. Il suggère qu'un bon programme informatique ne contient pas de répétitions (copier/coller). Si c'est le cas, il faut utiliser de nouvelles structures permettant d'éviter ces répétitions.
+En programmation, un principe important est le **principe DRY**. Cet acronyme signifie **D**on't **R**epeat **Y**ourself. Il suggère qu'un bon programme informatique ne contient pas de répétitions (copier/coller). Si c'est le cas, il faut utiliser de nouvelles structures permettant d'éviter ces répétitions.
 
 !!! example "Utilité des boucles"
 

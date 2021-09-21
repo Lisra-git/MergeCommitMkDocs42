@@ -885,6 +885,21 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
 
 !!! {{cours()}}
 
+    L'indentation est très importante et vous devez être très rigoureux sur ce point. Toute instruction non indentée ne fera pas partie de votre conditionnelle. Pour vous en convaincre, exécutez ces deux exemples de code :
+
+    === "Version correcte"
+
+        La ligne 8 est exécutée uniquement si le mot `#!python Titanic` n'apparaît pas dans la phrase : elle ne s'affiche donc pas.
+
+        {{IDEv('python2/exo_cours1')}}
+
+    === "Version incorrecte"
+
+        La ligne 8 n'est pas inclue dans la clause `#!python else` : elle s'affiche donc toujours.
+
+        {{IDEv('python2/exo_cours2')}}
+
+
     Si, dans une instruction conditionnelle, vous faites appel à une variable booléenne `#!python var_bool`, il est important de ne pas écrire `#!python if var_bool == True:`.
 
     En effet, `#!python var_bool` est **déjà** un booléen dont la valeur est soit `#!python True` ; soit `#!python False`.
