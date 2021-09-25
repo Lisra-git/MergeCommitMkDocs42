@@ -22,16 +22,7 @@ On distingue :
 - les boucles conditionnelles ;
 - les boucles inconditionnelles.
 
-## Définition
-
-!!! tip inline end "_Graphe de controle_"
-    ```mermaid
-    graph TD;
-    A[début code]-->p("condition");
-    p-->|Vrai|B[bloc code B]-->p;
-    p-->|Faux|C[suite code];
-    class p if;
-    ```
+## Définition générale
 
 !!! {{cours()}}
 
@@ -120,14 +111,115 @@ On distingue :
 
 ## Boucles conditionnelles _while_
 
-La méthode 
+La structure de contrôle correspondant le plus au graphe de contrôle du paragraphe 2 est la boucle conditionnelle.
 
-!!! {{ext()}}
-    Dans les langages permettant la sortie anticipée de boucle (avec `#!python break`, `#!python return` ou `#!c goto`), les boucles conditionnelles peuvent être vues comme peu utiles. 
-        
-    Ce n'est pas le cas des langages fonctionnels dont nous parlerons en Terminale : prenez donc l'habitude d'utiliser ces boucles conditionnelles pour ne pas dépendre du langage Python en particulier.
+!!! {{cours()}}
+
+    !!! tip inline end "_Graphe de controle_"
+        ```mermaid
+        graph TD;
+        A[début code]-->p("condition");
+        p-->|Vrai|B[bloc code A]-->p;
+        p-->|Faux|C[suite code];
+        class p if;
+        ```
+
+    En Python, la syntaxe des boucles conditionnelles est la suivante :
+    
+    ```python
+    début code
+    while condition :
+        bloc code A
+    suite code
+    ```
+
+    !!! example "Exemple"
+
+        Tester le code ci-dessous :
+
+        {{IDEv('python3/exemple1')}}
+
+    Une boucle `#!python while` nécessite donc **trois** éléments pour fonctionner correctement :
+
+    - Initialisation de la variable d'itération avant la boucle (ligne 1).
+    - Condition (expression booléenne) permettant de continuer la boucle ou non (ligne 2).
+    - Modification de la variable d'itération (souvent appelé incrémentation) (ligne 4).
+
+    ??? {{ext()}}
+        Dans les langages permettant la sortie anticipée de boucle (avec `#!python break`, `#!python return` ou `#!c goto`), les boucles conditionnelles peuvent être vues comme peu utiles. 
+            
+        Ce n'est pas le cas des langages fonctionnels dont nous parlerons en Terminale : prenez donc l'habitude d'utiliser ces boucles conditionnelles pour ne pas dépendre du langage Python en particulier.
+
+!!! tip "Manipuler des boucles conditionnelles"
+
+    === {{exercice(False)}}
+
+        Que fait le programme suivant ? 
+
+        {{IDEv('python3/exo6')}}
+
+        ??? help "Solution" 
+
+            Il affiche les nombres de 1 à 10 inclus. Il affiche un nombre par ligne. 
+
+    === {{exercice(False)}}
+
+    À l'aide d'une boucle conditionnelle, affichez sur une seule ligne les nombres de 1 à 10 exclus.
+    On utilisera l'[option](https://docs.python.org/fr/3/library/functions.html#print){target="_blank"} `#!python print(..., end = "")` afin d'éviter qu'un affichage nous ramène à la ligne.
+
+    === {{exercice(False)}}
+
+
+    === {{exercice(False)}}
+
+        Que fait le programme suivant ? 
+
+        ```python 
+        i = 0
+        while i < 10:
+            print('Jusque là, tout va bien.')
+        ```
+
+!!! danger "Boucles infinies"
+
+    Dans le cadre des boucles conditionnelles, la question de l'arrêt d'un programme se pose.
+
+    Il faut donc toujours se demander si notre condition d'arrêt sera vérifiée à un moment du programme.
+
+    Dans un éditeur de code (Thonny, VSCodium...), vous pouvez néanmoins toujours stopper l'exécution d'un script Python à l'aide de la combinaison de touches ++ctrl+c++.
 
 ## Boucles inconditionnelles _for_
+
+!!! {{cours()}}
+
+    En Python, la syntaxe des boucles inconditionnelles est la suivante :
+    
+    ```python
+    début code
+    for variable_boucle in itérable :
+        bloc code A
+    suite code
+    ```
+
+    Très souvent, `#!python variable_boucle` est nommé `#!python i`.
+
+    !!! example "Exemple"
+
+        Tester le code ci-dessous :
+
+        {{IDEv('python3/exemple1')}}
+
+    Une boucle `#!python while` nécessite donc **trois** éléments pour fonctionner correctement :
+
+    - Initialisation de la variable d'itération avant la boucle (ligne 1).
+    - Condition (expression booléenne) permettant de continuer la boucle ou non (ligne 2).
+    - Modification de la variable d'itération (souvent appelé incrémentation) (ligne 4).
+
+    ??? {{ext()}}
+        Dans les langages permettant la sortie anticipée de boucle (avec `#!python break`, `#!python return` ou `#!c goto`), les boucles conditionnelles peuvent être vues comme peu utiles. 
+            
+        Ce n'est pas le cas des langages fonctionnels dont nous parlerons en Terminale : prenez donc l'habitude d'utiliser ces boucles conditionnelles pour ne pas dépendre du langage Python en particulier.
+
 
 A venir
 
