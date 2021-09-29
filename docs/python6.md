@@ -8,7 +8,7 @@ Une des raisons est **l'existence de modules**, appelés aussi librairies, bibli
 
 Un avantage de Python est la [quantité très importante de modules disponibles](https://docs.python.org/fr/3/py-modindex.html){target="_blank"} dans la version standard. Et ne parlons pas [des centaines de milliers de modules](https://pypi.org){target="_blank"} créés par les utilisateurs de Python et simplifiant la vie de milliers d'utilisateurs[^pml]. 
 
-[^pml]: ce site web va chercher une bibliothèque écrite par mes soins ![ici](https://pypi.org/project/pyo-js-turtle/#files){target="_blank"} !
+[^pml]: ce site web va chercher une bibliothèque écrite par mes soins [ici](https://pypi.org/project/pyo-js-turtle/#files){target="_blank"} !
 
 ## Importation de modules
 
@@ -27,7 +27,7 @@ Passons en revue les méthodes permettant d'importer un module.
         ```python
         import math
         math.pi # affiche la valeur de pi
-        math.cos(math.pi) # affiche la valeu de cos(pi)
+        math.cos(math.pi) # affiche la valeur de cos(pi)
         ```
 
         - [ ] Recopier ce code d'exemple dans le terminal ci-dessous. Les résultats sont-ils conformes à vos attentes ?
