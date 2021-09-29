@@ -139,13 +139,14 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         Tester le code ci-dessous :
 
-        {{IDEv('python3/exemple1')}}
+        <!-- {{IDEv('python3/exemple1')}} -->
+        <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
     Une boucle conditionnelle `#!python while` nécessite donc **trois** éléments pour fonctionner correctement :
 
-    - Initialisation de la variable d'itération avant la boucle (ligne 1).
-    - Condition (expression booléenne) permettant de continuer la boucle ou non (ligne 2).
-    - Modification de la variable d'itération (appelé parfois incrémentation) (ligne 4).
+    - initialisation de la variable d'itération avant la boucle (ligne 1).
+    - condition (expression booléenne) permettant de continuer la boucle ou non (ligne 2).
+    - modification de la variable d'itération (appelé parfois incrémentation) (ligne 4).
 
     ??? {{ext()}}
         Dans les langages permettant la sortie anticipée de boucle (avec `#!python break`, `#!python return` ou `#!c goto`), les boucles conditionnelles peuvent être vues comme inutiles. 
@@ -189,43 +190,58 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         - [ ] Lire le programme ci-dessous et prédire son fonctionnement.
         - [ ] Tester le programme afin de vérifier votre prédiction.
-        - [ ] Proposer une modification simple permettant de supprimer l'instruction conditionnelle.
+        - [ ] Réaliser une modification simple permettant de supprimer l'instruction conditionnelle.
 
         {{IDEv('python3/exo9')}}
 
-        ??? help "Solution" 
-
-            Il affiche les nombres de 1 à 10 inclus. Il affiche un nombre par ligne. 
-
     === {{exercice(False)}}
 
-        La suite de Syracuse est une suite d'entiers naturels définie simplement : 
-    
-    === {{exercice(False)}}
+        Dans cet exercice, nous souhaitons programmer à la main l'opérateur puissance. Nous allons nous intéresser à $2^n$. 
+        
+        Commençons simplement : $2^n = 1 \times 2 \times 2 \times 2 \times ...\times 2$. Je décide de prendre une variable appelée `#!python accumulateur = 1`.
+        
+        On peut mettre des parenthèses : $2^n = (...(((1 \times 2) \times 2) \times 2) \times ...\times 2)$
+        
+        Nous devons d'abord calculer la parenthèse la plus interne ($1 \times 2$). En Python, cela s'écrit : `#!python accumulateur * 2`. Nous référençons le résultat dans la variable `#!python accumulateur` qui vaut à présent 2. 
+        
+        La formule devient : $2^n = (...((\text{accumulateur} \times 2) \times ...\times 2)$. Nous pouvons réitérer l'opération et faire : `#!python accumulateur * 2`. Nous référençons encore le résultat dans la variable `#!python accumulateur` qui vaut à présent 4 (=$2^2$). Le procédé se poursuit jusqu'à ce que toutes les multiplications soient réalisées.
 
-        On pose n = 0
-        Pour calculer $2^n$, il convient de calculer d'abord $2\times 2$
         Compléter le programme afin qu'il calcule une puissance de 2.
-
-        Que fait le programme suivant ? 
 
         {{IDEv('python3/exo10')}}
 
-        ??? help "Solution" 
-
-            Il affiche les nombres de 1 à 10 inclus. Il affiche un nombre par ligne. 
-    
     === {{exercice(False)}}
 
-        <!-- AJOUTER UN EXERCICE PLUS COMPLEXE !!!! -->
+        Dans cet exercice, nous souhaitons programmer à la main l'opérateur multiplication ! Nous allons nous intéresser à $a\times b$, avec b entier.
 
-        Que fait le programme suivant ? 
+        En utilisant la technique de l'accumulateur décrite dans l'exercice 10, compléter le programme ci-dessous calculant la multiplication de deux nombres a et b.
 
-        {{IDEv('python3/exo6')}}
+        {{IDEv('python3/exo11')}}
 
-        ??? help "Solution" 
+    === {{exercice(False)}}
 
-            Il affiche les nombres de 1 à 10 inclus. Il affiche un nombre par ligne. 
+        La suite de Syracuse est une suite d'entiers naturels définie par : 
+        $u_{n+1}=\left \{ \begin{align} \frac{u_n}{2}  & {\rm \quad si}\  u_n \rm{ \ est \ pair}\\ 
+            3u_n +1 & {\rm \quad si}\  u_n \rm{ \ est \ impair}\\ 
+            \end{align} \right .$
+
+        Il existe une hypothèse dite conjecture de Collatz affirmant que "Pour tout nombre entier n choisi, la suite de Syracuse se terminera sur un cycle 4, 2, 1."
+
+        Par exemple, avec $u_0 = 6$ :
+
+        - $u_1 = \dfrac{6}{2} = 3$ car 6 est pair ; 
+        - $u_2 = 3\times3+1 = 10$ car 3 est impair ; 
+        - $u_3 = \dfrac{10}{2} = 5$ car 10 est impair ; 
+        - $u_4 = 3\times 5 + 1 = 16$; 
+        - $u_5 = 8$ ; 
+        - $u_6 = 4$ ; $u_7 = 2$ ; $u_8 = 1$.
+
+        - [ ] Écrire un programme permettant de calculer et d'afficher tous les termes de la suite de Syracuse jusqu'à la première apparition d'un 1.
+        - [ ] Ajouter un compteur permettant de compter le nombre d'étapes avant l'apparition d'un 1. Ce compteur est appelé le temps de vol.
+        - [ ] Quel est le temps de vol associé à [$u_0 = 15$](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse){target="_blank"} ?
+
+        {{IDEv('python3/exo12')}}
+
     
     === {{exercice(False)}}
 
