@@ -62,7 +62,7 @@ Passons en revue les méthodes permettant d'importer un module.
             matplotlib.pyplot.show()
             ```
 
-!!! tip "Manipuler des modules"
+!!! exo "Manipuler des modules"
 
     === {{exercice(False, 0)}}
 

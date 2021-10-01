@@ -47,7 +47,7 @@ def define_env(env):
         if prem == 0 : env.variables['compteur_exo'] = 0
         env.variables['compteur_exo'] += 1
         root = f"Exercice { env.variables['compteur_exo']}"
-        return f"""tip \"{root}\"""" if var else '\"'+root+'\"'
+        return f"""exo \"{root}\"""" if var else '\"'+root+'\"'
         
     @env.macro
     def cours():
@@ -55,7 +55,7 @@ def define_env(env):
 
     @env.macro
     def ext():
-        return f'danger "Pour aller plus loin"'
+        return f'ext "Pour aller plus loin"'
 
     @env.macro
     def tit(ch = "", text = ""):

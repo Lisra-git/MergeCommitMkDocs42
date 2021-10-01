@@ -46,15 +46,15 @@ De nos jours, l'informatique a pour but de collecter et de manipuler des donnée
     
     Et que va-t-il se passer si on souhaite maintenant comparer l'année 2020 avec :
     
-    ??? tip "l'année 2019 ?"
+    ??? exo "l'année 2019 ?"
 
         On renomme nos variables `#!python temp_01_2020` et `#!python temp_01_2019`. Cela nous fait 24 variables à gérer.
 
-    ??? tip "les années 2019 et 2018 ?" 
+    ??? exo "les années 2019 et 2018 ?" 
 
         On renomme nos variables `#!python temp_01_2020`, `#!python temp_01_2019` et `#!python temp_01_2018`. Cela nous fait 36 variables à gérer.
 
-    ??? tip "les 50 dernières années ?"
+    ??? exo "les 50 dernières années ?"
 
         On part à la pêche. Ça devient ingérable.
 

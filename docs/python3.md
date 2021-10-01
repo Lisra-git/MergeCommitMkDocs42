@@ -28,11 +28,20 @@ On distingue :
 
 !!! {{cours()}}
 
+    !!! tip inline end "_Graphe de controle_"
+        ```mermaid
+        graph TD;
+        A[début code]-->p("condition");
+        p-->|Vrai|B[bloc code A]-->p;
+        p-->|Faux|C[suite code];
+        class p if;
+        ```
+
     Une boucle est une structure de contrôle permettant de répéter un bloc d'instructions selon une certaine condition.
 
     Ce type d'instructions est essentielle à tout langage de programmation.
 
-!!! tip "Comprendre l'intérêt des boucles"
+!!! exo "Comprendre l'intérêt des boucles"
 
     === {{exercice(False, 0)}}
         Le programme suivant comporte-t-il une boucle ? 
@@ -117,15 +126,6 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
 !!! {{cours()}}
 
-    !!! tip inline end "_Graphe de controle_"
-        ```mermaid
-        graph TD;
-        A[début code]-->p("condition");
-        p-->|Vrai|B[bloc code A]-->p;
-        p-->|Faux|C[suite code];
-        class p if;
-        ```
-
     En Python, la syntaxe des boucles conditionnelles est la suivante :
     
     ```python
@@ -140,20 +140,20 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
         Tester le code ci-dessous :
 
         <!-- {{IDEv('python3/exemple1')}} -->
-        <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+        <iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
     Une boucle conditionnelle `#!python while` nécessite donc **trois** éléments pour fonctionner correctement :
 
     - initialisation de la variable d'itération avant la boucle (ligne 1).
-    - condition (expression booléenne) permettant de continuer la boucle ou non (ligne 2).
-    - modification de la variable d'itération (appelé parfois incrémentation) (ligne 4).
+    - condition (expression booléenne) permettant de continuer la boucle ou non (ligne 3).
+    - modification de la variable d'itération (appelé parfois incrémentation) (ligne 5).
 
     ??? {{ext()}}
         Dans les langages permettant la sortie anticipée de boucle (avec `#!python break`, `#!python return` ou `#!c goto`), les boucles conditionnelles peuvent être vues comme inutiles. 
             
         Ce n'est pas le cas des langages fonctionnels dont nous parlerons en Terminale : prenez donc l'habitude d'utiliser ces boucles conditionnelles pour ne pas dépendre du langage Python en particulier.
 
-!!! tip "Manipuler des boucles conditionnelles"
+!!! exo "Manipuler des boucles conditionnelles"
 
     === {{exercice(False)}}
 
@@ -278,7 +278,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
     suite code
     ```
 
-    !!! help "Qu'est-ce qu'un itérable ?"
+    !!! question "Qu'est-ce qu'un itérable ?"
 
         Pour nous, il s'agit d'une **chaîne de caractères** ou d'un **tableau**, car ceux-ci sont composés d'éléments que l'on peut épeler : la lettre ou l'élément.
 

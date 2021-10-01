@@ -173,7 +173,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
             integer :: entier
             ```
 
-        ??? danger "Pour aller plus loin"
+        ??? {{ext()}}
 
             Dans de nombreux langages de programmation, la déclaration permet de définir le nombre d'octets à réserver en mémoire, sa représentation interne, l'ensemble des valeurs admissibles et l'ensemble des opérateurs qui peuvent lui être appliqués.
         
@@ -208,7 +208,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
             pi = pi + 2   # la variable pi est reliée à l'ancienne valeur de pi augmentée de 2.
             ```
 
-        ??? danger "Pour aller plus loin"
+        ??? {{ext()}}
             Ce symbole `=` n'a rien à voir avec le égal mathématique. `#!python a = a + 2` a un sens en Python mais est une proposition logique fausse en Maths.
 
 !!! {{cours()}}
@@ -216,7 +216,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
 
     Lorsque Python voit `#!python x = 2` : il _comprend_ qu'un entier _arrive_ et réserve l'espace en mémoire pour stocker cet entier (déclaration); il comprend que la variable nommée `#!python x` référence la valeur 2 (initialisation).
 
-    ??? danger "Pour aller plus loin"
+    ??? {{ext()}}
         En Python, le typage dynamique permet la modification du type référencé par la variable `x`. Par exemple, `#!python x = 'Bonjour'` permet de référencer le mot `#!python 'Bonjour'` plutôt que l'entier `#!python 2`.
 
         En Python, ces changements de types (passage d'un mot à un entier) se font via le _duck typing_. 
@@ -226,7 +226,7 @@ Nous évoquons ci-dessous la notion de variable. Celle-ci sera revue en cours en
         ![cochon-duck-typing](images/python1/duck_typing.jpg "Duck-typing, très pratique avec assez peu de risques.")
 
 
-!!! tip "Créer des variables"
+!!! exo "Créer des variables"
 
     === {{exercice(False)}}
 
@@ -283,14 +283,14 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
 
     {{IDE('python1/nom_var')}}
 
-    ??? danger "Pour aller plus loin"
+    ??? {{ext()}}
 
         Cette convention de nommage s'appelle le _snake case_ et est préconisée pour Python. 
         
         On écrira donc `#!python nombre_opérations_par_seconde` plutôt que `#!python NombreOpérationParSeconde`.
 
 
-!!! tip "Vrai/Faux sur le nommage des variables "
+!!! exo "Vrai/Faux sur le nommage des variables "
 
     Cocher les identifiants valides.
 
@@ -326,7 +326,7 @@ Dans les exercices précédents, vous avez du remarquer que les variables :
         - [ ] `2!` ; interdit d'utiliser `!`
         - [x] `_`
 
-!!! tip "Choisir des noms de variables"
+!!! exo "Choisir des noms de variables"
 
     === {{exercice(False)}}
 
@@ -375,7 +375,7 @@ Dans un langage de programmation, les objets référencés par les variables son
     - les booléens (`#!python True` ou `#!python False`) : type `#!python bool`.  
     Les booléens sont des variables n'ayant que deux valeurs possibles : Vrai ou Faux.
 
-    ??? danger "Pour aller plus loin"
+    ??? {{ext()}}
     
         Nous aurons rapidement besoin d'autres types permettant de décrire des ensembles de données :
 
@@ -432,7 +432,7 @@ Dans un langage de programmation, les objets référencés par les variables son
         2. guillemets doubles si présence d'un guillemet simple dans la chaine de caractères : `#!python "l'oiseau"`
         3. trois guillemets doubles si présence de guillemets simples et doubles dans la chaine de caractères : `#!python """L'oiseau dit : "tu ne m'auras pas"."""`
 
-!!! tip "Manipuler des types simples"
+!!! exo "Manipuler des types simples"
 
     === {{exercice(False)}}
 
@@ -582,7 +582,7 @@ subgraph Ligne 1 . .. . . . . . ...____________
 
     {{IDEv('python1/op_num')}}
 
-!!! tip "Opérations"
+!!! exo "Opérations"
 
     === {{exercice(False)}}
 
@@ -728,7 +728,7 @@ On peut se répéter en **multipliant** nos propos.
 
     {{IDEv('python1/op_str')}}
 
-!!! tip inline end "Paroles"
+!!! exoinline end "Paroles"
     ```
     She's crazy like a fool
     What about it Daddy Cool

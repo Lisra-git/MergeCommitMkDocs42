@@ -35,7 +35,7 @@ On peut imaginer qu'un programme est une suite finie de choix, permettant de s'a
 
     On peut représenter une telle situation dans un _graphe de contrôle_ (voir schéma ci-contre).
 
-!!! tip "Comprendre les conditionnelles"
+!!! exo "Comprendre les conditionnelles"
     Dans les exercices ci-dessous, sur une feuille, dessinez le _graphe de contrôle_ correspondant au programme proposé.
 
     === {{exercice(False, 0)}}
@@ -194,7 +194,7 @@ On peut imaginer qu'un programme est une suite finie de choix, permettant de s'a
         - à la fin d'une ligne contenant `#!python if/else`, on ajoute deux-points `#!python :` ;
         - **tout** le bloc de code B (ou C) doit être indenté avec une tabulation ++tab++.
 
-!!! tip "Choisissez la syntaxe correcte"
+!!! exo "Choisissez la syntaxe correcte"
 
     === "Question"
 
@@ -242,7 +242,7 @@ On peut imaginer qu'un programme est une suite finie de choix, permettant de s'a
             niveau = niveau + 1
             ```             
 
-!!! tip "Écrire des conditionnelles"
+!!! exo "Écrire des conditionnelles"
     === {{exercice(False)}}
 
         Dans l'éditeur ci-dessous, écrire un programme qui, selon la valeur d'un nombre réel $n$ :
@@ -427,7 +427,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
     
     Les conditions sont donc effectuées les unes après les autres et le `#!python else` final n'est effectué que si toutes les autres conditions ne sont pas vérifiées.
 
-!!! tip "Les conditionnelles imbriquées"
+!!! exo "Les conditionnelles imbriquées"
     === {{exercice(False)}}
         On vous donne le programme de l'exercice 9. 
         
@@ -580,7 +580,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
         - Notez bien qu'on teste l'égalité avec un **double égal** et la différence avec **point d'exclamation égal**.
         - Comme nous le verrons dans le chapitre sur les nombres flottants, l'égalité ou la différence ne s'utilise jamais avec des nombres à virgule (type `#!python float`).
 
-    ??? danger "Pour aller plus loin" 
+    !!! danger "Ordre lexicographique" 
         L'ordre du dictionnaire est aussi appelé l'ordre lexicographique.
 
         Pour ranger dans l'ordre lexicographique, on compare les deux premiers caractères de chaque texte. S'ils sont égaux, on compare le deuxième, etc. 
@@ -595,7 +595,7 @@ Lorsque plusieurs conditions sont imbriquées les unes dans les autres, la synta
 
         Toutefois, les caractères peuvent aussi être spéciaux. Que fait-on avec "1", "A", "!" ou :smile:. Dans ce cas, on compare leur code [Unicode](https://fr.wikipedia.org/wiki/Unicode){target="_blank"} que nous étudierons en classe.
 
-!!! tip "Exercice"
+!!! exo "Exercice"
 
     Cocher la case si le booléen est `#!python True`.
 
@@ -734,7 +734,7 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
         Pour voir la correction, appuyez sur l'icone gendarme cinq fois de suite.
 
 
-!!! tip "Exercices autour des booléens"
+!!! exo "Exercices autour des booléens"
 
     === {{exercice(False)}}
 
@@ -926,7 +926,7 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
             print("Demi-tour")
         ```
 
-!!! tip "Exercices récapitulatifs"
+!!! exo "Exercices récapitulatifs"
 
     === {{exercice(False)}}
 

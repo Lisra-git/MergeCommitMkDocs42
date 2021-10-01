@@ -37,7 +37,7 @@ Le **principe DRY** est encore ici à l'oeuvre : la structure _fonction_ permet 
 
 Remarquons que cette structure rend également le code plus _abstrait_.
 
-!!! tip "Exo à réutiliser"
+!!! exo "Exo à réutiliser"
 
     Le programme suivant permet de comparer la longueur des deux mots "classique" et "clanique". Il affiche une phrase-réponse comparant le nombre de lettres dans les deux mots. 
 
