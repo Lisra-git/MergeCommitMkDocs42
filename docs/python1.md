@@ -33,7 +33,7 @@ Au fur et à mesure de votre apprentissage, vous utiliserez des éditeurs de cod
 
 ## Hello World !
 
-!!! tip "Premiers pas"
+!!! exo "Premiers pas"
 
     Si votre console contient trop d'éléments, tapez `#!bash clear` pour tout effacer. L'historique sera conservé.
 
@@ -728,7 +728,7 @@ On peut se répéter en **multipliant** nos propos.
 
     {{IDEv('python1/op_str')}}
 
-!!! exoinline end "Paroles"
+!!! exo inline end "Paroles"
     ```
     She's crazy like a fool
     What about it Daddy Cool

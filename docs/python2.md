@@ -782,19 +782,19 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
             <td><b style="font-size:1.2em">
             ```python
             if (not a and b) and c:
-                return True
+                print(True)
             else:
-                return False
+                print(False)
             ```
             </td>
             <td><b style="font-size:1.2em">
             ```python
             if (not a and b):
-                return True
+                print(True)
             elif c:
-                return True
+                print(True)
             else:
-                return False
+                print(False)
             ```
             </td>
         </tr>
@@ -831,19 +831,19 @@ Ces trois opérateurs peuvent simplifier grandement l'écriture de certaines con
             <td><b style="font-size:1.2em">
             ```python
             if (not a and b) or c:
-                return True
+                print(True)
             else:
-                return False
+                print(False)
             ```
             </td>
             <td><b style="font-size:1.2em">
             ```python
             if (not a and b):
-                return True
+                print(True)
             elif c:
-                return True
+                print(True)
             else:
-                return False
+                print(False)
             ```
             </td>
         </tr>
