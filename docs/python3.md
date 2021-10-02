@@ -139,8 +139,11 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         Tester le code ci-dessous :
 
-        <!-- {{IDEv('python3/exemple1')}} -->
-        <iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+        {{IDEv('python3/exemple1')}}
+
+        <iframe width="100%" height="400" src="http://pythontutor.com/iframe-embed.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+        Pour les utilisateurs de Chrome : [PythonTutor](https://pythontutor.com/visualize.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29%0A&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
 
     Une boucle conditionnelle `#!python while` nécessite donc **trois** éléments pour fonctionner correctement :
 
@@ -196,13 +199,13 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
     === {{exercice(False)}}
 
-        Dans cet exercice, nous souhaitons programmer à la main l'opérateur puissance. Nous allons nous intéresser à $2^n$. 
+        Dans cet exercice, nous souhaitons programmer à la main $2^n$. 
         
-        Commençons simplement : $2^n = 1 \times 2 \times 2 \times 2 \times ...\times 2$. Je décide de prendre une variable appelée `#!python accumulateur = 1`.
+        Remarquons que : $2^n = 1 \times 2 \times 2 \times 2 \times ...\times 2$. 
         
-        On peut mettre des parenthèses : $2^n = (...(((1 \times 2) \times 2) \times 2) \times ...\times 2)$
+        Avec des parenthèses : $2^n = (...(((1 \times 2) \times 2) \times 2) \times ...\times 2)$
         
-        Nous devons d'abord calculer la parenthèse la plus interne ($1 \times 2$). En Python, cela s'écrit : `#!python accumulateur * 2`. Nous référençons le résultat dans la variable `#!python accumulateur` qui vaut à présent 2. 
+        Nous devons d'abord calculer la parenthèse la plus interne ($1 \times 2$). Pour cela, je décide de prendre une variable appelée `#!python accumulateur = 1`. En Python, cela s'écrit : `#!python accumulateur * 2`. Nous référençons le résultat dans la variable `#!python accumulateur` qui vaut à présent 2. 
         
         La formule devient : $2^n = (...((\text{accumulateur} \times 2) \times ...\times 2)$. Nous pouvons réitérer l'opération et faire : `#!python accumulateur * 2`. Nous référençons encore le résultat dans la variable `#!python accumulateur` qui vaut à présent 4 (=$2^2$). Le procédé se poursuit jusqu'à ce que toutes les multiplications soient réalisées.
 
@@ -267,6 +270,8 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
 ## Boucles inconditionnelles _for_
 
+### Cas général
+
 !!! {{cours()}}
 
     En Python, la syntaxe des boucles inconditionnelles est la suivante :
@@ -280,23 +285,29 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
     !!! question "Qu'est-ce qu'un itérable ?"
 
-        Pour nous, il s'agit d'une **chaîne de caractères** ou d'un **tableau**, car ceux-ci sont composés d'éléments que l'on peut épeler : la lettre ou l'élément.
+        Pour nous, il s'agit d'une **chaîne de caractères** ou d'un **tableau**, car ceux-ci sont composés d'éléments que l'on peut **épeler** : la lettre ou l'élément.
 
-    !!! example "Exemple 1 (important!)"
+    ???+ example "Exemple 1 (important!)"
 
-        - [ ] Tester le code ci-dessous/
+        - [ ] Tester le code ci-dessous.
         - [ ] Que fait le code ? Est-ce conforme à notre définition d'un itérable ?
 
         {{IDEv('python3/exemple2')}}
 
-    !!! example "Exemple 2 (important!)"
+        <iframe width="100%" height="400" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28'Boucle%20sur%20une%20cha%C3%AEne%20de%20caract%C3%A8res'%29%0A%0Afor%20lettre%20in%20'PYTHON'%3A%0A%20%20%20%20print%28lettre%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"></iframe>
+        Pour les utilisateurs de Chrome : [PythonTutor](https://pythontutor.com/visualize.html#code=i%20%3D%200%0A%20%20%20%20%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%20%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
+
+    ???+ example "Exemple 2 (important!)"
 
         - [ ] Tester le code ci-dessous/
         - [ ] Que fait le code ? Est-ce conforme à notre définition d'un itérable ?
 
         {{IDEv('python3/exemple3')}}
-
         
+        <iframe width="100%" height="400" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Boucle%20sur%20un%20tableau%20d'entiers%22%29%0A%0Afor%20element%20in%20%5B4,%203,%208,%2012,%2031%5D%3A%0A%20%20%20%20print%28element%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+        Pour les utilisateurs de Chrome : [PythonTutor](https://pythontutor.com/visualize.html#code=print%28%22Boucle%20sur%20un%20tableau%20d'entiers%22%29%0A%0Afor%20element%20in%20%5B4,%203,%208,%2012,%2031%5D%3A%0A%20%20%20%20print%28element%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29%0A&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
+  
 
     ??? {{ext()}}
 
@@ -311,16 +322,45 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         {{IDEv('python3/exemple4')}}
 
+!!! exo "Applications directes"
 
-!!! {{cours()}}
+    === {{exercice(False)}}
 
-    Très souvent, `#!python variable_boucle` est nommé `#!python i`.
+        - [ ] Prédire ce que va afficher le programme ci-dessous.
+        - [ ] Écrire ce programme dans l'éditeur et l'exécuter. Votre prédiction est-elle correcte ?
+
+        ```python
+        for lettre in '54321...':
+            print(lettre)
+        print("Décollage")
+        ```
+
+        {{IDEv('')}}
+
+    === {{exercice(False)}}
+
+    === {{exercice(False)}}
+
+    === {{exercice(False)}}
+
 
 A venir
 
-Introduire la syntaxe len, range
 
 Donner de nombreux détails sur les chaînes de caractères avec des exos associés
+
+### Cas de _range_
+
+!!! {{cours()}}
+
+    Un itérable occupe une place très particulière : il s'agit de `#!python range`.
+
+    Lorsque l'on itère sur `#!python range`, la variable de boucle est souvent nommé `#!python i`, `#!python j` ou `#!python k`.
+
+
+Introduire la syntaxe len, range
+
+BLABLA
 
 ## Exercices récapitulatifs
 

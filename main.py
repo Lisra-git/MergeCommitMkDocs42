@@ -42,9 +42,9 @@ def define_env(env):
 
     env.variables['compteur_exo'] = 0
     @env.macro
-    def exercice(var = True, prem = 1):
+    def exercice(var = True, prem = None):
         # si var == False, alors l'exercice est placé dans une superfence.
-        if prem == 0 : env.variables['compteur_exo'] = 0
+        if prem is not None : env.variables['compteur_exo'] = prem
         env.variables['compteur_exo'] += 1
         root = f"Exercice { env.variables['compteur_exo']}"
         return f"""exo \"{root}\"""" if var else '\"'+root+'\"'
