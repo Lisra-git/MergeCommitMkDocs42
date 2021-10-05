@@ -141,9 +141,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         {{IDEv('python3/exemple1')}}
 
-        <iframe width="100%" height="400" src="http://pythontutor.com/iframe-embed.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-        Pour les utilisateurs de Chrome : [PythonTutor](https://pythontutor.com/visualize.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29%0A&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
+        Pour vous aider à mieux comprendre : [PythonTutor](https://pythontutor.com/visualize.html#code=i%20%3D%200%0A%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29%0A&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
 
     Une boucle conditionnelle `#!python while` nécessite donc **trois** éléments pour fonctionner correctement :
 
@@ -294,8 +292,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         {{IDEv('python3/exemple2')}}
 
-        <iframe width="100%" height="400" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28'Boucle%20sur%20une%20cha%C3%AEne%20de%20caract%C3%A8res'%29%0A%0Afor%20lettre%20in%20'PYTHON'%3A%0A%20%20%20%20print%28lettre%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"></iframe>
-        Pour les utilisateurs de Chrome : [PythonTutor](https://pythontutor.com/visualize.html#code=i%20%3D%200%0A%20%20%20%20%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%20%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
+        Pour vous aider à mieux comprendre : [PythonTutor](https://pythontutor.com/visualize.html#code=i%20%3D%200%0A%20%20%20%20%0Awhile%20i%20%3C%3D%208%3A%0A%20%20%20%20print%28i%29%0A%20%20%20%20i%20%3D%20i%20%2B%202%0A%20%0Aprint%28%22Valeur%20finale%20de%20i%20%3A%22,%20i%29&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
 
     ???+ example "Exemple 2 (important!)"
 
@@ -304,9 +301,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         {{IDEv('python3/exemple3')}}
         
-        <iframe width="100%" height="400" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Boucle%20sur%20un%20tableau%20d'entiers%22%29%0A%0Afor%20element%20in%20%5B4,%203,%208,%2012,%2031%5D%3A%0A%20%20%20%20print%28element%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-        Pour les utilisateurs de Chrome : [PythonTutor](https://pythontutor.com/visualize.html#code=print%28%22Boucle%20sur%20un%20tableau%20d'entiers%22%29%0A%0Afor%20element%20in%20%5B4,%203,%208,%2012,%2031%5D%3A%0A%20%20%20%20print%28element%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29%0A&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
+        Pour vous aider à mieux comprendre : [PythonTutor](https://pythontutor.com/visualize.html#code=print%28%22Boucle%20sur%20un%20tableau%20d'entiers%22%29%0A%0Afor%20element%20in%20%5B4,%203,%208,%2012,%2031%5D%3A%0A%20%20%20%20print%28element%29%0A%0Aprint%28'Fin%20de%20la%20boucle%20inconditionnelle'%29%0A&cumulative=true&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false){target="_blank"}
   
 
     ??? {{ext()}}
