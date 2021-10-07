@@ -296,7 +296,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
     ???+ example "Exemple 2 (important!)"
 
-        - [ ] Tester le code ci-dessous/
+        - [ ] Tester le code ci-dessous.
         - [ ] Que fait le code ? Est-ce conforme à notre définition d'un itérable ?
 
         {{IDEv('python3/exemple3')}}
@@ -317,7 +317,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         {{IDEv('python3/exemple4')}}
 
-!!! exo "Applications directes"
+!!! exo "Application directe"
 
     === {{exercice(False)}}
 
@@ -334,17 +334,76 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
     === {{exercice(False)}}
 
-    === {{exercice(False)}}
+        - [ ] Prédire ce que va afficher le programme ci-dessous.
+        - [ ] Écrire ce programme dans l'éditeur et l'exécuter. Votre prédiction est-elle correcte ?
+        - [ ] Modifier la ligne 3 afin d'afficher une phrase un peu plus correcte.
+
+        ```python linenums="1"
+        texte = ""
+        for mot in ["Les ", "chaussettes ", "sont-elles ", "sèches ?"]:
+            texte = mot + texte
+        print(texte)
+        ```
+
+        {{IDEv('')}}
 
     === {{exercice(False)}}
 
+        Voici un tableau d'acteurs : `#!python tableau_acteurs = ['Tahar', 'Omar', 'Guillaume', 'Swann', 'Alex', 'Roschdy']`.
 
-A venir
+        Utiliser ce tableau pour obtenir l'affichage suivant : 
+
+        ```bash
+        Tahar a eu le César du meilleur acteur
+        Omar a eu le César du meilleur acteur
+        Guillaume a eu le César du meilleur acteur
+        Swann a eu le César du meilleur acteur
+        Alex a eu le César du meilleur acteur
+        Roschdy a eu le César du meilleur acteur
+        ```
+
+        {{IDEv('python3/exo17')}}
+
+    === {{exercice(False)}}
+
+        - [ ] Prédire ce que va afficher le programme ci-dessous.
+        - [ ] Écrire ce programme dans l'éditeur et l'exécuter. Votre prédiction est-elle correcte ?
+
+        ```python linenums="1"
+        n = 3
+        for lettre in "abcd":
+            n = n + 2
+        print(n)
+        ```
+
+        ??? help "Remarque"
+
+            On remarque qu'on vient de répéter la même opération 4 fois car l'itérable est composé de 4 lettres.
 
 
-Donner de nombreux détails sur les chaînes de caractères avec des exos associés
+    === {{exercice(False)}}
+
+        On dispose d'un tableau d'entiers : `#!python tableau = [1, 2, 3, 4]`.
+
+        Écrire un programme qui réalise l'addition de 1, 2, 3 et 4.
+
+        ```python linenums="1"
+        total = 0
+        for lettre in "abcd":
+            n = n + 2
+        print(n)
+        ```
+
+        ??? help "Remarque"
+
+            On remarque qu'on vient de répéter la même opération 4 fois car l'itérable est composé de 4 lettres.
 
 ### Cas de _range_
+
+!!! example "Répétition d'instruction"
+
+    Savoir parcourir un itérable est très pratique mais 
+
 
 !!! {{cours()}}
 
@@ -356,6 +415,14 @@ Donner de nombreux détails sur les chaînes de caractères avec des exos associ
 Introduire la syntaxe len, range
 
 BLABLA
+
+### Itérable ou _range_ ?
+
+    Comment choisir entre `#!python for i in itérable` ou `#!python for i in range(n)` ?
+
+    !!! {{cours()}}
+
+        Le critère est simple : si on s'intéresse au contenu de mon itérable (par exemple, aux lettres d'un mot), on va parcourir sur l'itérable.
 
 ## Exercices récapitulatifs
 

@@ -1,5 +1,8 @@
 # Tableaux et tuples
 
+Reparler de len
+
+
 ## Principe
 
 De nos jours, l'informatique a pour but de collecter et de manipuler des données. Ces données, en nombre très important, doivent pouvoir être organisées dans des structures composites, faciles d'utilisation.
