@@ -242,7 +242,7 @@ function showCorrection(id_editor) {
         });
         // Decode the backslashes into newlines for ACE editor from admonitions 
         // (<div> autocloses in an admonition) 
-        editor.getSession().setValue(url_pyfile.replace(/backslash_newline/g, "\n"))  
+        editor.getSession().setValue(url_pyfile.replace(/backslash-newline/g, "\n").replace(/python-underscore/g, "_").replace(/python-star/g, "*"))
     }
     wrapperElement.insertAdjacentElement('afterend', txt)
     window.IDE_ready = createACE('corr_'+id_editor)           // Creating Ace Editor #id_editor
@@ -262,7 +262,7 @@ async function executeTestAsync(id_editor, mode) {
     try {
         pyodide.runPython("from __future__ import annotations\n"+code);    // Running the student code (no output)
 
-        let test_code = document.getElementById("test_term_editor_"+id_editor).textContent.replace(/backslash_newline/g, "\n");
+        let test_code = document.getElementById("test_term_editor_"+id_editor).textContent.replace(/backslash-newline/g, "\n").replace(/python-underscore/g, "_").replace(/python-star/g, "*");
         pyodide.runPython(`
         import sys as __sys__
         import io as __io__

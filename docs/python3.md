@@ -383,54 +383,197 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
     === {{exercice(False)}}
 
-        On dispose d'un tableau d'entiers : `#!python tableau = [1, 2, 3, 4]`.
+        On dispose d'un tableau d'entiers : `#!python tableau = [1, 2, 3, 4, 5]`. 
 
-        Écrire un programme qui réalise l'addition de 1, 2, 3 et 4.
+        Écrire un programme qui, à l'aide d'une boucle inconditionnelle, réalise l'addition de 1, 2, 3, 4 et 5. Pensez à l'accumulateur de l'exercice 10.
 
-        ```python linenums="1"
-        total = 0
-        for lettre in "abcd":
-            n = n + 2
-        print(n)
-        ```
+        {{IDEv('python3/exo19')}}
 
-        ??? help "Remarque"
+        ??? help "Aide"
 
-            On remarque qu'on vient de répéter la même opération 4 fois car l'itérable est composé de 4 lettres.
+            Il s'agit d'utiliser une variable `#!python accumulateur` qui va être initialisée à 0. On va ensuite calculer `#!python accumulateur * nombre` et référencer le résultat par la variable `#!python accumulateur`.
+
+    === {{exercice(False)}}
+
+        On dispose d'un tableau d'entiers : `#!python tableau = [10, 20, 30, 40]`. Nous souhaitons tirer et afficher quatre nombres aléatoires entre 0 et 10, 10 et 20, 20 et 30 et 30 et 40.
+
+        Le début de programme ci-dessous vous montre comment tirer des nombres de manière aléatoire. Modifier ce programme à l'aide d'une boucle inconditionnelle `#!python for`. 
+
+        {{IDEv('python3/exo20')}}
+
+        ??? help "Aide"
+
+            Remarquez que à chaque étape l'ancienne valeur maximum est devenue la valeur minimum : `#!python valeur_mini = valeur_maxi`. Cela vous donne une règle à suivre dans la boucle inconditionnelle.
+
 
 ### Cas de _range_
 
 !!! example "Répétition d'instruction"
 
-    Savoir parcourir un itérable est très pratique mais 
+    Savoir parcourir un itérable est très pratique mais nous limite beaucoup. Souvent, nous souhaitons :
+    
+    - connaître le numéro de la lettre courante (par exemple, dans le mot "Venom", `#!python V` est la lettre d'**indice** 0, `#!python e` la lettre d'**indice** 1 etc.) ;
+    - pouvoir répéter un nombre déterminé de fois une action.
 
+    Par exemple, dans le code ci-dessous, nous répétons une phrase 5 fois :
+    
+    {{IDEv('python3/exemple5')}}
 
 !!! {{cours()}}
 
-    Un itérable occupe une place très particulière : il s'agit de `#!python range`.
+    Un itérable occupe une place très particulière : il s'agit de `#!python range(n)`.     
+    
+    Faire parcourir à une variable `#!python k` l'itérable `#!python range(n)` va lui faire prendre successivement les valeurs 0, 1, 2, ..., **n-1**.
+
+    Lancer le programme ci-dessous :
+
+    {{IDEv('python3/exemple6')}}
+
+
+    ???+ help "Remarque"
+
+        k va de 0 à **n-1**. Il y a donc bien n valeurs qui sont parcourues.
 
     Lorsque l'on itère sur `#!python range`, la variable de boucle est souvent nommé `#!python i`, `#!python j` ou `#!python k`.
 
+!!! exo "Manipulation de _range_"
 
-Introduire la syntaxe len, range
+    === {{exercice(False)}} 
 
-BLABLA
+        Faire afficher la séries de nombres ci-dessous.
+        
+        On utilisera la syntaxe `#!python print(k, end = ' ')` pour afficher les nombres horizontalement.
+
+        ```python
+        0 1 2 3 4 5
+        ```
+
+        {{IDEv('python3/exo20b')}}
+    
+    === {{exercice(False)}} 
+
+        Faire afficher la séries de nombres ci-dessous.
+        
+        On utilisera la syntaxe `#!python (k, end = ' ')` pour afficher les nombres horizontalement.
+
+        ```python
+        5 6 7 8 9 10
+        ```
+
+        {{IDEv('python3/exo21')}}
+
+    === {{exercice(False)}} 
+
+        Faire afficher la séries de nombres ci-dessous.
+        
+        On utilisera la syntaxe `#!python (k, end = ' ')` pour afficher les nombres horizontalement.
+
+        ```python
+        1 4 7 10 13 16 19 22
+        ```
+
+        {{IDEv('python3/exo22')}}
+    
+    === {{exercice(False)}} 
+
+        Faire afficher la séries de nombres ci-dessous.
+        
+        On utilisera la syntaxe `#!python (k, end = ' ')` pour afficher les nombres horizontalement.
+
+        ```python
+        10 9 8 7 6 5 4 3 2 1 0
+        ```
+
+        {{IDEv('python3/exo23')}}
+
+
+<!-- Introduire la syntaxe len, range -->
+
 
 ### Itérable ou _range_ ?
 
-    Comment choisir entre `#!python for i in itérable` ou `#!python for i in range(n)` ?
+Comment choisir entre `#!python for i in itérable` ou `#!python for i in range(n)` ?
 
-    !!! {{cours()}}
+!!! {{cours()}}
 
-        Le critère est simple : si on s'intéresse au contenu de mon itérable (par exemple, aux lettres d'un mot), on va parcourir sur l'itérable.
+    Le critère est simple : 
+    
+    - si on s'intéresse au contenu d'un itérable (par exemple, aux lettres d'un mot), on va parcourir l'itérable ;
+    - si on s'intéresse à du comptage ou à la position des valeurs dans l'itérable, on va utiliser `#!python range`.
+
+
+!!! exo "Itérable ou `#!python range` : faites le bon choix !"
+
+    === {{exercice(False)}}
+
+        Écrire un programme qui affiche les lettres du mot "Artiste".
+
+        {{IDEv('python3/exo24')}}
+
+    === {{exercice(False)}}
+
+        Écrire un programme qui affiche la table de multiplication de 7. On obtiendra l'affichage suivant :
+        ```python 
+        7 x 0 = 0
+        7 x 1 = 7
+        ...
+        7 x 10 = 70
+        ```
+
+        {{IDEv('python3/exo25')}}
+
+
+    === {{exercice(False)}}
+
+        Écrire un programme qui affiche [`#!python In the castle of AAAAArrrrrggggghhhhh`](https://www.youtube-nocookie.com/embed/ZlIz0q8aWpA?autoplay=1&iv_load_policy=3&loop=1&modestbranding=1&playlist=ZlIz0q8aWpA){target = "_blank"}. On pourra partir du mot 'Argh' où l'on répétera 5 fois chaque lettre.
+
+        {{IDEv('python3/exo26')}}
+
+
+## Boucles imbriquées
+
+!!! {{cours()}}
+
+    Il est très souvent utile d'imbriquer une boucle dans une autre, notamment lors du parcours de tous les pixels d'une image.
+
+    !!! example "Exemple"
+
+        {{IDEv('python3/exemple7')}}
+
 
 ## Exercices récapitulatifs
 
 !!! {{cours()}}
 
-    Quand on ne connaît pas à l'avance le nombre de répétitions, on utilise une boucle conditionnelle.
+    On utilise une boucle conditionnelle quand on ne connaît pas à l'avance le nombre de répétitions.
 
-    Quand on veut épeler des éléments un à un ou que l'on connaît le nombre de répétitions à effectuer, on utilise une boucle inconditionnelle.
+    On utilise une boucle inconditionnelle quand on veut épeler des éléments un à un ou que l'on connaît le nombre de répétitions à effectuer, 
+
+!!! {{exercice()}}
+
+    Sur un jeu d'échecs, les cases sont repérées par une lettre (de A jusqu'à H) et par un chiffre (de 1 jusqu'à 8).
+
+    Les cases sont donc A1, A2, A3, ..., H7, H8.
+
+    Proposer un code qui affiche toutes les cases possibles.
+
+    {{IDE('python3/exo27')}}
+
+!!! {{exercice()}}
+
+    En Python, la fonction `#!python ord` renvoie le [code Unicode](https://fr.wikipedia.org/wiki/Unicode){target = "_blank"} d'un caractère et la fonction `#!python chr` le contraire: elle renvoie le caractère correspondant à un code Unicode.
+
+    Par exemple:
+    ```python
+    >>> ord('a')
+    97
+    >>> chr(97)
+    'a'
+    ```
+
+    Voici une liste contenant les codes Unicode des lettres d'un mot secret... Écrire un programme où en sortie, la variable mot_secret contiendra la chaîne de caractères de ce mot.
+
+    {{IDE('python3/exo28')}}
 
 !!! {{exercice()}}
 
@@ -441,22 +584,28 @@ BLABLA
     - si elle est à l'emplacement 0, elle peut sauter à l'emplacement 1 ou -1 ; 
     - si elle est à l'emplacement 2, elle peut sauter à l'emplacement 3 ou 1.
 
-    Avec la boucle de votre choix, simuler le mouvement de cette puce de l'emplacement initial 0 à l'emplacement final 5 (voir le schéma de la figure 3). Combien de sauts sont nécessaires pour réaliser ce parcours ? Relancez plusieurs fois le programme. Trouvez-vous le même nombre de sauts à chaque exécution ?
+    Avec la boucle de votre choix, simuler le mouvement de cette puce de l'emplacement initial 0 à l'emplacement final 5 (voir le schéma de la figure). 
+    
+    Afficher le nombre de sauts nécessaires pour réaliser ce parcours. 
+    
+    Relancer plusieurs fois le programme. Trouve-t-on le même nombre de sauts à chaque exécution ?
 
     ![sauts-de-puce](images/python3/sauts-de-puce.png "Sauts de puce"){: style="width:40%;"}
 
-
     !!! help "Générer des nombres aléatoires"
-        Afin de générer des nombres aléatoires, nous importons le module `#!python random`. Le programme proposé utilise également l'instruction random.choice([-1, 1]) qui renvoie au hasard la valeur -1 ou 1 avec une probabilité $\dfrac{1}{2}$. 
+        Afin de générer des nombres aléatoires, nous importons le module `#!python random`. Le programme proposé utilise également l'instruction `#!python random.choice([-1, 1])` qui renvoie au hasard la valeur -1 ou 1 avec une probabilité $\dfrac{1}{2}$. 
     
         Nous reverrons la signification de cette syntaxe particulière dans le chapitre sur la [modularité](python6.md).
+    
+    {{IDE('python3/exo29')}}
 
-!!! danger "Résumé"
+
+!!! conclu "Résumé"
 
     Dans ce chapitre, j'ai appris : 
     
-    - [ ] blabla
-    - [ ] blabla
-    - [ ] blabla
-    - [ ] blabla
-    - [ ] blabla
+    - [ ] l'intérêt des boucles dans la cadre du principe DRY ;
+    - [ ] l'existence de boucles conditionnelles et inconditionnelles ; 
+    - [ ] comment utiliser les boucles conditionnelles ;
+    - [ ] comment parcourir les valeurs d'un itérable avec une boucle inconditionnelle ; 
+    - [ ] comment parcourir les indices d'un itérable avec une boucle inconditionnelle.

@@ -1,7 +1,7 @@
 # Tableaux et tuples
 
 Reparler de len
-
+Parler de la création d'un tableau en compréhension.
 
 ## Principe
 

@@ -2,6 +2,10 @@
 
 Parler des f-strings, des tableaux de tableaux
 
+Du slicing
+
+range(start, stop, step)
+
 ## Définition
 
 !!! warning "Vocabulaire"

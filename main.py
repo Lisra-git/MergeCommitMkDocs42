@@ -93,7 +93,8 @@ def define_env(env):
             f.close()
             content = content+ "\n"
             # Hack to integrate code lines in admonitions in mkdocs
-            return content.replace('\n','backslash_newline')
+            # change backslash_newline by backslash-newline
+            return content.replace('\n','backslash-newline').replace('_','python-underscore').replace('*','python-star')
         except :
             return
         
@@ -156,7 +157,7 @@ def define_env(env):
         Methods : Two modes are available : vertical or horizontal. Buttons are added through functioncal calls.
         Last span hides the code content of the IDE if loaded.
         """
-        content, tc = generate_content(nom_script)
+        content, tc = generate_content(nom_script)  # content with __ passed correctly here
         corr_content, tc = generate_content(f"""{'/'.join(nom_script.split('/')[:-1])}/corr_{nom_script.split('/')[-1]}""")
         div_edit = f'<div class="ide_classe">'
         if mode == 'v':

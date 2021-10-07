@@ -22,7 +22,7 @@ $('[id^=editor_]').each(function() {
         });
         // Decode the backslashes into newlines for ACE editor from admonitions 
         // (<div> autocloses in an admonition) 
-        editor.getSession().setValue(url_pyfile.replace(/backslash_newline/g, "\n"))  
+        editor.getSession().setValue(url_pyfile.replace(/backslash-newline/g, "\n").replace(/python-underscore/g, "_").replace(/python-star/g, "*"))  
     }
     window.IDE_ready = createACE(id_editor)           // Creating Ace Editor #id_editor
 
