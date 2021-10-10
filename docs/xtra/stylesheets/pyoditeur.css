@@ -186,3 +186,15 @@ textarea:focus {
   min-width: 30em;
   height: auto;
 }
+
+.can_wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.can_wrapper canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

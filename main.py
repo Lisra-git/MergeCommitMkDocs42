@@ -48,7 +48,7 @@ def define_env(env):
         env.variables['compteur_exo'] += 1
         root = f"Exercice { env.variables['compteur_exo']}"
         return f"""exo \"{root}\"""" if var else '\"'+root+'\"'
-        
+
     @env.macro
     def cours():
         return f'done "Cours"'

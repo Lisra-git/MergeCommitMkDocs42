@@ -345,7 +345,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
         print(texte)
         ```
 
-        {{IDEv('')}}
+        {{IDEv('python3/exo15')}}
 
     === {{exercice(False)}}
 
@@ -362,7 +362,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
         Roschdy a eu le César du meilleur acteur
         ```
 
-        {{IDEv('python3/exo17')}}
+        {{IDEv('python3/exo16')}}
 
     === {{exercice(False)}}
 
@@ -375,6 +375,8 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
             n = n + 2
         print(n)
         ```
+
+        {{IDEv('python3/exo17')}}
 
         ??? help "Remarque"
 

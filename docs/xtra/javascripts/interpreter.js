@@ -111,6 +111,56 @@ pyodide._module.on_fatal = async (e) => {
 };
 }
 
+function removeLines(data, moduleName) {
+    return data
+      .split('\n')
+      .filter(sentence => !(sentence.includes("import " + moduleName) || sentence.includes("from " + moduleName)))
+      .join('\n');
+}
+
+async function foreignModulesFromImports(code, moduleDict = {}, id_editor = 0) {
+    await pyodideReadyPromise;
+    pyodide.runPython(`from pyodide import find_imports\nimported_modules = find_imports(${JSON.stringify(code)})`)
+    const importedModules = pyodide.globals.get('imported_modules').toJs();
+    var executedCode = code
+    
+    for (var moduleName in moduleDict) {
+        var moduleFakeName = moduleDict[moduleName];
+      
+        if (importedModules.includes(moduleName)) {
+            // number of characters before the first occurrence of the module name, presumably the import clause
+            var indexModule = executedCode.indexOf(moduleName); 
+            // substring to count the number of newlines
+            var tempString = executedCode.substring(0, indexModule); 
+            // counting the newlines
+            var lineNumber = tempString.split('\n').length;
+            
+            let importLine = executedCode.split('\n')[lineNumber-1]; // getting the import line, now the business starts.
+
+            // taking into consideration the various import options
+            // Idea : change the import turtle of a user into import pyo_js_turtle
+            // import turtle as tl	>	import js-turtle as tl
+            // import turtle		>	import js-turtle as turtle
+            // from turtle import *	>	from js-turtle import *
+            if (importLine.includes('import ' + moduleName) && !importLine.includes('as')) {
+                importLine = importLine.replace(moduleName, moduleFakeName + ' as ' + moduleName)
+            } else {
+                importLine = importLine.replace(moduleName, moduleFakeName)
+            }
+            if (moduleName.includes('turtle')) {
+                showGUI(id_editor)
+//                document.getElementById("gui_"+id_editor).focus();
+            }
+
+            executedCode = `import micropip\nawait micropip.install("${moduleFakeName}")\n${importLine}\n` + executedCode
+        }
+        console.log(executedCode)
+        executedCode = removeLines(executedCode, moduleName)
+        console.log(executedCode)
+    };
+    return executedCode
+}
+
 
 async function evaluatePythonFromACE(code, id_editor, mode) {
     await pyodideReadyPromise;
@@ -138,7 +188,9 @@ async function evaluatePythonFromACE(code, id_editor, mode) {
     }
 
     try {
-      await pyodide.runPythonAsync("from __future__ import annotations\n"+code);    // Running the code
+      console.log(code)
+      let executed_code = await foreignModulesFromImports(code, {'turtle': "pyo_js_turtle"}, id_editor)
+      await pyodide.runPythonAsync("from __future__ import annotations\n" + executed_code);    // Running the code
       var stdout = pyodide.runPython("__sys__.stdout.getvalue()")  // Catching and redirecting the output
       $.terminal.active().echo(">>> Script exécuté !\n"+stdout); 
     } catch(err) {
@@ -216,6 +268,22 @@ function calcTermSize(text, mode) {
 function executeTest(id_editor, mode) {    
     executeTestAsync(id_editor, mode)
 }
+
+
+function showGUI(id_editor) {
+    if (document.getElementById("gui_"+id_editor) === null) {
+    let wrapperElement = document.getElementById(id_editor);  /* going up the DOM to IDE+buttons */ 
+    while (wrapperElement.className !== "ide_classe") {
+        wrapperElement = wrapperElement.parentNode
+    }
+    var txt = document.createElement("div");
+    // txt.innerHTML='<details class="check"><summary>Fenêtre graphique</summary>\
+    // <div class="highlight" id="gui_'+id_editor+'"></div></details>'
+    txt.innerHTML='<details open class="check"><summary>Fenêtre graphique</summary><div class = "can_wrapper"><div id = "gui_'+id_editor+'"><canvas id ="tracer" width="700" height="700"></canvas><canvas id="pointer" width="700" height="300"></canvas></div></div></details>'
+
+    wrapperElement.insertAdjacentElement('afterend', txt)
+}}
+
 
 function showCorrection(id_editor) {
     if (document.getElementById("corr_"+id_editor) === null) {
