@@ -4,7 +4,7 @@ repo_url: https://gitlab.com/ferney-nsi/premiere
 edit_uri: tree/main/docs/
 site_description: Cours d'informatique de Vincent BOUILLOT, Lycée International Ferney-Voltaire 
 copyright: |
-  Copyleft &#127279 2021 <a href="https://ferney-nsi.gitlab.io/premiere/" target="_blank" rel="noopener">Vincent BOUILLOT</a>
+  Copyleft &#127279 2021 <a href="mailto:prof-bouillot@protonmail.com?subject=Questions sur le cours" target="_blank" rel="noopener">Vincent BOUILLOT</a>
 docs_dir: docs
 
 nav:

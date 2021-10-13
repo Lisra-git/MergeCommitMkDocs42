@@ -6,6 +6,10 @@ Du slicing
 
 range(start, stop, step)
 
+du type-hinting
+
+des assert
+
 ## Définition
 
 !!! warning "Vocabulaire"

@@ -184,6 +184,7 @@ async function evaluatePythonFromACE(code, id_editor, mode) {
 
     // resize terminal to the size of editor on interpreting
     if (mode === "v") {
+        console.log(187, id_editor )
         $.terminal.active().resize($.terminal.active().width(), document.getElementById(id_editor).style.height);
     }
 
@@ -260,7 +261,7 @@ function download_file(id_editor, nom_script) {
 }
 
 function calcTermSize(text, mode) {
-    let nlines = (mode === 'v' ? text.split(/\r\n|\r|\n/).length : Math.max(5,Math.min(10, text.split(/\r\n|\r|\n/).length)))
+    let nlines = (mode === 'v' ? Math.max(text.split(/\r\n|\r|\n/).length, 6) : Math.max(5,Math.min(10, text.split(/\r\n|\r|\n/).length)))
     $.terminal.active().resize($.terminal.active().width(), nlines*30);
     return nlines
   }
@@ -279,7 +280,7 @@ function showGUI(id_editor) {
     var txt = document.createElement("div");
     // txt.innerHTML='<details class="check"><summary>Fenêtre graphique</summary>\
     // <div class="highlight" id="gui_'+id_editor+'"></div></details>'
-    txt.innerHTML='<details open class="check"><summary>Fenêtre graphique</summary><div class = "can_wrapper"><div id = "gui_'+id_editor+'"><canvas id ="tracer" width="700" height="700"></canvas><canvas id="pointer" width="700" height="300"></canvas></div></div></details>'
+    txt.innerHTML='<details open class="check"><summary>Fenêtre graphique</summary><div class = "can_wrapper"><div id = "gui_'+id_editor+'"><canvas id ="tracer" width="700" height="400"></canvas><canvas id="pointer" width="700" height="400"></canvas></div></div></details>'
 
     wrapperElement.insertAdjacentElement('afterend', txt)
 }}
@@ -323,12 +324,10 @@ async function executeTestAsync(id_editor, mode) {
     let code = await interpret_code;
     $.terminal.active().clear();
 
-    // if (mode === "vert") {
-    //     $.terminal.active().resize($.terminal.active().width(), document.getElementById(id_editor).style.height);
-    // }
-
     try {
-        pyodide.runPython("from __future__ import annotations\n"+code);    // Running the student code (no output)
+        let executed_code = await foreignModulesFromImports(code, {'turtle': "pyo_js_turtle"}, "editor_" + id_editor)
+        await pyodide.runPythonAsync("from __future__ import annotations\n" + executed_code);    // Running the code
+        // pyodide.runPython("from __future__ import annotations\n"+code);    // Running the student code (no output)
 
         let test_code = document.getElementById("test_term_editor_"+id_editor).textContent.replace(/backslash-newline/g, "\n").replace(/python-underscore/g, "_").replace(/python-star/g, "*");
         pyodide.runPython(`
@@ -351,6 +350,7 @@ async function executeTestAsync(id_editor, mode) {
 
                 for benchmark in numerous_benchmark:
                     failed = 0
+                    print("toto", benchmark)
                     print(f">>> Test de la fonction ** {benchmark[0].split('(')[0].upper()} **")
                     
                     for k, test in enumerate(benchmark, 1):
@@ -368,8 +368,12 @@ async function executeTestAsync(id_editor, mode) {
                         print(msg + f"Reprenez votre code {choice(fail_smb)}")
                         global_failed += 1
             except :
-                print(f"🙇🏻 pas de fichier de test... Si vous êtes sur de vous, continuez à cliquer sur le gendarme.")
-                global_failed += 1
+                if numerous_benchmark != []:
+                    print(f"- Fonctions manquantes ou noms de fonctions incorrectes.")
+                    print(f"- Respectez les noms indiqués dans l'énoncé.")
+                else:
+                    print(f"🙇🏻 pas de fichier de test... Si vous êtes sur de vous, continuez à cliquer sur le gendarme.")
+                    global_failed += 1
             return global_failed
         `);
 
@@ -396,19 +400,30 @@ async function executeTestAsync(id_editor, mode) {
         nlines = calcTermSize(stdout, mode)
         let editor = ace.edit("editor_"+id_editor);
         let stream = await editor.getSession().getValue();
-
-        if(editor.session.getLength()<=nlines && mode==='v') {
+        if(editor.session.getLength() <= nlines && mode === 'v') {
             nslash = editor.session.getLength()- nlines + 3; // +3 takes into account shift and newlines
             for (var i = 0; i < nslash; i++) {
                 stream += "\n"
             }
             editor.session.setValue(stream); // set value and reset undo history
         }
+        // resize terminal to the size of editor on interpreting
+        // console.log('bla', mode, nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
+        // if (mode === "v") {
+        //     console.log('bla', nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
+        //     $.terminal.active().resize($.terminal.active().width(), max(nlines*30, document.getElementById("editor_" + id_editor).style.height));
+        // }
+
         $.terminal.active().echo(stdout); 
 
     } catch(err) {
         err = err.toString().split("\n").slice(-7).join("\n");
         nlines = calcTermSize(err, mode);
+        console.log("fais chier");
+        // if (mode === "v") {
+        //     console.log('bla', nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
+        //     $.terminal.active().resize($.terminal.active().width(), max(nlines*30, document.getElementById("editor_" + id_editor).style.height));
+        // }
         $.terminal.active().echo(">>> Erreur de syntaxe !\n"+err)//.split("\n").slice(~~(nlines/2)).join("\n"));   // Would be nice to display only the last lines
       }
     } 
