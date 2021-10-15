@@ -268,11 +268,13 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
         ??? help "Explications"
 
             `#!python print(f(2))` affiche :
+            
             ```python
             >>> y = f(2)
             5
             >>> print(y)
-            ````
+            None
+            ```
             
             L'appel `#!python y = f(2)` se décompose en :
             - en évaluation du résultat de ma fonction f(2) : c'est un affichage de `#!python 2**2 + 1`, suivi du renvoi de `#!python None` comme résultat ;
