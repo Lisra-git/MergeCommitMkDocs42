@@ -103,19 +103,18 @@ Nous allons tout de suite étudier divers cas particuliers importants.
 Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper plusieurs fois les mêmes instructions. Leur utilité est très limitée : si vous les utilisez, ce sera pour des utilisations très spécifiques.
 
 !!! exo "Exercice"
-
     === {{exercice(False, 0)}}
 
         On donne la fonction ci-dessous.
 
         - [ ] Exécuter le programme.
         - [ ] Dans la console, écrire `#!python compter()` (on dit que vous **appelez** la fonction `#!python compter()`).
-        - [ ] Observer le résultat et comprendre ce qu'il s'est passé.
+        - [ ] Observer le résultat et expliquer celui-ci.
         - [ ] Dans la console, faire deux autres appels à la fonction `#!python compter()`. Que remarquez-vous ?
 
         {{IDEv("python4/exemple1")}}
 
-        ??? help "Remarque"
+        ??? help "Explications"
 
             Quand vous avez appelé la fonction dans la console, Python a regardé quelque part dans la mémoire s'il existait une fonction appelée `#!python compter()`. Il l'a trouvé car nous avons exécuté le programme : ensuite la fonction se déroule. 
             
@@ -207,20 +206,43 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
     === {{exercice(False)}}
 
-        Écrire une fonction `#!python f` qui prend en paramètre un nombre flottant `#!python x` et qui renvoie le nombre flottant `#!python 2 * x + 1`.
+        - [ ] Écrire une fonction `#!python f` qui prend en paramètre un nombre flottant `#!python x` et qui renvoie le nombre flottant `#!python 2 * x + 1`.
+        - [ ] Tester la fonction avec l'icône gendarme.
 
         {{IDEv('python4/exo5')}}
 
     === {{exercice(False)}}
 
-        - [ ] Compléter la fonction `#!python aire_rectangle` qui prend en paramètre deux nombres flottants `#!python longueur` et `#!python largeur` et qui renvoie l'aire du rectangle.
-        - [ ] Ajouter une fonction `#!python volume_boite` qui prend en paramètre trois nombres flottants `#!python longueur`, `#!python largeur` et `#!python hauteur` et qui renvoie le volume d'une boite.
-        - [ ] Valider votre résultat avec le petit gendarme !
+        - [ ] Compléter la fonction `#!python calculer_aire_rectangle` qui prend en paramètre deux nombres flottants `#!python longueur` et `#!python largeur` et qui renvoie l'aire du rectangle.
+        - [ ] Ajouter une fonction `#!python calculer_volume_boite` qui prend en paramètre trois nombres flottants `#!python longueur`, `#!python largeur` et `#!python hauteur` et qui renvoie le volume d'une boite.
+        - [ ] Valider votre résultat avec l'icône gendarme !
 
-        {{IDEv('python4/exo5')}}
+        {{IDEv('python4/exo6')}}
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python est_divisible_par` qui prend en paramètre deux nombres entiers positifs `#!python entier` et `#!python diviseur` et qui renvoie `#!python True` si `#!python entier` est divisible par `#!python diviseur`.
+
+        {{IDEv('python4/exo8')}}
 
 
+    === {{exercice(False)}}
 
+        - [ ] Écrire une fonction `#!python valider_email` qui prend en paramètre une chaîne de caractères `#!python email`.
+
+            Cette fonction renvoie `#!python True` si la chaîne de caractères contient un arobase `#!python @`. Une fois le parcours de l'adresse email avec une boucle inconditionnelle terminée, on renverra `#!python False` si l'arobase n'a pas été trouvé.
+        - [ ] Vérifier votre fonction en appelant par exemple `#!python valider_email("titou_du_01@live.fr")`.
+        - [ ] Valider avec l'icône gendarme.
+
+        {{IDEv('python4/exo7')}}
+
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python sommer` qui prend en paramètre un tableau non vide d'entiers `#!python tableau`. Cette fonction renvoie la somme des entiers présents dans ce tableau.
+        - [ ] Ajouter une fonction `#!python moyenner` qui prend en paramètre un tableau non vide d'entiers `#!python tableau` ainsi que son nombre d'éléments `#!python taille`. Cette fonction renvoie la moyenne des entiers présents dans ce tableau. Dans cette fonction, on utilisera la fonction `#!python sommer` définie précédemment.
+
+        {{IDEv('python4/exo9')}}
 
 ### Et si on n'a rien à renvoyer ?
 
@@ -228,6 +250,35 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
     On a toujours quelque chose à renvoyer : en l'absence de valeurs à renvoyer, on écrira, `#!python return None`.
 
+    ??? {{ext()}}
+
+        En pratique, `#!python return None` n'est pas obligatoire. Si une fonction ne contient pas le mot-clé `#!python return`, Python rajoutera gentiment `#!python return None` à la fin de votre fonction lors de l'interprétation du programme.
+
+        Attention, `explicit is better than implicit`! Écrivez toujours `#!python return None`.
+
+!!! exo "Exercices"
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python f` qui prend en paramètre un nombre flottant `#!python x` et qui **affiche** le nombre flottant `#!python x**2 + 1`.
+        - [ ] Réaliser les opérations suivants : `#!python y = f(2)` puis `#!python print(y)` ? Expliquer le résultat.
+
+        {{IDEv('python4/')}}
+
+        ??? help "Explications"
+
+            `#!python print(f(2))` affiche :
+            ```python
+            >>> y = f(2)
+            5
+            >>> print(y)
+            ````
+            
+            L'appel `#!python y = f(2)` se décompose en :
+            - en évaluation du résultat de ma fonction f(2) : c'est un affichage de `#!python 2**2 + 1`, suivi du renvoi de `#!python None` comme résultat ;
+            - `#!python y` référence la valeur renvoyée (`#!python None`)
+
+            `#!python print(y)` affiche donc bien `#!python None` !
 
 ## Utilisation de `#!python return`
 
@@ -359,3 +410,6 @@ Global : uniquement pour les constantes pour éviter les EFFETS de BORD
     Rien n'a été renvoyé sur Terre car l'équivalent de `#!python return` n'a pas été utilisé ! 
     
     En général, on souhaite faire quelque chose de nos données, pas les afficher.
+
+
+  <!-- - [ ] Écrire une fonction `#!python valider_code_sécu` qui prend en paramètre deux nombres entiers positifs `#!python entier` et `#!python diviseur` et qui renvoie `#!python True` si `#!python entier` est divisible par 'aire du rectangle. -->
