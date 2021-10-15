@@ -419,7 +419,6 @@ async function executeTestAsync(id_editor, mode) {
     } catch(err) {
         err = err.toString().split("\n").slice(-7).join("\n");
         nlines = calcTermSize(err, mode);
-        console.log("fais chier");
         // if (mode === "v") {
         //     console.log('bla', nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
         //     $.terminal.active().resize($.terminal.active().width(), max(nlines*30, document.getElementById("editor_" + id_editor).style.height));

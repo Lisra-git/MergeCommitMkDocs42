@@ -2,6 +2,8 @@
 
 Ce chapitre est la **pierre angulaire** de tout langage informatique !
 
+Pour tous les exercices, vous pouvez valider vos réponses avec le petit gendarme : votre fonction sera alors **testée** sur des cas de base. Ces cas vous aident à comprendre pourquoi votre fonction n'a pas encore le fonctionnement attendu.
+
 ## Principe
 
 !!! exo "Pourquoi les fonctions ?"
@@ -201,20 +203,30 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
         Nous le reverrons au chapitre 8 !
 
 
-0 paramètres -> procédure
-1 paramètres
-passage par mot-clé
+!!! exo "Exercices"
+
+    === {{exercice(False)}}
+
+        Écrire une fonction `#!python f` qui prend en paramètre un nombre flottant `#!python x` et qui renvoie le nombre flottant `#!python 2 * x + 1`.
+
+        {{IDEv('python4/exo5')}}
+
+    === {{exercice(False)}}
+
+        - [ ] Compléter la fonction `#!python aire_rectangle` qui prend en paramètre deux nombres flottants `#!python longueur` et `#!python largeur` et qui renvoie l'aire du rectangle.
+        - [ ] Ajouter une fonction `#!python volume_boite` qui prend en paramètre trois nombres flottants `#!python longueur`, `#!python largeur` et `#!python hauteur` et qui renvoie le volume d'une boite.
+        - [ ] Valider votre résultat avec le petit gendarme !
+
+        {{IDEv('python4/exo5')}}
+
+
+
 
 ### Et si on n'a rien à renvoyer ?
 
 !!! {{cours()}}
 
     On a toujours quelque chose à renvoyer : en l'absence de valeurs à renvoyer, on écrira, `#!python return None`.
-
-### Paramètres multiples
-
-    !!! {{cours()}}
-
 
 
 ## Utilisation de `#!python return`
@@ -236,6 +248,17 @@ passage par mot-clé
 !!! exo "Exercices sur `#!python return`"
 
     === {{exercice(False)}}
+
+        On propose ci-dessous la fonction `#!python trouver_pair` qui prend pour paramètre un `#!python tableau` d'entiers et qui renvoie 
+        
+        - le booléen `#!python True` si un entier pair est présent dans le `#!python tableau` ;
+        - le booléen `#!python False` sinon.
+
+        - [ ] Exécuter le code ;
+        - [ ] Dans la console, appeler la fonction `#!python trouver_pair` sur les tableaux `#!python [1, 3, 5]`, `#!python [8, 4, 10]` et `#!python [5, 20, 5]`. Que fais réellement cette fonction ?
+        - [ ] Corriger la fonction pour obtenir le comportement attendu.
+
+        {{IDEv('python4/exo30')}}
 
     === {{exercice(False)}}
 

@@ -1,4 +1,5 @@
-phrase = 'In the castle of '
+for lettre in "ABCDEFGH":
+    
+    
 
-
-print(phrase)
+    print()

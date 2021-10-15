@@ -456,7 +456,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         Faire afficher la séries de nombres ci-dessous.
         
-        On utilisera la syntaxe `#!python (k, end = ' ')` pour afficher les nombres horizontalement.
+        On utilisera la syntaxe `#!python print(k, end = ' ')` pour afficher les nombres horizontalement.
 
         ```python
         5 6 7 8 9 10
@@ -468,7 +468,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         Faire afficher la séries de nombres ci-dessous.
         
-        On utilisera la syntaxe `#!python (k, end = ' ')` pour afficher les nombres horizontalement.
+        On utilisera la syntaxe `#!python print(k, end = ' ')` pour afficher les nombres horizontalement.
 
         ```python
         1 4 7 10 13 16 19 22
@@ -480,7 +480,7 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
         Faire afficher la séries de nombres ci-dessous.
         
-        On utilisera la syntaxe `#!python (k, end = ' ')` pour afficher les nombres horizontalement.
+        On utilisera la syntaxe `#!python print(k, end = ' ')` pour afficher les nombres horizontalement.
 
         ```python
         10 9 8 7 6 5 4 3 2 1 0
@@ -540,7 +540,7 @@ Comment choisir entre `#!python for i in itérable` ou `#!python for i in range(
 
     !!! example "Exemple"
 
-        {{IDEv('python3/exemple7')}}
+        {{IDE('python3/exemple7')}}
 
 
 ## Exercices récapitulatifs
