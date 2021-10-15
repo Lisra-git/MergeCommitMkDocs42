@@ -86,15 +86,15 @@ Le **principe DRY** va encore être ici à l'oeuvre : la structure _fonction_ va
         
         Toute variable non renvoyée par `#!python return` sera perdue dans la boîte noire !
 
+!!! danger "Important"
+    
+    Dans ma grande bonté, je vous propose quelquefois des fonctions où seul le titre es présent (on appelle cela un prototype). 
+    
+    Pour éviter une erreur, le mot-clé `#!python pass` apparaît dans la fonction : il indique à Python de ne rien faire. Quand vous commencez à écrire la fonction, supprimez `#!python pass`.
 
 Nous allons tout de suite étudier divers cas particuliers importants.
 
 ## Exemple de fonctions
-
-!!! danger "Important"
-    
-    Dans ma grande bonté, je vous propose quelquefois des fonctions vides (on appelle cela un prototype). Pour éviter une erreur, le mot-clé `#!python pass` est utilisé : il indique à Python de ne rien faire. Quand vous commencez à écrire la fonction, supprimez `#!python pass`.
-
 
 ### Fonction sans paramètres
 
@@ -164,11 +164,41 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
              
         {{IDEv("python4/exo4")}}
 
-!!! {{cours()}}
-
-    Ce
+        ??? help "Aide"
+            Se rappeler la syntaxe des boucles inconditionnelles `#!python for _ in range(10)`.
 
 ### Fonction avec paramètres
+
+!!! {{cours()}}
+
+    !!! example "Exemple"
+
+        - [ ] Exécuter le code.
+        - [ ] Dans la console, taper `#!python compter(5)` puis `#!python compter(10)`.
+
+        {{IDEv('python4/exemple2')}}
+
+    - La valeur n est appelée **paramètre** de la fonction `#!python compter`.
+    - On dit qu'on **passe** le paramètre n à la fonction `#!python compter`.
+    - Lorsque vous avez tapé `#!python compter(5)` da,ns la console, vous avez **appeler** la fonction `#!python compter` avec l'**argument** 3.
+
+    ??? {{ext()}}
+
+        Les annotations permettent de préciser à un utilisateur extérieur quel est le type des paramètres. Attention, cela n'impose pas le type du paramètres, c'est simplement une indication !
+
+        Pour indiquer que n est entier, on peut par exemple écrire :
+        ```python
+        def compter(n : int):
+            ...
+        ```
+
+        Pour plusieurs paramètres a flottant et n entier, on pourrait écrire :
+        ```python
+        def multiplier(a: float, n: int):
+            ...
+        ```
+
+        Nous le reverrons au chapitre 8 !
 
 
 0 paramètres -> procédure
@@ -177,6 +207,9 @@ passage par mot-clé
 
 ### Et si on n'a rien à renvoyer ?
 
+!!! {{cours()}}
+
+    On a toujours quelque chose à renvoyer : en l'absence de valeurs à renvoyer, on écrira, `#!python return None`.
 
 ### Paramètres multiples
 

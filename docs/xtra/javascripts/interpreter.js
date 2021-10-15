@@ -350,7 +350,6 @@ async function executeTestAsync(id_editor, mode) {
 
                 for benchmark in numerous_benchmark:
                     failed = 0
-                    print("toto", benchmark)
                     print(f">>> Test de la fonction ** {benchmark[0].split('(')[0].upper()} **")
                     
                     for k, test in enumerate(benchmark, 1):
@@ -371,6 +370,7 @@ async function executeTestAsync(id_editor, mode) {
                 if numerous_benchmark != []:
                     print(f"- Fonctions manquantes ou noms de fonctions incorrectes.")
                     print(f"- Respectez les noms indiqués dans l'énoncé.")
+                    global_failed += 1
                 else:
                     print(f"🙇🏻 pas de fichier de test... Si vous êtes sur de vous, continuez à cliquer sur le gendarme.")
                     global_failed += 1

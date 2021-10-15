@@ -20,4 +20,5 @@ def créer_tache():
         turtle.goto(x, y)
         turtle.pendown()
         turtle.dot(taille, couleur)
+    return None
 

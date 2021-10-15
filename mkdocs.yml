@@ -20,7 +20,11 @@ nav:
   - "Hack" :
     - "Clavier" : hack1.md
     - "Constantes" : pi.md
+  - "Bac à sable" :  
     - "Bac à sable" : sandbox.md
+  - "TP" :
+    - "TP 3" : tp3.md  
+    - "TP 4" : tp4.md  
   # - "Algorithmique" : 
   #   - "Premiers algorithmes" : algorithmes1.md
   #   - "Algorithmes de tri" : algorithmes2.md
