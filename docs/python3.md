@@ -382,6 +382,20 @@ La structure de contrôle correspondant le plus au graphe de contrôle du paragr
 
             On remarque qu'on vient de répéter la même opération 4 fois car l'itérable est composé de 4 lettres.
 
+    === {{exercice(False)}}
+
+        - [ ] Exécuter ce programme ci-dessous.
+        - [ ] Qu'affiche-t-il ?
+        - [ ] Comprendre le fonctionnement de l'accumulateur en affichant, dans la boucle, les valeurs référencées par les variables `#!python accumulateur` et `#!python mot`.
+
+        {{IDEv('python3/exo18')}}
+
+        ??? help "Aide"
+
+            L'accumulateur permet d'ajouter dans une même variable plusieurs valeurs. 
+            
+            Cela permet donc d'accumuler des chaînes de caractères en des phrases ou plus souvent d'additionner des nombres ensemble, comme dans l'exercice suivant.
+
 
     === {{exercice(False)}}
 
