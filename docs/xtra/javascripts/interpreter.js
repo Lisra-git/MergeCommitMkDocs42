@@ -280,7 +280,7 @@ function showGUI(id_editor) {
     var txt = document.createElement("div");
     // txt.innerHTML='<details class="check"><summary>Fenêtre graphique</summary>\
     // <div class="highlight" id="gui_'+id_editor+'"></div></details>'
-    txt.innerHTML='<details open class="check"><summary>Fenêtre graphique</summary><div class = "can_wrapper"><div id = "gui_'+id_editor+'"><canvas id ="tracer" width="700" height="400"></canvas><canvas id="pointer" width="700" height="400"></canvas></div></div></details>'
+    txt.innerHTML='<details open class="check"><summary>Fenêtre graphique</summary><div class = "can_wrapper"><div id = "gui_'+id_editor+'"><canvas id = "gui_'+id_editor+'_tracer" width="700" height="400"></canvas><canvas id="gui_'+id_editor+'_pointer" width="700" height="400"></canvas></div></div></details>'
 
     wrapperElement.insertAdjacentElement('afterend', txt)
 }}

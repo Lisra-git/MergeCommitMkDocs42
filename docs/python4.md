@@ -244,6 +244,26 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
         {{IDEv('python4/exo9')}}
 
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python trouver_maximum_2` qui prend en paramètre deux entiers `#!python a` et `#!python b`. Cette fonction renvoie la valeur du plus grand des deux entiers.
+        - [ ] Exécuter le programme puis tester votre fonction dans la console avant de le valider avec le gendarme.
+
+        {{IDEv('python4/exo10')}}
+
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python trouver_maximum_3` qui prend en paramètre deux entiers `#!python a`,  `#!python b` et `#!python c`. Cette fonction renvoie la valeur du plus grand des trois entiers. On pourra utiliser la fonction précédente `#!python trouver_maximum_2`.
+        - [ ] Exécuter le programme puis tester votre fonction dans la console avant de le valider avec le gendarme.
+
+        {{IDEv('python4/exo11')}}
+
+        ??? help "Aide"
+
+            Pour trouver le maximum entre trois nombres, on veut trouver le maximum M entre deux nombres a et b puis trouver le maximum entre M et le dernier nombre c.
+
 ### Et si on n'a rien à renvoyer ?
 
 !!! {{cours()}}
@@ -252,9 +272,9 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
     ??? {{ext()}}
 
-        En pratique, `#!python return None` n'est pas obligatoire. Si une fonction ne contient pas le mot-clé `#!python return`, Python rajoutera gentiment `#!python return None` à la fin de votre fonction lors de l'interprétation du programme.
+        En pratique, `#!python return None` n'est pas obligatoire. Si une fonction ne contient pas le mot-clé `#!python return`, Python rajoutera gentiment (et automatiquement) `#!python return None` à la fin de votre fonction lors de l'interprétation du programme.
 
-        Attention, `explicit is better than implicit`! Écrivez toujours `#!python return None`.
+        `explicit is better than implicit` : écrivez toujours `#!python return None`.
 
 !!! exo "Exercices"
 
@@ -263,7 +283,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
         - [ ] Écrire une fonction `#!python f` qui prend en paramètre un nombre flottant `#!python x` et qui **affiche** le nombre flottant `#!python x**2 + 1`.
         - [ ] Réaliser les opérations suivants : `#!python y = f(2)` puis `#!python print(y)` ? Expliquer le résultat.
 
-        {{IDEv('python4/')}}
+        {{IDEv('python4/exo12')}}
 
         ??? help "Explications"
 
@@ -282,17 +302,103 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
             `#!python print(y)` affiche donc bien `#!python None` !
 
+    === {{exercice(False)}}
+
+        !!! tip inline end "Dessin à obtenir"
+
+            ![Triangle à tracer](images/python4/exo13.jpg "Triangle"){: style="width:50%"}
+
+        - [ ] Compléter la fonction `#!python triangle` qui prend en paramètre :
+         
+            - une tortue graphique `#!python tortue` ;
+            - la longueur `#!python côté` du triangle ;
+            - l'abscisse initiale `#!python x` de la tortue ;
+            - l'ordonnée initiale `#!python y` de la tortue.
+           
+            Cette fonction dessine un triangle équilatéral de couleur verte dont le sommet en bas à gauche a pour coordonnées $(x, y)$.
+
+        - [ ] Exécuter votre programme et tester votre fonction dans la console.
+
+        ??? danger "Important"
+
+            N'oubliez pas le `#!python return None` !!!
+
+        {{IDEv('python4/exo13')}}
+
+    === {{exercice(False)}}
+
+        !!! tip inline end "Dessin à obtenir"
+
+            ![hauteur](images/python4/exo14.jpg "Triangle"){: style="width:50%"}
+
+        - [ ] Écrire une fonction `#!python calculer_hauteur` qui prend pour paramètre un côté `#!python côté` et renvoie la hauteur d'un triangle équilatéral de côté c.
+
+        - [ ] À l'aide des fonctions `#!python calculer_hauteur` et `#!python triangle`, créer la fonction `#!python nucléaire` ayant pour paramètre une tortue graphique `#!python tortue` et le côté `#!python côté`. Le centre du symbole nucléaire est $(0,0)$.
+
+        ??? help "Aide 1"
+
+            !!! tip inline end "Dessin"
+
+                ![hauteur](images/python4/dessin_exo14.jpg "Triangle"){: style="width:50%"}
+
+            La hauteur d'un triangle équilatéral peut se calculer facilement en découpant le triangle équilatéral en deux triangles rectangles. On applique alors le théorème de Pythagore. Faites un dessin !!
+
+        ??? help "Aide 2"
+
+            Les maths ne sont pas votre truc. Voici la formule : $h = \dfrac{\sqrt{3}}{2} c$.
+
+        ??? danger "Important"
+
+            Avez-vous penser au `#!python return None` !!! J'y tiens. Vraiment. Pour de vrai.
+
+        {{IDEv('python4/exo14')}}
+
+
+<!-- - [ ] Écrire une fonction `#!python calculer_hauteur`  l'aide de la fonction `#!python triangle`, créer les fonctions :
+
+- [ ] À l'aide de la fonction `#!python triangle`, créer les fonctions :
+
+    - `#!python nucléaire` ayant pour paramètre une tortue graphique `#!python tortue` et le côté `#!python côté`;
+    - `#!python triforce` ayant pour paramètre une tortue graphique `#!python tortue` et le côté `#!python côté`;
+    - `#!python sapin` ayant pour paramètre une tortue graphique `#!python tortue` et le nombre de `#!python niveau` du sapin. La taille est divisée par $\dfrac{1}{3} pour passer d'un niveau à l'autre.
+
+    ![Triangles à tracer](images/python4/exo14.jpg "Triangle")
+
+- [ ] Tester vos fonctions dans la console.
+- [ ] Mention spéciale à ceux qui arrivent à mettre des boules de couleur aléatoire sur le sapin !
+
+
+
+
+{{IDEv('python4/exo14')}}  -->
+
+
 ## Utilisation de `#!python return`
 
 !!! {{cours()}}
 
-    Il est possible de mettre plusieurs `#!python return` dans une seule fonction.
+    Dans une seule fonction, il est possible de renvoyer plusieurs valeurs avec `#!python return`. 
+    
+    Il suffit d'utiliser la syntaxe : `#!python return valeur1, valeur2, valeur3 ...`.
+
+    ???+ example "Exemple"
+
+        {{IDEv('python4/exemple3')}}
+
+    Il est également possible de mettre plusieurs `#!python return` dans une seule fonction.
 
     Dans ce cas, `#!python return` est comme un siège éjectable : dès que le programme voit une instruction commençant par `#!python return`, la fonction s'arrête !
 
     ???+ example "Exemple"
 
-        dd
+        {{IDEv('python4/exemple4')}}
+
+        `#!python texte` est très différent de `#!python phrase`. En effet, `#!python texte` et `#!python lettre` sont les paramètres de la fonction, comme le $x$ de $f(x)$ en Maths.
+
+        `#!python "a"` et `#!python phrase`sont les arguments de la fonction, comme $2$ de $f(2)$ en Maths. Ce sont eux qui vont être analysés par la fonction.
+
+        Finalement, `#!python caractère` est une simple variable de boucle qui n'existe que dans la fonction.
+
 
 !!! danger "Danger mortel"
 
@@ -311,7 +417,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
         - [ ] Dans la console, appeler la fonction `#!python trouver_pair` sur les tableaux `#!python [1, 3, 5]`, `#!python [8, 4, 10]` et `#!python [5, 20, 5]`. Que fais réellement cette fonction ?
         - [ ] Corriger la fonction pour obtenir le comportement attendu.
 
-        {{IDEv('python4/exo30')}}
+        {{IDEv('python4/exo15')}}
 
     === {{exercice(False)}}
 
