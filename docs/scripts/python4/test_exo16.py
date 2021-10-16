@@ -1,2 +1,2 @@
-b1 = ("trouver_maximum_3(1, 2, 3) == 3", "trouver_maximum_3(30, 20, 10) == 30", "trouver_maximum_3(8, 8, 8) == 8",)
+b1 = ("trouver_répétition('A', 'AAA') == True", "trouver_répétition('B', 'AAA') == False", "trouver_répétition('A', 'ABB') == False",)
 benchmark = (b1, )

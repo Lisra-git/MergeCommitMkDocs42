@@ -421,6 +421,47 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
     === {{exercice(False)}}
 
+        - [ ] Écrire une fonction `#!python trouver_répétition` qui prend pour paramètre une chaîne de caractères `#!python lettre` et une chaîne de caractères `#!python texte`.
+
+            Cette fonction renvoie :
+        
+            - le booléen `#!python True` **dès que** la lettre `#!python lettre` est répétée plus d'une fois ;
+            - le booléen `#!python False` sinon.
+
+        - [ ] Exécuter le code ;
+        - [ ] Dans la console, à l'aide de la fonction `#!python trouver_répétition`, vérifier si la lettre `#!python "A"` est répétée dans la chaîne d'ADN "ACCACGAC", vérifier également que la lettre `#!python "G"` n'est pas répétée et que la lettre `#!python "T"` n'est pas répétée.
+
+        ??? help "Aide" 
+
+            Pensez à l'arrêt anticipé d'une boucle à l'aide d'un `#!python return`.
+
+        {{IDE('python4/exo16')}}
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python translater` qui prend pour paramètre deux entiers `#!python vec_x` et `#!python vec_y` (coordonnées d'un vecteur) et deux entiers `#!python a` et `#!python b` permettant de réaliser une translation de vecteur $(\vec a, \vec b)$. Cette fonction renvoie donc deux entiers résultant de la somme des abscisses et de la somme des ordonnées.
+
+        ??? help "Aide" 
+
+            Pensez à la syntaxe `#!python valeur1, valeur2`.
+
+        {{IDE('python4/exo17')}}
+
+
+    === {{exercice(False)}}
+
+        - [ ] Écrire une fonction `#!python générer` qui prend pour paramètre un entier `#!python nombre_bit` . Cette fonction génère aléatoirement un nombre binaire de `#!python nombre_bit` bits, sous forme de chaîne de caractères. On utilisera un accumulateur et on utilisera `#!python str(random.randint(0,1))` pour générer des bits aléatoires sous forme de chaîne de caractères.
+        - [ ] Écrire une fonction `#!python décoder` qui prend pour paramètre un nombre binaire `#!python nombre_binaire` écrit sous forme d'une chaîne de caractères. Cette fonction compte le nombre de 0 et le nombre 1 et renvoie quel bit apparaît le plus grand nombre de fois ainsi que le nombre d'apparitions.
+
+        ??? help "Aide 1"
+
+            On veut ajouter un nouveau bit à l'accumulateur un nombre exact de fois. Utilisez une boucle inconditionnelle.
+
+        ??? help "Aide 2"
+
+            Pensez à la syntaxe `#!python valeur1, valeur2`.
+
+        {{IDE('python4/exo18')}}
 
 ## Variables locales et globales
 
@@ -485,6 +526,11 @@ Global : uniquement pour les constantes pour éviter les EFFETS de BORD
             ```python
             def f(x):
                 return x**2
+            ```
+
+        === "Incompréhensible"
+            ```python
+            f = lambda _ : _**2
             ```
 
     Souvent... **Vous** allez être la personne nécessitant la documentation. Rien de plus frustrant que de revenir sur un de vos codes non documenté et de passer quelques heures à retrouver comment il fonctionne.

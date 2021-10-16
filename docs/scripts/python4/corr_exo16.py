@@ -1,13 +1,12 @@
-def trouver_maximum_2(a, b):
-    if a > b: 
-        maximum = a
-    else:
-        maximum = b
-    return maximum
+def trouver_répétition(lettre, texte):
+    compteur_lettre = 0
+    for caractère in texte:
+        if lettre == caractère:
+            compteur_lettre = compteur_lettre + 1
+        if compteur_lettre > 1:
+            return True
+    # fin de la boucle. On n'a pas trouvé deux occurrences.
+    return False
 
-def trouver_maximum_3(a, b, c):
-    # on veut trouver le maximum M de a et b
-    # puis trouver le maximum entre M et c
-    maximum_actuel = trouver_maximum_2(a, b)
-    maximum = trouver_maximum_2(maximum_actuel, c)
-    return maximum
+adn = "ACCACGAC"
+print(trouver_répétition("A", adn))
