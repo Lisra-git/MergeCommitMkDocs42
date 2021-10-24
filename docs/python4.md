@@ -189,7 +189,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
         Pour indiquer que n est entier, on peut par exemple écrire :
         ```python
-        def compter(n : int):
+        def compter(n: int):
             ...
         ```
 
@@ -207,6 +207,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
     === {{exercice(False)}}
 
         - [ ] Écrire une fonction `#!python f` qui prend en paramètre un nombre flottant `#!python x` et qui renvoie le nombre flottant `#!python 2 * x + 1`.
+        - [ ] Exécuter votre fonction puis dans la console, écrire quelques tests. Par exemple : `#!python f(1)`.
         - [ ] Tester la fonction avec l'icône gendarme.
 
         {{IDEv('python4/exo5')}}
@@ -215,6 +216,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
         - [ ] Compléter la fonction `#!python calculer_aire_rectangle` qui prend en paramètre deux nombres flottants `#!python longueur` et `#!python largeur` et qui renvoie l'aire du rectangle.
         - [ ] Ajouter une fonction `#!python calculer_volume_boite` qui prend en paramètre trois nombres flottants `#!python longueur`, `#!python largeur` et `#!python hauteur` et qui renvoie le volume d'une boite.
+        - [ ] Exécuter vos fonctions puis dans la console, écrire quelques tests. Par exemple : `#!python calculer_aire_rectangle(1, 10)`.
         - [ ] Valider votre résultat avec l'icône gendarme !
 
         {{IDEv('python4/exo6')}}
@@ -222,6 +224,8 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
     === {{exercice(False)}}
 
         - [ ] Écrire une fonction `#!python est_divisible_par` qui prend en paramètre deux nombres entiers positifs `#!python entier` et `#!python diviseur` et qui renvoie `#!python True` si `#!python entier` est divisible par `#!python diviseur`.
+        - [ ] Exécuter votre fonction puis dans la console, écrire quelques tests. Par exemple : `#!python est_divisible_par(10, 2)`.
+        - [ ] Tester la fonction avec l'icône gendarme.
 
         {{IDEv('python4/exo8')}}
 
@@ -231,7 +235,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
         - [ ] Écrire une fonction `#!python valider_email` qui prend en paramètre une chaîne de caractères `#!python email`.
 
             Cette fonction renvoie `#!python True` si la chaîne de caractères contient un arobase `#!python @`. Une fois le parcours de l'adresse email avec une boucle inconditionnelle terminée, on renverra `#!python False` si l'arobase n'a pas été trouvé.
-        - [ ] Vérifier votre fonction en appelant par exemple `#!python valider_email("titou_du_01@live.fr")`.
+        - [ ] Vérifier la fonction en appelant par exemple `#!python valider_email("titou_du_01@live.fr")`.
         - [ ] Valider avec l'icône gendarme.
 
         {{IDEv('python4/exo7')}}
@@ -297,8 +301,9 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
             ```
             
             L'appel `#!python y = f(2)` se décompose en :
-            - en évaluation du résultat de ma fonction f(2) : c'est un affichage de `#!python 2**2 + 1`, suivi du renvoi de `#!python None` comme résultat ;
-            - `#!python y` référence la valeur renvoyée (`#!python None`)
+            
+            - en évaluation du résultat de ma fonction `#!python f(2)` : c'est un affichage de `#!python 2**2 + 1`, suivi du renvoi de `#!python None` comme résultat ;
+            - `#!python y` référence la valeur renvoyée qui est `#!python None`.
 
             `#!python print(y)` affiche donc bien `#!python None` !
 
@@ -345,11 +350,11 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
         ??? help "Aide 2"
 
-            Les maths ne sont pas votre truc. Voici la formule : $h = \dfrac{\sqrt{3}}{2} c$.
+            Les Maths ne sont pas votre truc. Voici la formule : $h = \dfrac{\sqrt{3}}{2} c$.
 
         ??? danger "Important"
 
-            Avez-vous penser au `#!python return None` !!! J'y tiens. Vraiment. Pour de vrai.
+            Avez-vous pensé au `#!python return None` !!! J'y tiens. Vraiment. **Pour de vrai**.
 
         {{IDEv('python4/exo14')}}
 
@@ -395,7 +400,7 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
         `#!python texte` est très différent de `#!python phrase`. En effet, `#!python texte` et `#!python lettre` sont les paramètres de la fonction, comme le $x$ de $f(x)$ en Maths.
 
-        `#!python "a"` et `#!python phrase`sont les arguments de la fonction, comme $2$ de $f(2)$ en Maths. Ce sont eux qui vont être analysés par la fonction.
+        `#!python "a"` et `#!python phrase` (ligne 12) sont les arguments de la fonction, comme $2$ de $f(2)$ en Maths. Ce sont eux qui vont être analysés par la fonction.
 
         Finalement, `#!python caractère` est une simple variable de boucle qui n'existe que dans la fonction.
 
@@ -467,12 +472,58 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
 !!! {{cours()}}
 
-    On appelle portée d'une variable l'ensemble des endroits du programme où elle existe.
-    Most frequently, name resolution relies on an "inner-to-outer context" rule, such as the Python LEGB (Local, Enclosing, Global, Built-in) rule: names implicitly resolves to the narrowest relevant context. In some cases name resolution can be explicitly specified, such as by the global and nonlocal keywords in Python; in other cases the default rules cannot be overridden.
-Global : uniquement pour les constantes pour éviter les EFFETS de BORD 
+    On appelle **portée** d'une variable l'ensemble des endroits du programme où elle existe.
 
+    En théorie, il est possible d'accéder à des variables extérieures à une fonction.
+    
+    Toutefois, pour simplifier notre travail, nous utiliserons des paramètres pour accéder à ces variables. Cela évite les **effets de bord** consistant à modifier des variables de manière inattendue.
 
+??? {{ext()}}
 
+    Généralement, le langage de programmation cherche les variables en fonction de leur portée. 
+    
+    Ainsi, si une variable appelée dans une fonction n'y apparaît pas, Python va chercher si cette variable apparaît dans une fonction englobante. 
+    
+    Si cette variable n'y apparaît pas non plus, Python va chercher si cette variable apparaît dans le programme principal. 
+    
+    Si la variable est toujours absente, Python va rechercher si cette variable est une variable Python par défaut.
+
+!!! exo "Exercices sur portée des variables"
+
+    === {{exercice(False)}}
+
+        On dispose d'une fonction `#!python générer_tableau_entiers`.
+
+        - [ ] Exécuter le code et dire ce que permet de faire cette fonction ;
+        - [ ] Modifier le programme afin d'afficher un tableau de 15 nombres aléatoires entre -5 et 5 ; 
+        - [ ] Modifier le programme afin d'afficher deux tableaux : l'un composé de 10 nombres aléatoires entre -5 et 5 et l'autre de 20 nombres aléatoires entre -5 et 5 ;
+        - [ ] Ajouter un paramètre à la fonction afin de simplifier la réponse à la question précédente.
+
+        {{IDE('python4/exo19')}}
+
+    === {{exercice(False)}}
+
+        On dispose de la fonction `#!python sum_adder` permettant de calculer la somme (sans retenue) d'un additionneur complet 1 bit. `#!python a`, `#!python b` et `#!python c_0` valent soit 0, soit 1.
+
+        - [ ] Pensez-vous que ce code fonctionne ?
+        - [ ] Exécuter le code et vérifier votre réponse à la question 1 ;
+        - [ ] Pourquoi ce code est-il compliqué à comprendre ?
+        - [ ] Corriger la fonction afin d'obtenir un comportement plus prévisible.
+
+        {{IDEv('python4/exo20')}}
+
+    === {{exercice(False)}}
+
+        On dispose d'une fonction `#!python dessiner_polygone` permettant d'ordonner à une tortue `#!python tortue` de dessiner un polygone de `#!python n_côté` de longueur `#!python L`.
+
+        - [ ] Exécuter le code ;
+        - [ ] La tortue `#!python fred` a-t-elle bien dessiné un polygone à six côtés, de longueur 40 ? Modifier la fonction afin de réaliser cette figure.
+        - [ ] À la suite de l'hexagone, on souhaite maintenant réaliser un décagone de longueur 40 ainsi qu'un dodécagone de longueur 40. Faire cela en rajoutant deux instruction avant `#!python fred.mainloop()`.
+
+        {{IDE('python4/exo21')}}
+
+<!-- Global : uniquement pour les constantes pour éviter les EFFETS de BORD  -->
+<!-- 
 !!! exo "Exo à réutiliser"
 
     Le programme suivant permet de comparer la longueur des deux mots "classique" et "clanique". Il affiche une phrase-réponse comparant le nombre de lettres dans les deux mots. 
@@ -483,13 +534,43 @@ Global : uniquement pour les constantes pour éviter les EFFETS de BORD
 
     ??? help "Solution"
 
-        {{IDE('python4/corr_exo1')}}
+        {{IDE('python4/corr_exo1')}} -->
 
 ## Documentation d'une fonction
 
 !!! {{cours()}}
 
-    Nommer clairement une fonction est fondamental mais il convient également de **documenter** toutes les fonctions que vous faites.
+    Pour écrire un code facilement compréhensible, nous avons jusqu'à maintenant utilisé le principe de de l'auto-documentation. On nomme toujours clairement nos variables et fonctions.
+
+    ???+ example "Exemple"
+
+        === "Un code illisible"
+
+            Difficile de savoir ce que fait ce programme...
+
+            ```python
+            def f(t):
+                m = -1
+                for i in t:
+                    if i > m:
+                        m = i
+                return m 
+            ```
+    
+        === "Un code auto-documenté"
+
+            Beaucoup plus lisible !
+
+            ```python
+            def calculer_maximum(tableau):
+                maximum_actuel = -1
+                for nombre in tableau:
+                    if nombre > maximum_actuel:
+                        maximum_actuel = nombre
+                return maximum_actuel
+            ```
+
+    Toutefois, il convient également de **documenter** les fonctions complexes que vous faites.
 
     Documenter permet d'expliquer aux personnes qui ne sont pas familières avec vos fonctions de les comprendre : 
 
@@ -530,7 +611,7 @@ Global : uniquement pour les constantes pour éviter les EFFETS de BORD
 
         === "Incompréhensible"
             ```python
-            f = lambda _ : _**2
+            f = lambda m : (lambda _ : pow(_, 1))(m) * (lambda u : u)(m)
             ```
 
     Souvent... **Vous** allez être la personne nécessitant la documentation. Rien de plus frustrant que de revenir sur un de vos codes non documenté et de passer quelques heures à retrouver comment il fonctionne.
@@ -542,7 +623,15 @@ Global : uniquement pour les constantes pour éviter les EFFETS de BORD
 
     === {{exercice(False)}}
 
-        def appartenir_cercle(x, y, R):
+        L'auto-documentation de cette fonction semble suffisante. À partir de cette auto-documentation, rajouter la documentation adéquate.
+
+        {{IDE('python4/exo22')}}
+<!-- 
+    === {{exercice(False)}}
+
+        Cette fonction a été assez mal auto-documentée... Rajouter la documentation.
+
+        {{IDE('python4/exo22')}} -->
 
 
 ## Résumé
@@ -551,11 +640,11 @@ Global : uniquement pour les constantes pour éviter les EFFETS de BORD
 
     Dans ce chapitre, j'ai appris : 
     
-    - [ ] blabla
-    - [ ] blabla
-    - [ ] blabla
-    - [ ] blabla
-    - [ ] blabla
+    - [ ] l'intérêt des fonctions en programmation informatique ;
+    - [ ] à écrire une fonction simple ;
+    - [ ] la différence entre paramètres et arguments ;
+    - [ ] l'instruction `#!python return` et ses subtilités ;
+    - [ ] à documenter mes fonctions.
 
 !!! danger "Une anecdote"
 
