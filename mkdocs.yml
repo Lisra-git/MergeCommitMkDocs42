@@ -17,14 +17,16 @@ nav:
     - "Tableaux et tuples" : python5.md
     - "Modularité" : python6.md
     - "Dictionnaires" : python7.md
+  - "TP" :
+    - "TP 3" : tp3.md  
+    - "TP 4" : tp4.md  
+  - "Extension" :
+    - "GUI" : gui.md  
   - "Hack" :
     - "Clavier" : hack1.md
     - "Constantes" : pi.md
   - "Bac à sable" :  
     - "Bac à sable" : sandbox.md
-  - "TP" :
-    - "TP 3" : tp3.md  
-    - "TP 4" : tp4.md  
   # - "Algorithmique" : 
   #   - "Premiers algorithmes" : algorithmes1.md
   #   - "Algorithmes de tri" : algorithmes2.md

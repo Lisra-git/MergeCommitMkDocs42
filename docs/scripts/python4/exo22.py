@@ -3,3 +3,4 @@ def appartenir_disque(x, y, x_c, y_c, rayon):
         return True
     else:
         return False
+
