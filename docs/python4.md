@@ -623,7 +623,9 @@ Les fonctions sans paramètres sont des **raccourcis** pour éviter de retaper p
 
     === {{exercice(False)}}
 
-        L'auto-documentation de cette fonction semble suffisante. À partir de cette auto-documentation, rajouter la documentation adéquate.
+        L'auto-documentation de cette fonction semble suffisante. 
+        
+        À partir de cette auto-documentation, ajouter une documentation adéquate.
 
         {{IDE('python4/exo22')}}
 <!-- 
