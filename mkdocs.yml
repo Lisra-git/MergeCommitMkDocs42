@@ -18,8 +18,10 @@ nav:
     - "Modularité" : python6.md
     - "Dictionnaires" : python7.md
   - "TP" :
+    - "Accueil TP" : index_tp.md
     - "TP 3" : tp3.md  
     - "TP 4" : tp4.md  
+    - "TP 8" : tp8.md  
   - "Extension" :
     - "GUI" : gui.md  
   - "Hack" :
