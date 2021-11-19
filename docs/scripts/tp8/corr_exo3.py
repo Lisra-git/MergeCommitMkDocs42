@@ -1,8 +1,10 @@
-def compter_répétition(T, élément):
-    compteur = 0
-    for entier in T:
-        if entier == élément:
-            compteur = compteur + 1
-    # une fois le parcours complet du 
-    # tableau, on renvoie le compteur
-    return compteur
+def vérifier_appartenance(T, x):
+    if x in T:
+        return True
+    else:
+        return False
+
+# ou
+
+def vérifier_appartenance(T, x):
+    return x in T
