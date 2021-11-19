@@ -1,17 +1,7 @@
-# Projet : Création site web
+# Projet : Conjecture de Goldbach
 
-!!! warning "But"
+Sujet au [format pdf](../scripts/projet1/goldbach.pdf).
 
-BLBLA
+Correction :
 
-## Présentation du projet
-
-OBLBLA
-
-## Contraintes
-
-BLBLA
-
-## Travail à réaliser
-
-PBLBLA
+{{IDE('projet1/goldbach')}}
