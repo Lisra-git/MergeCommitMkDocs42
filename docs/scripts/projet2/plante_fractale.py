@@ -31,11 +31,11 @@ def générer_plante(tableau, n_finesse):
         tableau = générer_nouveau_tableau(tableau)
     return tableau
 
-tableau = générer_plante(['X'], 1)
+tableau = générer_plante(['X'], 7)
 print(tableau)
 
 
-longueur = 8
+longueur = 3
 
 turtle.tracer(0)
 turtle.ht()

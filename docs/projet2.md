@@ -41,7 +41,7 @@ Ce tableau va permettre de donner des instructions `#!python Turtle` permettant 
 Ainsi :
 
  - si on lit un "+", on tourne à droite de 25° ;
- - si on lit un "+", on tourne à gauche de 25° ;
+ - si on lit un "-", on tourne à gauche de 25° ;
  - si on lit un "F", on avance de 10 pixels ;
  - si on lit un "[", on enregistre dans un tableau la position et l'angle actuel de la tortue ;
  - si on lit un "]", on récupère à partir du tableau la position et l'angle de la tortue précédemment enregistré.

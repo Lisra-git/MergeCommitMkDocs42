@@ -1,4 +1,4 @@
-def ajouter_expression(T, lettre):
+def ajouter_expression(T, expression):
     taille = len(T)
     # pensez à appeler la fonction ajouter_lettre
     pass
