@@ -40,10 +40,10 @@ nav:
   #   - "Électronique et logique booléenne" : architecture1.md
   #   - "Architecture de Von Neumann" : architecture2.md
   - "Projets" :
-    - "Création site web" : projet1.md
-    - "Un jeu dont vous êtes le héros!" : projet2.md 
-    - "Morpion" : projet3.md 
-    - "Un jeu de plateau" : projet4.md 
+    - "Conjecture de Goldbach" : projet1.md
+    - "La plante fractale" : projet2.md 
+    - "Création site web" : projet3.md
+    - "Morpion" : projet4.md 
     - "Création d'une rue" : projet5.md 
     - "Créez votre Bitcoin" : projet6.md
     - "pi, nombre univers ?" : projet7.md
