@@ -15,9 +15,6 @@ def racine_approchee(y, p = p_easy, marge = 0):  # racine_approchee
     return x
     
 
-
-def racine_approchee(y, marge, p = p_easy)
-
 print(timeit.timeit("verification(6543210, 8371779, 15486869)", globals=globals()))
 
 print(timeit.timeit("racine(17, 101)", globals=globals(), number=5)/5)
