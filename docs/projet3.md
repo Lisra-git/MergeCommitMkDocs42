@@ -1,17 +1,5 @@
-# Projet : Création site web
+# Projet : Bitcoin
 
-!!! warning "But"
+!!! {{cours()}}
 
-BLBLA
-
-## Présentation du projet
-
-OBLBLA
-
-## Contraintes
-
-BLBLA
-
-## Travail à réaliser
-
-PBLBLA
+    [Code de la séance précédente](scripts/scripts/../projet3/bitcoin.py)

@@ -31,7 +31,7 @@ def générer_plante(tableau, n_finesse):
         tableau = générer_nouveau_tableau(tableau)
     return tableau
 
-tableau = générer_plante(['X'], 7)
+tableau = générer_plante(['X'], 6)
 print(tableau)
 
 

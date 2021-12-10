@@ -22,6 +22,7 @@ nav:
     - "TP 3" : tp3.md  
     - "TP 4" : tp4.md  
     - "TP 8" : tp8.md  
+    - "TP 10" : tp10.md  
   - "Extension" :
     - "GUI" : gui.md  
   - "Hack" :
@@ -42,7 +43,7 @@ nav:
   - "Projets" :
     - "Conjecture de Goldbach" : projet1.md
     - "La plante fractale" : projet2.md 
-    - "Création site web" : projet3.md
+    - "Bitcoin" : projet3.md
     - "Morpion" : projet4.md 
     - "Création d'une rue" : projet5.md 
     - "Créez votre Bitcoin" : projet6.md
