@@ -48,6 +48,8 @@ nav:
     - "Création d'une rue" : projet5.md 
     - "Créez votre Bitcoin" : projet6.md
     - "pi, nombre univers ?" : projet7.md
+  - "Systèmes d'exploitation" :
+    - "OS" : os.md
 
 theme:
     name: material

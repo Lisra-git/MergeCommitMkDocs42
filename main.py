@@ -86,7 +86,9 @@ def define_env(env):
         Methods : The content of the file is hidden in the webpage. Replacing \n by a string makes it possible
         to integrate the content in mkdocs admonitions.
         """
-        short_path = f"""docs/{os.path.dirname(env.variables.page.url.rstrip('/'))}"""
+        short_path = f"""docs/"""
+        print('ici',short_path)
+        print(f"""{short_path}/scripts/{nom_script}.py""")
         try: 
             f = open(f"""{short_path}/scripts/{nom_script}.py""")
             content = ''.join(f.readlines())
