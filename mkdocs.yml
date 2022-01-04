@@ -103,7 +103,8 @@ markdown_extensions:
     - pymdownx.tasklist:            # Cases à cocher  - [ ]  et - [x]
         custom_checkbox:    false   #   avec cases d'origine
         clickable_checkbox: true    #   et cliquables.
-    - pymdownx.tabbed               # Volets glissants.  === "Mon volet"
+    - pymdownx.tabbed:               # Volets glissants.  === "Mon volet"
+        alternate_style: true 
     - pymdownx.superfences:          # Imbrication de blocs.
         preserve_tabs: true
         custom_fences:
