@@ -129,7 +129,7 @@ def define_env(env):
         """
         stripped_nom_script = nom_script.split('/')[-1]
         relative_path = '/'.join(nom_script.split('/')[:-1])
-        nom_script = f"{relative_path}/test_{stripped_nom_script}"
+        nom_script = f"{relative_path}/{stripped_nom_script}_test"
         content = read_ext_file(nom_script)
         if content is not None: 
             return f"""<span id="test_term_editor_{tc}" class="hide">{content}</span><button class="emoji_dark" onclick=\'executeTest("{tc}","{mode}")\'>🛂</button><span class="compteur">5/5</span>"""
@@ -160,7 +160,7 @@ def define_env(env):
         Last span hides the code content of the IDE if loaded.
         """
         content, tc = generate_content(nom_script)  # content with __ passed correctly here
-        corr_content, tc = generate_content(f"""{'/'.join(nom_script.split('/')[:-1])}/corr_{nom_script.split('/')[-1]}""")
+        corr_content, tc = generate_content(f"""{'/'.join(nom_script.split('/')[:-1])}/{nom_script.split('/')[-1]}_corr""")
         div_edit = f'<div class="ide_classe">'
         if mode == 'v':
             div_edit += f'<div class="wrapper"><div class="interior_wrapper"><div id="editor_{tc}"></div></div><div id="term_editor_{tc}" class="term_editor"></div></div>'
