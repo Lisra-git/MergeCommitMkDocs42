@@ -132,6 +132,7 @@ def define_env(env):
         nom_script = f"{relative_path}/{stripped_nom_script}_test"
         content = read_ext_file(nom_script)
         if content is not None: 
+            print(content)
             return f"""<span id="test_term_editor_{tc}" class="hide">{content}</span><button class="emoji_dark" onclick=\'executeTest("{tc}","{mode}")\'>🛂</button><span class="compteur">5/5</span>"""
         else: 
             return ''
