@@ -6,6 +6,23 @@ def define_env(env):
     "Hook function"
 
     @env.macro
+    def basthon(exo: str, hauteur: int) -> str:
+        "Renvoie du HTML pour embarquer un fichier `exo` dans Basthon"
+#        return f"""<iframe src="https://console.basthon.fr/?from={env.variables.site_url}{env.variables.page.url}../{exo}" width=100% height={hauteur}></iframe>
+        return f"""<iframe src="https://console.basthon.fr/?from=https://raw.githubusercontent.com/bouillotvincent/coursNSI/master/morpion.py" width=100% height={hauteur}></iframe>"""
+
+    @env.macro
+    def linux(height : int ) -> str:
+        "Renvoie du HTML pour embarquer un fichier `exo` dans Basthon"
+#        return f"""<iframe src="https://console.basthon.fr/?from={env.variables.site_url}{env.variables.page.url}../{exo}" width=100% height={hauteur}></iframe>
+        return f"""<iframe src="https://bellard.org/jslinux/vm.html?url=alpine-x86.cfg&mem=192" width=100% height={height}></iframe>"""
+
+    @env.macro
+    def console(height : int ) -> str:
+        "Renvoie du HTML pour embarquer un fichier `exo` dans Basthon"
+        return f"""<iframe width="100%" height={height} name="embedded_python_anywhere" src="https://pyodide.org/en/stable/console.html"></iframe>"""
+
+    @env.macro
     def script(lang: str, nom: str) -> str:
         "Renvoie le script dans une balise bloc avec langage spécifié"
         return f"""```{lang}
@@ -51,8 +68,6 @@ def define_env(env):
 
     env.variables['term_counter'] = 0
     env.variables['IDE_counter'] = 0
-    INFTY_SYMBOL = '\u221e'
-    from urllib.parse import unquote
 
     @env.macro
     def terminal() -> str:
@@ -65,40 +80,34 @@ def define_env(env):
         env.variables['term_counter'] += 1
         return f"""<div onclick='start_term("id{tc}")' id="fake_id{tc}" class="terminal_f"><label class="terminal"><span>>>> </span></label></div><div id="id{tc}" class="hide"></div>"""
 
-    def read_ext_file(nom_script : str, path : str, filetype : str = 'py') -> str:
+    def read_ext_file(nom_script : str) -> str:
         """
         Purpose : Read a Python file that is uploaded on the server.
         Methods : The content of the file is hidden in the webpage. Replacing \n by a string makes it possible
         to integrate the content in mkdocs admonitions.
         """
         short_path = f"""docs/"""
-
+        print('ici',short_path)
+        print(f"""{short_path}/scripts/{nom_script}.py""")
         try: 
-            if path == "":
-                print(nom_script, f"""{short_path}/scripts/{nom_script}.{filetype}""")
-                f = open(f"""{short_path}/scripts/{nom_script}.{filetype}""")
-            else:
-                # print('relp', f"""{short_path}/{path}/{nom_script}.{filetype}""")
-                print(nom_script, f"""{short_path}/{path}/{nom_script}.{filetype}""")
-                f = open(f"""{short_path}/{path}/{nom_script}.{filetype}""")
-            # f = open(f"""{short_path}/scripts/{nom_script}.{filetype}""")
+            f = open(f"""{short_path}/scripts/{nom_script}.py""")
             content = ''.join(f.readlines())
             f.close()
-            content = content + "\n"
+            content = content+ "\n"
             # Hack to integrate code lines in admonitions in mkdocs
             # change backslash_newline by backslash-newline
             return content.replace('\n','backslash-newline').replace('_','python-underscore').replace('*','python-star')
         except :
             return
         
-    def generate_content(nom_script : str, path : str, filetype : str = 'py') -> str:
+    def generate_content(nom_script : str) -> str:
         """
         Purpose : Return content and current number IDE {tc}.
         """
         tc = env.variables['IDE_counter']
         env.variables['IDE_counter'] += 1
 
-        content = read_ext_file(nom_script, path, filetype)
+        content = read_ext_file(nom_script)
 
         if content is not None :
             return content, tc
@@ -110,11 +119,10 @@ def define_env(env):
         Methods : Use an HTML input to upload a file from user. The user clicks on the button to fire a JS event
         that triggers the hidden input.
         """
-        path_img = env.variables.page.abs_url.split('/')[1]
-        return f"""<button class="tooltip" onclick="document.getElementById('input_editor_{tc}').click()"><img src="/{path_img}/images/buttons/icons8-upload-64.png"><span class="tooltiptext">Téléverser</span></button>\
+        return f"""<button class="emoji" onclick="document.getElementById('input_editor_{tc}').click()">⤴️</button>\
                 <input type="file" id="input_editor_{tc}" name="file" enctype="multipart/form-data" class="hide"/>"""
 
-    def create_unittest_button(tc: str, nom_script: str, path : str, mode: str, MAX : int = 5) -> str:
+    def create_unittest_button(tc: str, nom_script: str, mode: str) -> str:
         """
         Purpose : Generate the button for IDE {tc} to perform the unit tests if a valid test_script.py is present.
         Methods : Hide the content in a div that is called in the Javascript
@@ -122,15 +130,10 @@ def define_env(env):
         stripped_nom_script = nom_script.split('/')[-1]
         relative_path = '/'.join(nom_script.split('/')[:-1])
         nom_script = f"{relative_path}/{stripped_nom_script}_test"
-        content = read_ext_file(nom_script, path)
+        content = read_ext_file(nom_script)
         if content is not None: 
-            path_img = env.variables.page.abs_url.split('/')[1]
-            return f"""<span id="test_term_editor_{tc}" class="hide">{content}</span>\
-                <button class="tooltip" onclick=\'executeTest("{tc}","{mode}")\'>\
-                <img src="/{path_img}/images/buttons/icons8-check-64.png">\
-                <span class="tooltiptext">Valider</span></button><span class="compteur">\
-                {MAX}/{MAX}\
-                </span>"""
+            print(content)
+            return f"""<span id="test_term_editor_{tc}" class="hide">{content}</span><button class="emoji_dark" onclick=\'executeTest("{tc}","{mode}")\'>🛂</button><span class="compteur">5/5</span>"""
         else: 
             return ''
 
@@ -141,85 +144,39 @@ def define_env(env):
         """
         return f"""<span style="indent-text:5em"> </span>"""
 
-    def get_max_from_file(content : str) -> tuple:#[str, int]: # compatibilité Python antérieur 3.8
-        split_content = content.split('backslash-newline')
-        max_var = split_content[0]
-        if max_var[:4] != "#MAX":
-            MAX = 5 
-        else:
-            value = max_var.split('=')[1].strip()
-            MAX = int(value) if value not in ['+', 1000] else INFTY_SYMBOL
-            i = 1
-            while split_content[i] == '':
-                i += 1
-            content = 'backslash-newline'.join(split_content[i:])
-        return content, MAX
-
-    def test_style(nom_script : str, element : str) -> bool:
-        guillemets = ["'", '"']
-        ide_style = ["", "v"]
-        styles = [f"""IDE{istyle}({i}{nom_script}{i}""" for i in guillemets for istyle in ide_style]
-        return any([style for style in styles if style in element])
-
-    def convert_url_to_utf8(nom : str) -> str:
-        return unquote(nom, encoding='utf-8')
-        
-
     @env.macro
-    def IDEv(nom_script : str = '', MAX : int = 5) -> str:
+    def IDEv(nom_script : str ='') -> str:
         """
         Purpose : Easy macro to generate vertical IDE in Markdown mkdocs.
         Methods : Fire the IDE function with 'v' mode.
         """
-        return IDE(nom_script, mode = 'v', MAX = MAX)
+        return IDE(nom_script, 'v')
+
 
     @env.macro
-    def IDE(nom_script : str = '', mode : str = 'h', MAX : int = 5) -> str:
+    def IDE(nom_script : str ='', mode : str = 'h') -> str:
         """
-        Purpose : Create an IDE (Editor+Terminal) on a Mkdocs document. {nom_script}.py is loaded on the editor if present. 
-        Methods : Two modes are available : vertical or horizontal. Buttons are added through functional calls.
+        Purpose : Create a IDE (Editor+Terminal) on a Mkdocs document. {nom_script}.py is loaded on the editor if present. 
+        Methods : Two modes are available : vertical or horizontal. Buttons are added through functioncal calls.
         Last span hides the code content of the IDE if loaded.
         """
-        path_img = convert_url_to_utf8(env.variables.page.abs_url).split('/')[1]
-
-        path_file = '/'.join(filter(lambda folder: folder != "", convert_url_to_utf8(env.variables.page.abs_url).split('/')[2:-2]))
-        content, tc = generate_content(nom_script, path_file)
-
-
-        content, max_from_file = get_max_from_file(content)
-        MAX = max_from_file if MAX == 5 else MAX
-        MAX = MAX if MAX not in ['+', 1000] else INFTY_SYMBOL
-        corr_content, tc = generate_content(f"""{'/'.join(nom_script.split('/')[:-1])}/{nom_script.split('/')[-1]}_corr""", path_file)
-        div_edit = f'<div class="ide_classe" id={MAX}>'
+        content, tc = generate_content(nom_script)  # content with __ passed correctly here
+        corr_content, tc = generate_content(f"""{'/'.join(nom_script.split('/')[:-1])}/{nom_script.split('/')[-1]}_corr""")
+        div_edit = f'<div class="ide_classe">'
         if mode == 'v':
             div_edit += f'<div class="wrapper"><div class="interior_wrapper"><div id="editor_{tc}"></div></div><div id="term_editor_{tc}" class="term_editor"></div></div>'
         else:
             div_edit += f'<div class="wrapper_h"><div class="line" id="editor_{tc}"></div><div id="term_editor_{tc}" class="term_editor_h terminal_f_h"></div></div>'
-        div_edit += f"""<button class="tooltip" onclick='interpretACE("editor_{tc}","{mode}")'><img src="/{path_img}/images/buttons/icons8-play-64.png"><span class="tooltiptext">Lancer</span></button>"""
-        div_edit += f"""{blank_space()}<button class="tooltip" onclick=\'download_file("editor_{tc}","{nom_script}")\'><img src="/{path_img}/images/buttons/icons8-download-64.png"><span class="tooltiptext">Télécharger</span></button>{blank_space()}"""
+        div_edit += f"""<button class="emoji" onclick='interpretACE("editor_{tc}","{mode}")'>▶️</button>"""
+        div_edit += f"""{blank_space()}<button class="emoji" onclick=\'download_file("editor_{tc}","{nom_script}")\'>⤵️</button>{blank_space()}"""
         div_edit += create_upload_button(tc)
-        div_edit += create_unittest_button(tc, nom_script, path_file, mode, MAX)
+        div_edit += create_unittest_button(tc, nom_script, mode)
         div_edit += '</div>'
 
         div_edit += f"""<span id="content_editor_{tc}" class="hide">{content}</span>"""
         div_edit += f"""<span id="corr_content_editor_{tc}" class="hide">{corr_content}</span>"""
-        
-        elt_insertion = [elt for elt in env.page.markdown.split("\n") if test_style(nom_script, elt)]
-        elt_insertion = elt_insertion[0] if len(elt_insertion) >=1 else ""
-        spaces = " "*(len(elt_insertion) - len(elt_insertion.lstrip()))
-        if nom_script == '' : spaces = " "  # to avoid conflict with empty IDEs
-        if spaces == "":
-            div_edit += f'''
-{spaces}--8<--- "docs/xtra/start.md"
-'''
-        div_edit += f'''
-{spaces}--8<--- "docs/{path_file if path_file != "" else 'scripts'}/{nom_script}_REM.md"'''
-        if spaces == "":
-            div_edit += f'''
-{spaces}--8<--- "docs/xtra/end.md"
-'''
         return div_edit
-        
+    
     @env.macro
     def mult_col(*text):
         cmd = """<table style="border-color:transparent;background-color:transparent"><tr>"""

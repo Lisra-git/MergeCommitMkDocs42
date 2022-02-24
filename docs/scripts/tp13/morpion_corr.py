@@ -1,5 +1,46 @@
 from __future__ import annotations
 import random
+import tkinter as tk
+
+TOUR = 1
+COTE_CARRE = 130
+PLATEAU = [[0]*3 for _ in range(3)]
+JOUEUR = random.choice([-1, 1]) # on tire au hasard le numéro du joueur qui commence.
+FINI = False
+
+def tracer_croix(x_clic : int, y_clic : int) -> None:
+    canvas.create_line(x_clic, y_clic, x_clic + COTE_CARRE, y_clic + COTE_CARRE, width = 5, fill = 'blue')
+    canvas.create_line(x_clic, y_clic + COTE_CARRE, x_clic + COTE_CARRE, y_clic, width = 5, fill = 'blue')
+
+def tracer_cercle(x_clic : int, y_clic : int) -> None:
+    canvas.create_oval(x_clic, y_clic, x_clic + COTE_CARRE, y_clic + COTE_CARRE, width = 5, outline = 'red')
+
+def tracer_damier():
+    for i in [0, COTE_CARRE, 2*COTE_CARRE]:
+        for j in [0, COTE_CARRE, 2*COTE_CARRE]:
+            canvas.create_rectangle(i, j, i + COTE_CARRE, j + COTE_CARRE, width = 2, fill = 'white')
+
+def calculer_coordonnees(x, y):
+    return (x // COTE_CARRE) * COTE_CARRE, (y // COTE_CARRE) * COTE_CARRE
+
+def jouer_plateau(event):
+    global TOUR, FINI, PLATEAU
+    FINI = finir_partie(PLATEAU)
+    if FINI:
+        lab.configure(text = f"Joueur {TOUR} a gagné !")
+    x, y = calculer_coordonnees(event.x, event.y)
+    print(x//130,y//130)
+    print(FINI)
+    if not FINI:
+        if PLATEAU[x//130][y//130] == 0:
+            PLATEAU[x//130][y//130] = TOUR
+            if TOUR == 1:
+                tracer_croix(x, y)
+                TOUR = -1
+            else : 
+                tracer_cercle(x, y)
+                TOUR = 1
+
 
 def additionner_tableau(tableau : list[int]) -> int:
     somme = 0
@@ -20,7 +61,6 @@ def renvoyer_diagonale_down(tableau : list[list[int]]) -> list[int]:
 # ou en une ligne !
 def renvoyer_diagonale_up(tableau : list[list[int]]) -> list[int]:
     return [tableau[i][2-i] for i in range(len(tableau))]
-
 
 def renvoyer_colonne(tableau : list[list[int]], n_colonne : int) -> list[int]:
     tableau_sortie = [] 
@@ -79,18 +119,37 @@ def finir_partie(plateau):
         resultat_joueur.append(somme)
     return (3 in resultat_joueur) or (-3 in resultat_joueur)
 
-def jouer():
-    plateau = [[0]*3 for _ in range(3)]
-    afficher(convertir_tableau_tableau(plateau)) # affichage dans Thonny
-    joueur = random.choice([-1, 1]) # on tire au hasard le numéro du joueur qui commence.
+def jouer(i, j):
+    #afficher(convertir_tableau_tableau(plateau)) # affichage dans Thonny
     fini = False # booléen pour indiquer si une partie est finie.
-    while not fini:
-        if joueur == 1: joueur = -1
-        else: joueur = 1
-        plateau = poser_jeton(plateau, joueur)
-        afficher(convertir_tableau_tableau(plateau))
-        fini = finir_partie(plateau)
-    print(f"Le joueur {joueur} a gagné cet épique duel .")
+    if joueur == 1: joueur = -1
+    else: joueur = 1
+    PLATEAU[i][j] = joueur
+    # plateau = plateau[i][j] poser_jeton(plateau, joueur)
+    # afficher(convertir_tableau_tableau(plateau))
+    fini = finir_partie(PLATEAU)
+    # print(f"Le joueur {joueur} a gagné cet épique duel .")
 
 
-jouer()
+largeur, hauteur = 3 * COTE_CARRE, 3 * COTE_CARRE
+
+fenetre = tk.Tk()
+fenetre.title('Morpion !')
+
+lab = tk.Label(fenetre, text = '')
+lab.grid(row = 0, column = 0, padx = 3, pady = 3, columnspan = 2)
+
+btn1 = tk.Button(fenetre, text= 'Quit', command = fenetre.quit)
+btn1.grid(row = 2, column = 1, padx = 3, pady = 3, sticky = tk.E + tk.W)
+
+btn2 = tk.Button(fenetre, text= 'Play again')#, command = clear)
+btn2.grid(row = 2, column = 0, padx = 3, pady = 3, sticky = tk.E + tk.W)
+
+canvas = tk.Canvas(fenetre, width= largeur, height = hauteur, background = 'black')
+canvas.grid(row = 1, column = 0, padx = 3, pady = 3, columnspan = 2)
+tracer_damier()
+
+
+canvas.bind('<Button-1>', jouer_plateau)
+
+fenetre.mainloop()

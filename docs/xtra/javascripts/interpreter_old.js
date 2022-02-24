@@ -1,5 +1,6 @@
 var debug_mode = false;
 var dict = {};  // Global dictionnary tracking the number of clicks
+const nAttempts = 5;
 
 function sleep(s){
     return new Promise(resolve => setTimeout(resolve, s));
@@ -270,46 +271,37 @@ function executeTest(id_editor, mode) {
     executeTestAsync(id_editor, mode)
 }
 
-function getWrapperElement(filetype, id_editor) {
-    if (document.getElementById(filetype + id_editor) === null) {
-        let wrapperElement = document.getElementById(id_editor);  /* going up the DOM to IDE+buttons */ 
-        while (wrapperElement.className !== "ide_classe") {
-            wrapperElement = wrapperElement.parentNode
-        }
-    return wrapperElement;
-}}
 
 function showGUI(id_editor) {
-    let wrapperElement = getWrapperElement("gui_", id_editor);
+    if (document.getElementById("gui_"+id_editor) === null) {
+    let wrapperElement = document.getElementById(id_editor);  /* going up the DOM to IDE+buttons */ 
+    while (wrapperElement.className !== "ide_classe") {
+        wrapperElement = wrapperElement.parentNode
+    }
     var txt = document.createElement("div");
     // txt.innerHTML='<details class="check"><summary>Fenêtre graphique</summary>\
     // <div class="highlight" id="gui_'+id_editor+'"></div></details>'
     txt.innerHTML='<details open class="check"><summary>Fenêtre graphique</summary><div class = "can_wrapper"><div id = "gui_'+id_editor+'"><canvas id = "gui_'+id_editor+'_tracer" width="700" height="400"></canvas><canvas id="gui_'+id_editor+'_pointer" width="700" height="400"></canvas></div></div></details>'
 
     wrapperElement.insertAdjacentElement('afterend', txt)
-}
+}}
 
 
 function showCorrection(id_editor) {
-    let wrapperElement = getWrapperElement("gui_", id_editor);
-
+    if (document.getElementById("corr_"+id_editor) === null) {
+    let wrapperElement = document.getElementById(id_editor);  /* going up the DOM to IDE+buttons */ 
+    while (wrapperElement.className !== "ide_classe") {
+        wrapperElement = wrapperElement.parentNode
+    }
     var txt = document.createElement("div");
-    txt.setAttribute("id", "solution_" + id_editor);
     txt.innerHTML='<details class="check"><summary>Solution</summary>\
     <div class="highlight" id="corr_'+id_editor+'"></div></details>'
 
     let url_pyfile = document.getElementById("corr_content_"+id_editor).textContent
 
-
     function createACE(id_editor){
-        let paletteElement = document.querySelector('label[for="__palette_2"]')
-        if (paletteElement.previousElementSibling.dataset.mdColorMedia === "(prefers-color-scheme: dark)") {
-            var defineTheme = paletteElement.hidden ? "ace/theme/crimson_editor" : 'ace/theme/tomorrow_night_bright'
-        } else {
-            var defineTheme = paletteElement.hidden ? 'ace/theme/tomorrow_night_bright' : "ace/theme/crimson_editor"
-        }
         var editor = ace.edit(id_editor, {
-            theme: defineTheme,
+            theme: "ace/theme/tomorrow_night_bright",
             mode: "ace/mode/python",
             autoScrollEditorIntoView: true,
             maxLines: 30,
@@ -324,16 +316,7 @@ function showCorrection(id_editor) {
     }
     wrapperElement.insertAdjacentElement('afterend', txt)
     window.IDE_ready = createACE('corr_'+id_editor)           // Creating Ace Editor #id_editor
-
-    // revealing the remark from Element
-    var remElement = document.getElementById("rem_content_" + id_editor)
-    remElement.style.display = "block";
-    
-    var fragment = document.createDocumentFragment();
-    fragment.appendChild(remElement);
-    document.getElementById("solution_" + id_editor).firstChild.appendChild(fragment);
-
-}
+}}
 
 async function executeTestAsync(id_editor, mode) {
     await pyodideReadyPromise;
@@ -348,7 +331,7 @@ async function executeTestAsync(id_editor, mode) {
         // pyodide.runPython("from __future__ import annotations\n"+code);    // Running the student code (no output)
 
         let test_code = document.getElementById("test_term_editor_"+id_editor).textContent.replace(/backslash-newline/g, "\n").replace(/python-underscore/g, "_").replace(/python-star/g, "*");
-        if (test_code.includes("benchmark")) {
+        if (!test_code.includes("assert")) {
         pyodide.runPython(`
         import sys as __sys__
         import io as __io__
@@ -397,8 +380,7 @@ async function executeTestAsync(id_editor, mode) {
         `);
         var output = await pyodide.runPythonAsync(test_code + "\ntest_unitaire(benchmark)");    // Running the code OUTPUT
         } else {
-            var prefix = "    ";
-            // Use of template litterals
+            var i = 0;
             pyodide.runPython(`
 import sys as __sys__
 import io as __io__
@@ -411,7 +393,9 @@ fail_smb = ['🌩','🙈','🙉','⛑','🌋','💣']
 if 'test_unitaire' not in list(globals()):
     from random import choice
 try:
-${test_code.split('\n').map(f => prefix + f).join('\n')}
+    ${test_code.replace(/assert/g, function(match) { 
+        return match === "assert" ? (i++ === 0 ? 'assert' : '    assert') : '    assert'; 
+    })}
     print(f"Bravo vous avez réussi tous les tests {choice(success_smb)}")
     global_failed = 0
 except AssertionError as msg:
@@ -427,30 +411,22 @@ var output = await pyodide.runPythonAsync(`dummy_fct()`) // the dummy function a
 }
 
         var stdout = pyodide.runPython("__sys__.stdout.getvalue()")  // Catching and redirecting the output
-        let elementCounter = document.getElementById("test_term_editor_"+id_editor)
-        let parentCounter = elementCounter.parentElement.id;
-        const nAttempts = parentCounter;
-
-        while (elementCounter.className !== "compteur") {
-            elementCounter = elementCounter.nextElementSibling
+        elementCompteur = document.getElementById("test_term_editor_"+id_editor)
+        while (elementCompteur.className !== "compteur") {
+            elementCompteur = elementCompteur.nextElementSibling
         }
         if (output === 0) {
             dict[id_editor] = nAttempts
         } else {
             dict[id_editor] = 1 + (id_editor in dict ? dict[id_editor] : 0)
         }
-        console.log('n', nAttempts)
-        if (nAttempts !== '\u221e') {
-            elementCounter.textContent = Math.max(0, nAttempts-dict[id_editor]) + "/" + parentCounter
-        } else {
-            elementCounter.textContent = parentCounter + "/" + parentCounter
-        }
-        console.log(dict[id_editor], nAttempts)
-        if (dict[id_editor] == nAttempts && !document.getElementById('solution_editor_'+id_editor)) {
-            let correctionExists = $('#corr_content_editor_'+id_editor).text()  // Extracting url from the div before Ace layer
-            if (correctionExists !== "") {
-                showCorrection('editor_'+id_editor);
-            };
+        elementCompteur.textContent = Math.max(0, nAttempts-dict[id_editor])+"/5"
+
+        if (dict[id_editor] === nAttempts) {
+        let correctionExists = $('#corr_content_editor_'+id_editor).text()  // Extracting url from the div before Ace layer
+        if (correctionExists !== "") {
+            showCorrection('editor_'+id_editor);
+        };
         }
 
         nlines = calcTermSize(stdout, mode)
@@ -463,13 +439,42 @@ var output = await pyodide.runPythonAsync(`dummy_fct()`) // the dummy function a
             }
             editor.session.setValue(stream); // set value and reset undo history
         }
+        // resize terminal to the size of editor on interpreting
+        // console.log('bla', mode, nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
+        // if (mode === "v") {
+        //     console.log('bla', nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
+        //     $.terminal.active().resize($.terminal.active().width(), max(nlines*30, document.getElementById("editor_" + id_editor).style.height));
+        // }
 
         $.terminal.active().echo(stdout); 
 
     } catch(err) {
         err = err.toString().split("\n").slice(-7).join("\n");
         nlines = calcTermSize(err, mode);
-
+        // if (mode === "v") {
+        //     console.log('bla', nlines*30, document.getElementById("editor_" + id_editor).style.height, max(nlines*30, document.getElementById("editor_" + id_editor).style.height))
+        //     $.terminal.active().resize($.terminal.active().width(), max(nlines*30, document.getElementById("editor_" + id_editor).style.height));
+        // }
         $.terminal.active().echo(">>> Erreur de syntaxe !\n"+err)//.split("\n").slice(~~(nlines/2)).join("\n"));   // Would be nice to display only the last lines
       }
-    }
+    } 
+
+/* <div class="admonition info">
+    <p class="admonition-title">paf</p>
+    <div class="tabbed-set" data-tabs="1:3">
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"></input>
+        <label for="__tabbed_1_1">test</label>
+        <div class="tabbed-content">blabla</div>
+
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"></input>
+        <label for="__tabbed_1_1">test2</label>
+        <div class="tabbed-content">blabla2</div>
+    </div>
+</div> */
+
+// $(document).ready(function() {
+    // auto-load the Terminals but slows down A LOT the global loading of pyodide (not a good idea)
+    // $('[id^=cons_]').each(function() {
+    //     let number = this.id.split('_').pop();
+    //     window.console_ready = pyterm('#cons_'+number);
+    // });

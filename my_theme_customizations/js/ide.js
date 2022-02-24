@@ -5,9 +5,15 @@ $('[id^=editor_]').each(function() {
 
     let id_editor = "editor_" + number
     function createACE(id_editor){
+        let paletteElement = document.querySelector('label[for="__palette_2"]')
+        if (paletteElement.previousElementSibling.dataset.mdColorMedia === "(prefers-color-scheme: dark)") {
+            var defineTheme = paletteElement.hidden ? "ace/theme/crimson_editor" : 'ace/theme/tomorrow_night_bright'
+        } else {
+            var defineTheme = paletteElement.hidden ? 'ace/theme/tomorrow_night_bright' : "ace/theme/crimson_editor"
+        }
         ace.require("ace/ext/language_tools");
         var editor = ace.edit(id_editor, {
-            theme: "ace/theme/tomorrow_night_bright",
+            theme: defineTheme,
             mode: "ace/mode/python",
             autoScrollEditorIntoView: true,
             maxLines: 30,
@@ -30,6 +36,72 @@ $('[id^=editor_]').each(function() {
         let editor = ace.edit(id_editor)
         editor.getSession().setValue('\n\n\n\n\n');  // Creates 6 empty lines for UX
     }
+
+    // A correction Element always exists (can be void)
+    prevNode = document.getElementById("corr_content_" + id_editor)
+    var workingNode = prevNode
+    var remNode = document.createElement("div");
+
+    if (prevNode.parentNode.tagName === 'P') {
+        
+        // REM file on top level
+        // console.log('51',id_editor,workingNode, workingNode.parentNode.innerHTML.includes('<strong>A</strong>'))
+        workingNode = prevNode.parentNode.nextElementSibling //'<strong>A</strong>'
+        // if (workingNode.nex)
+
+        if (workingNode.innerHTML.includes('<strong>A</strong>') && workingNode.nextElementSibling.innerHTML.includes('<strong>Z</strong>')) {
+            remNode.innerHTML = 'Pas de remarque particulière.';
+            workingNode.nextElementSibling.remove()
+            workingNode.remove()
+
+        } else {
+        workingNode.remove()
+        workingNode = prevNode.parentNode.nextElementSibling
+
+        var tableElements = [];
+        while (!workingNode.innerHTML.includes('<strong>Z</strong>')) {
+            tableElements.push(workingNode)
+            workingNode = workingNode.nextElementSibling;
+        }
+        workingNode.remove()
+
+        for (let i = 0; i < tableElements.length; i++ ){
+            remNode.append(tableElements[i])
+        }
+    }
+
+    } else {
+        // Search for the rem DIV.
+        workingNode = workingNode.nextElementSibling
+        // console.log(prevNode, workingNode)
+        // If workingNode is a <p> (admonition), we continue
+        // else, we are outside an admonition
+        if (workingNode !== null) {
+            workingNode = workingNode.nextElementSibling
+        }
+    // }
+    // No remark file. Creates standard sentence.
+    if (workingNode === null) {
+        remNode.innerHTML = 'Pas de remarque particulière.';
+    } else {
+
+        var tableElements = [];
+        while (workingNode !== null) {
+            tableElements.push(workingNode)
+            workingNode = workingNode.nextElementSibling;
+        }
+
+        for (let i = 0; i < tableElements.length; i++ ){
+            remNode.append(tableElements[i])
+        }
+        
+    }}
+    // Should create a global div
+    console.log(prevNode)
+    prevNode.insertAdjacentElement('afterend', remNode)
+    remNode.setAttribute("id", "rem_content_" + id_editor);
+    document.getElementById("rem_content_" + id_editor).style.display = "none"
+    
 });
 
 // Javascript to upload file from customized buttons
@@ -55,24 +127,43 @@ $(".highlight").bind('copy paste',function(e) { e.preventDefault(); return false
 
 // Following blocks paint the IDE according to the mkdocs light/dark mode 
 function paintACE(theme) {
-    for (var editeur of document.querySelectorAll('div[id^="editor_"]')) {
+    for (var editeur of document.querySelectorAll('div[id^="editor_"], div[id^="corr_editor_"]')) {
         let editor = ace.edit(editeur.id);
         editor.setTheme(theme);
         editor.getSession().setMode("ace/mode/python");
     };
 }
 
-window.addEventListener('load', () => {
-    var p = document.querySelector('label[for="__palette_2"]')
-    if (p.hidden) {
+window.addEventListener('DOMContentLoaded', () => {
+    let paletteElement = document.querySelector('label[for="__palette_2"]')
+    if (paletteElement.previousElementSibling.dataset.mdColorMedia === "(prefers-color-scheme: dark)") {
+        var defineTheme = paletteElement.hidden ? "ace/theme/crimson_editor" : 'ace/theme/tomorrow_night_bright'
+    } else {
+        var defineTheme = paletteElement.hidden ? 'ace/theme/tomorrow_night_bright' : "ace/theme/crimson_editor"
+    }
+    if (paletteElement.hidden == true) {
+        paintACE(defineTheme) // bright mode
+    } else {
+        paintACE(defineTheme)  // night mode
+    }
+});
+
+
+var p2 = document.querySelector('input[id="__palette_2"]')
+p2.addEventListener('click', () => { 
+    if (p2 === "(prefers-color-scheme: dark)") {
+        paintACE('ace/theme/tomorrow_night_bright')
+    } else {
+        paintACE('ace/theme/crimson_editor')
+    }
+    
+});
+
+var p1 = document.querySelector('input[id="__palette_1"]')
+p1.addEventListener('click', () => { 
+    if (p1 === "(prefers-color-scheme: light)") {
         paintACE('ace/theme/crimson_editor')
     } else {
         paintACE('ace/theme/tomorrow_night_bright')
     }
 });
-
-var p2 = document.querySelector('input[id="__palette_2"]')
-p2.addEventListener('click', () => { paintACE('ace/theme/crimson_editor') });
-
-var p1 = document.querySelector('input[id="__palette_1"]')
-p1.addEventListener('click', () => { paintACE('ace/theme/tomorrow_night_bright') });
