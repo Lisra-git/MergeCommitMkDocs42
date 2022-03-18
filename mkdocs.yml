@@ -26,15 +26,15 @@ nav:
     - "TP 11" : tp11.md  
     - "TP 12" : tp12.md  
     - "TP 13" : tp13.md  
+  - "Algorithmique" : 
+    - "Algorithme de recherche" : algorithmes1.md
   - "Extension" :
     - "GUI" : gui.md  
   - "Hack" :
     - "Clavier" : hack1.md
     - "Constantes" : pi.md
-  - "Bac à sable" :  
-    - "Bac à sable" : sandbox.md
-  # - "Algorithmique" : 
-  #   - "Premiers algorithmes" : algorithmes1.md
+  # - "Bac à sable" :  
+    # - "Bac à sable" : sandbox.md
   #   - "Algorithmes de tri" : algorithmes2.md
   #   - "Algorithmes avancés" : algorithmes3.md
   # - "Représentation des données" :
