@@ -74,7 +74,7 @@ L'algorithme précédent a l'inconvénient d'utiliser deux tableaux, ce qui est 
     À partir du tableau précédent, répondez à ces questions importantes :
 
     - combien de passage(s) dans la boucle contient cet algorithme ?
-    - la recherche d'un minimum se fait-elle systématiquement dans tout le tableau ? Si non, à une étape quelconque k, à partir de quel position doit-on chercher le minimum ?
+    - la recherche d'un minimum se fait-elle systématiquement dans tout le tableau ? Si non, à une étape quelconque k, à partir de quel leposition doit-on chercher le minimum ?
     - quelle valeur est toujours échangée ?
 
 !!! question "Question 7"
@@ -100,13 +100,13 @@ L'algorithme précédent a l'inconvénient d'utiliser deux tableaux, ce qui est 
 
     Celle-ci doit maintenant trouver le minimum d'un tableau `#!python liste_de_poids` pour des éléments compris entre la position `#!python i_debut` et la fin du tableau. On utilisera le paramètre optionnel `#!python i_debut`.
 
-    __Aide__ : l'instruction range(a, b) permet de compter de a à b-1.
+    __Aide__ : l'instruction `#!python range(a, b)` permet de compter de a à b-1.
 
     {{IDE("algo2/exo2", MAX = 1000)}}
 
 !!! question "Question 9"
 
-    À partir de l'algorithme de la question 3 et en utilisant la nouvelle version de la fonction `trouver_plus_léger`, compléter la fonction triSelection. 
+    À partir de l'algorithme de la question 3 et en utilisant la nouvelle version de la fonction `trouver_plus_léger`, compléter la fonction `#!python tri_selection`. 
 
     __Aide__ : pour utiliser un paramètre optionnel, il suffit de lui donner une valeur.
 
