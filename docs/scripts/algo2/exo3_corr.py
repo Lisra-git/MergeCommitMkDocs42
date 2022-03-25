@@ -1,16 +1,16 @@
-def trouver_plus_leger(liste_de_poids: list, i_debut : int = 0) -> list:
+from docs.scripts.algo2.exo1 import trouver_plus_leger
+
+
+def tri_selection(tas_des_poids: list)-> list:
     """
-    Trouve la valeur la plus petite d'un tableau d'entiers
-    et renvoie la position de cette valeur
+    Réalise un tri par sélection simplifié
     Paramètres d'entrée : 
-        - liste_de_poids : tableau d'entiers
-        - i_debut : paramètre optionnel (valeur par défaut : 0)
+        - tas_des_poids : tableaux d'entiers
     """
-    n = len(liste_de_poids)
-    minimum_actuel = 1e99
-    i_minimum = -1
-    for i in range(i_debut, n):
-        if liste_de_poids[i] < minimum_actuel:
-            minimum_actuel = liste_de_poids[i]
-            i_minimum = i
-    return i_minimum
+    n = len(tas_des_poids)
+    for i in range(n):
+        position_de_la_plus_legere = trouver_plus_leger(tas_des_poids, i)
+        tas_des_poids[i], tas_des_poids[position_de_la_plus_legere] \
+             = tas_des_poids[position_de_la_plus_legere], tas_des_poids[i]
+
+    return tas_des_poids

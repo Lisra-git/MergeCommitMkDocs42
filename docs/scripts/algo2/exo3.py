@@ -1,12 +1,10 @@
-def trouver_plus_leger(liste_de_poids: list, i_debut : int = 0) -> list:
+def tri_selection(tas_des_poids: list)-> list:
     """
-    Trouve la valeur la plus petite d'un tableau d'entiers
-    et renvoie la position de cette valeur (-1 si la liste est vide)
+    Réalise un tri par sélection simplifié
     Paramètres d'entrée : 
-        - liste_de_poids : tableau d'entiers
-        - i_debut : paramètre optionnel (valeur par défaut : 0)
+        - tas_des_poids : tableaux d'entiers
     """
-    n = len(liste_de_poids)
+    n = len(tas_des_poids)
     
 
-    return
+    return tas_des_poids
