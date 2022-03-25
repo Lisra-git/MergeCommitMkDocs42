@@ -28,6 +28,7 @@ nav:
     - "TP 13" : tp13.md  
   - "Algorithmique" : 
     - "Algorithme de recherche" : algorithmes1.md
+    - "Algorithme de tri 1" : algorithmes2.md
   - "Extension" :
     - "GUI" : gui.md  
   - "Hack" :
