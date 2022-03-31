@@ -65,7 +65,6 @@ $('[id^=editor_]').each(function() {
     var workingNode = prevNode
     var remNode = document.createElement("div");
 
-    console.log(remNode)
     if (prevNode.parentNode.tagName === 'P') {
         
         // REM file on top level
