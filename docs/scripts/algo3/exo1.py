@@ -26,7 +26,7 @@ def trouver_plus_leger(liste_de_poids: list) -> list:
     return i_minimum
 
 
-def tri_selection_simple(tas_des_poids: list)-> list:
+def tri_selection(tas_des_poids: list)-> list:
     """
     Réalise un tri par sélection simplifié
     Paramètres d'entrée : 
