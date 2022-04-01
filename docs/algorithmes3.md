@@ -130,7 +130,7 @@ Le but de ce TP est d'étudier un deuxième algorithme de tri classique appelé 
 
 !!! question "Question 6"
 
-    Tester votre code Python sur [PythonTutor.com](www.pythontutor.com) pour observer le fonctionnement du programme. 
+    Tester votre code Python sur [PythonTutor.com](https://www.pythontutor.com){target : _blank} pour observer le fonctionnement du programme. 
 
     On fera des tests par exemple pour les tableaux :
     ```python
