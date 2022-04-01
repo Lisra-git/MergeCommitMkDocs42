@@ -73,6 +73,13 @@ Le but de ce TP est d'étudier un deuxième algorithme de tri classique appelé 
                     <td>9</td>
                     <td>5</td>
                 </tr>
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>5</td>
+                </tr>
             </tbody>
         </table>
 
