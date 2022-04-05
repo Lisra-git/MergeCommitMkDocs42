@@ -30,6 +30,7 @@ nav:
     - "Algorithme de recherche" : algorithmes1.md
     - "Algorithme de tri 1" : algorithmes2.md
     - "Algorithme de tri 2" : algorithmes3.md
+    - "Exercices de complexité" : complexity.md
   - "Extension" :
     - "GUI" : gui.md  
   - "Hack" :
