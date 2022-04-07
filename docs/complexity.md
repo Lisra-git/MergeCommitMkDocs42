@@ -1,10 +1,9 @@
 # Exercices sur la complexité
 
-## Algorithme "avancé" : tri par insertion
-
 !!! question "Question 1"
 
     Écrire un algorithme appelé `distance` :
+
     - qui renvoie -1 si deux mots ne sont pas de la même taille
     - qui renvoie le nombre de lettres différentes à la même position sinon.
 
@@ -53,7 +52,7 @@
 
 !!! question "Question 4"
 
-    Soit le tableau `[2, 4, 6, 8, 12, 16, 17, 22, 67, 87, 112, 141, 155, 167, 178]
+    Soit le tableau `[2, 4, 6, 8, 12, 16, 17, 22, 67, 87, 112, 141, 155, 167, 178]`.
 
     Dessiner un arbre représentant toutes les possibilités lorsque l'on recherche un nombre. 
     
@@ -71,11 +70,11 @@
 
     ```python
     def nb_zeros(n):
-    resultat = 0
-    while n % 10 == 0:
-        n = n // 10
-        resultat += 1
-    return resultat
+        resultat = 0
+        while n % 10 == 0:
+            n = n // 10
+            resultat += 1
+        return resultat
     ```
 
 !!! question "Question 7"
@@ -84,13 +83,13 @@
 
     ```python
     def negatif(image):
-    '''renvoie le négatif de l'image sous la forme d'une liste de listes'''
-    hauteur_img, largeur_img = hauteur(image), largeur(image)
-    nouvelle_image = [[0 for j in range(largeur_img)] for i in range(hauteur_img)]
-    for i in range(hauteur_img):
-        for j in range(largeur_img):
-            nouvelle_image[i][j] = 255 - image[i][j]
-    return nouvelle_image
+        '''renvoie le négatif de l'image sous la forme d'une liste de listes'''
+        hauteur_img, largeur_img = hauteur(image), largeur(image)
+        nouvelle_image = [[0 for j in range(largeur_img)] for i in range(hauteur_img)]
+        for i in range(hauteur_img):
+            for j in range(largeur_img):
+                nouvelle_image[i][j] = 255 - image[i][j]
+        return nouvelle_image
     ```
 
 !!! question "Question 8"
