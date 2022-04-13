@@ -1,0 +1,1 @@
+un_dico = {'alpha' : 'k', 'beta' : 'p', 'gamma' : 'c'}
