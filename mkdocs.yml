@@ -36,6 +36,8 @@ nav:
   - "Hack" :
     - "Clavier" : hack1.md
     - "Constantes" : pi.md
+  - "Tables" :
+    - "Fichiers utiles" : tables.md
   # - "Bac à sable" :  
     # - "Bac à sable" : sandbox.md
   #   - "Algorithmes de tri" : algorithmes2.md
