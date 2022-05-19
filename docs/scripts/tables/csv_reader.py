@@ -7,7 +7,7 @@ def import_CSV(fichier: str, separateur = ";" ):
     for ligne in table_CSV:  # parcourt de la chose renvoyée par DictReader
         tableau.append(dict(ligne)) # ajout de la ligne formattée dans tableau
     flux.close()
-    return table_CSV
+    return tableau
 
 def export_CSV(données : list, fichier : str):
     header = données[0].keys()
