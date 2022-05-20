@@ -20,3 +20,6 @@ def export_CSV(données : list, fichier : str):
     for ligne in données:
         fichier_CSV.writerow(ligne)
     return None
+
+for ligne in import_CSV('exemple.csv'):
+    print(ligne)
