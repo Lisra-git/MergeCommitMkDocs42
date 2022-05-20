@@ -1,5 +1,10 @@
 # Des questions techniques et métaphysiques
 
+## Extrait de cours
+
+[Cours_Eleves.pdf](scripts/tables/Cours_Eleves.pdf)
+
+
 ## Fichiers CSV
 
 [exemple.csv](scripts/tables/exemple.csv)
