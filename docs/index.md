@@ -1,5 +1,7 @@
 # Spécialité NSI en Première
 
+Télécharger le [starter code](docs/../site_web.zip)
+
 ## Introduction
 
 Le but de ce site web est de vous proposer un cours interactif **à travailler à la maison** : vous pourrez programmer en Python en ligne sans avoir besoin d'installer un éditeur.
