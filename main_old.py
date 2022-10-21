@@ -170,6 +170,8 @@ def define_env(env):
         div_edit += f"""<button class="emoji" onclick='interpretACE("editor_{tc}","{mode}")'>▶️</button>"""
         div_edit += f"""{blank_space()}<button class="emoji" onclick=\'download_file("editor_{tc}","{nom_script}")\'>⤵️</button>{blank_space()}"""
         div_edit += create_upload_button(tc)
+        div_edit += create_connect_button_numworks(tc)
+        div_edit += create_upload_button_numworks(tc)
         div_edit += create_unittest_button(tc, nom_script, mode)
         div_edit += '</div>'
 

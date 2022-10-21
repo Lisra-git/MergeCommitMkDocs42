@@ -173,6 +173,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - xtra/javascripts/interpreter.js
   - https://unpkg.com/mermaid/dist/mermaid.min.js
+  - javascripts/numworks.js
   # - javascripts/mermaid.js
   # - javascripts/loader.js
 

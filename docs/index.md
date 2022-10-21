@@ -25,7 +25,10 @@ Trois grands types d'exercices sont proposés.
 !!! example "Prédire/comprendre"
 
     Comme ci-dessous, vous disposez d'un programme dans un éditeur. Vous devez comprendre le programme et prédire ce qui va se passer. Vous pouvez tester en appuyant sur la flèche pointant à droite.
-
+            <p>Status: <span id="status">Disconnected.</span></p>
+			        <div id="content">
+            Please connect your Numworks.
+        </div>
     {{IDE('intro')}}
 
 !!! example "Programmer"
@@ -63,3 +66,69 @@ Voici quelques questions que ous pourriez vous poser :
 !!! help "C'est sympa de pouvoir coder directement sur une page web. Qui est responsable de cela ?"
 
     C'est moi qui ait développé tout le moteur. Cela fonctionne grâce à une technologie de 2017 appelé WebAssembly. Celle-ci permet de coupler Javascript et Python. Et d'autres développements arrivent...
+
+<script src="javascripts/numworks.js"></script>
+
+<script>
+var editor = ace.edit("editor_1");
+var code = editor.getValue();
+
+
+var calculator = new Numworks();
+
+var status = document.getElementById("status");
+var connect = document.getElementById("connect");
+var content = document.getElementById("content");
+
+navigator.usb.addEventListener("disconnect", function(e) {
+  calculator.onUnexpectedDisconnect(e, function() {
+    status.innerHTML = "Disconnected.";
+    content.innerHTML = "Please connect your Numworks.";
+    calculator.autoConnect(autoConnectHandler);
+  });
+});
+
+function handleScriptSend(type) {
+    var editor = ace.edit(type);
+    var code = editor.getValue();
+    connected(code, "mkdocs", 1);
+}
+	
+calculator.autoConnect(autoConnectHandler);
+
+function autoConnectHandler(e) {
+  calculator.stopAutoConnect();
+  code = editor.getValue();
+  connected("", "", 0);      
+}
+
+connect.onclick = function(e) {
+  calculator.detect(function() {
+    calculator.stopAutoConnect();
+    connected("","",0);
+  }, function(error) {
+    status.innerHTML = "Error: " + error;
+  });
+};
+
+async function connected(script, name, send) {
+  connect.disabled = true;
+  status.innerHTML = "Connected.";
+
+  var model = calculator.getModel(false);
+
+  var html_content = "Model: " + calculator.getModel(false) + "<br/>";
+
+  // Get the platform information
+  var platformInfo = await calculator.getPlatformInfo();
+  console.log(platformInfo);
+  if(send) {
+  var storage = await calculator.backupStorage();
+	storage.records.push({"name": name, "type": "py", "autoImport": true, position: 0, "code": script});
+	await calculator.installStorage(storage, function() {
+    console.log("don")
+	});
+  }
+  content.innerHTML = html_content;
+}
+</script>
